@@ -1,0 +1,1606 @@
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CapSense_IdacCH0.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.CapSense_IdacCH0_Enable,"ax",%progbits
+  19              		.align	2
+  20              		.global	CapSense_IdacCH0_Enable
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	CapSense_IdacCH0_Enable, %function
+  24              	CapSense_IdacCH0_Enable:
+  25              	.LFB1:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\CapSense_IdacCH0.c"
+   1:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * File Name: CapSense_IdacCH0.c
+   3:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Version 2.0
+   4:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+   5:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Description:
+   6:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  This file provides the source code to the API for the 8-bit Current 
+   7:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  DAC (IDAC8) User Module.
+   8:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+   9:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Note:
+  10:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  None
+  11:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+  12:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  19:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #include "cytypes.h"
+  20:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #include "CapSense_IdacCH0.h"   
+  21:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  22:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #if (CY_PSOC5A)
+  23:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #include <CyLib.h>
+  24:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #endif /* CY_PSOC5A */
+  25:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  26:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  27:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** uint8 CapSense_IdacCH0_initVar = 0u;
+  28:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  29:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  30:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #if (CY_PSOC5A)
+  31:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     static CapSense_IdacCH0_LOWPOWER_BACKUP_STRUCT  CapSense_IdacCH0_lowPowerBackup;
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #endif /* CY_PSOC5A */
+  33:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  34:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /* Variable to decide whether or not to restore control register in Enable()
+  35:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****    API. This valid only for PSoC5A */
+  36:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #if (CY_PSOC5A)
+  37:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     static uint8 CapSense_IdacCH0_restoreReg = 0u;
+  38:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #endif /* CY_PSOC5A */
+  39:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  40:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  41:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+  42:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_Init
+  43:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+  44:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+  45:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Initialize to the schematic state.
+  46:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * 
+  47:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+  48:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  void:
+  49:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+  50:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+  51:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+  52:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+  53:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+  54:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+  55:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+  56:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+  57:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+  58:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_Init(void) 
+  59:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+  60:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 = (CapSense_IdacCH0_MODE_I | CapSense_IdacCH0_DEFAULT_RANGE );
+  61:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  62:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Set default data source */
+  63:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if(CapSense_IdacCH0_DEFAULT_DATA_SRC != 0u )    
+  64:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 = (CapSense_IdacCH0_DEFAULT_CNTL | CapSense_IdacCH0_DACBUS_ENABLE);
+  65:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #else
+  66:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 = (CapSense_IdacCH0_DEFAULT_CNTL | CapSense_IdacCH0_DACBUS_DISABLE);
+  67:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* (CapSense_IdacCH0_DEFAULT_DATA_SRC != 0u ) */
+  68:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+  69:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /*Controls polarity from UDB Control*/
+  70:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if(CapSense_IdacCH0_DEFAULT_POLARITY == CapSense_IdacCH0_HARDWARE_CONTROLLED)
+  71:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= CapSense_IdacCH0_IDIR_SRC_UDB;
+  72:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #else
+  73:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= CapSense_IdacCH0_DEFAULT_POLARITY;
+  74:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif/* (CapSense_IdacCH0_DEFAULT_POLARITY == CapSense_IdacCH0_HARDWARE_CONTROLLED) */
+  75:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /*Controls Current Source from UDB Control*/
+  76:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if(CapSense_IdacCH0_HARDWARE_ENABLE != 0u ) 
+  77:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= CapSense_IdacCH0_IDIR_CTL_UDB;
+  78:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* (CapSense_IdacCH0_HARDWARE_ENABLE != 0u ) */ 
+  79:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+  80:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Set default strobe mode */
+  81:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if(CapSense_IdacCH0_DEFAULT_STRB != 0u)
+  82:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_Strobe |= CapSense_IdacCH0_STRB_EN;
+  83:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* (CapSense_IdacCH0_DEFAULT_STRB != 0u) */
+  84:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+  85:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Set default speed */
+  86:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_SetSpeed(CapSense_IdacCH0_DEFAULT_SPEED);
+  87:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+  88:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Set proper DAC trim */
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_DacTrim();
+  90:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+  91:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+  92:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  93:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+  94:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_Enable
+  96:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+  98:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Enable the IDAC8
+  99:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * 
+ 100:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 101:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  void:
+ 102:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 103:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 104:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 105:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 106:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 107:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 108:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 109:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 110:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 111:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_Enable(void) 
+ 112:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+  27              		.loc 1 112 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 113:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_PWRMGR |= CapSense_IdacCH0_ACT_PWR_EN;
+  32              		.loc 1 113 0
+  33 0000 054B     		ldr	r3, .L2
+  34 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  35 0004 42F00802 		orr	r2, r2, #8
+  36 0008 1A70     		strb	r2, [r3]
+ 114:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_STBY_PWRMGR |= CapSense_IdacCH0_STBY_PWR_EN;
+  37              		.loc 1 114 0
+  38 000a 1033     		adds	r3, r3, #16
+  39 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  40 000e 42F00802 		orr	r2, r2, #8
+  41 0012 1A70     		strb	r2, [r3]
+  42 0014 7047     		bx	lr
+  43              	.L3:
+  44 0016 00BF     		.align	2
+  45              	.L2:
+  46 0018 A8430040 		.word	1073759144
+  47              		.cfi_endproc
+  48              	.LFE1:
+  49              		.size	CapSense_IdacCH0_Enable, .-CapSense_IdacCH0_Enable
+  50              		.section	.text.CapSense_IdacCH0_Stop,"ax",%progbits
+  51              		.align	2
+  52              		.global	CapSense_IdacCH0_Stop
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	CapSense_IdacCH0_Stop, %function
+  56              	CapSense_IdacCH0_Stop:
+  57              	.LFB3:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 4
+
+
+ 115:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 116:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* This is to restore the value of register CR0 which is saved 
+ 117:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****       in prior to the modification in stop() API */
+ 118:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if (CY_PSOC5A)
+ 119:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         if(CapSense_IdacCH0_restoreReg == 1u)
+ 120:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         {
+ 121:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****             CapSense_IdacCH0_CR0 = CapSense_IdacCH0_lowPowerBackup.DACCR0Reg;
+ 122:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 123:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****             /* Clear the flag */
+ 124:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****             CapSense_IdacCH0_restoreReg = 0u;
+ 125:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         }
+ 126:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* CY_PSOC5A */
+ 127:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ 128:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 129:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 130:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 131:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_Start
+ 132:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 133:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 134:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Set power level then turn on IDAC8.
+ 135:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 136:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:  
+ 137:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  power: Sets power level between off (0) and (3) high power
+ 138:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 139:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 140:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 141:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 142:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Global variables:
+ 143:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  CapSense_IdacCH0_initVar: Is modified when this function is called for 
+ 144:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *   the first time. Is used to ensure that initialization happens only once.
+ 145:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 146:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 147:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_Start(void) 
+ 148:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 149:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Hardware initiazation only needs to occur the first time */
+ 150:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     if ( CapSense_IdacCH0_initVar == 0u)  
+ 151:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     {
+ 152:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_Init();
+ 153:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         
+ 154:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_initVar = 1u;
+ 155:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     }
+ 156:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****    
+ 157:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Enable power to DAC */
+ 158:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_Enable();
+ 159:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 160:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Set default value */
+ 161:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_SetValue(CapSense_IdacCH0_DEFAULT_DATA);
+ 162:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 163:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ 164:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 165:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 166:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 167:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_Stop
+ 168:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 169:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 170:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Powers down IDAC8 to lowest power state.
+ 171:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 5
+
+
+ 172:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 173:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 174:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 175:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 176:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 177:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 178:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 179:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 180:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 181:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 182:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 183:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_Stop(void) 
+ 184:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+  58              		.loc 1 184 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              		@ link register save eliminated.
+ 185:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Disble power to DAC */
+ 186:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_PWRMGR &= (uint8)(~CapSense_IdacCH0_ACT_PWR_EN);
+  63              		.loc 1 186 0
+  64 0000 054B     		ldr	r3, .L5
+  65 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  66 0004 02F0F702 		and	r2, r2, #247
+  67 0008 1A70     		strb	r2, [r3]
+ 187:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_STBY_PWRMGR &= (uint8)(~CapSense_IdacCH0_STBY_PWR_EN);
+  68              		.loc 1 187 0
+  69 000a 1033     		adds	r3, r3, #16
+  70 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  71 000e 02F0F702 		and	r2, r2, #247
+  72 0012 1A70     		strb	r2, [r3]
+  73 0014 7047     		bx	lr
+  74              	.L6:
+  75 0016 00BF     		.align	2
+  76              	.L5:
+  77 0018 A8430040 		.word	1073759144
+  78              		.cfi_endproc
+  79              	.LFE3:
+  80              		.size	CapSense_IdacCH0_Stop, .-CapSense_IdacCH0_Stop
+  81              		.section	.text.CapSense_IdacCH0_SetSpeed,"ax",%progbits
+  82              		.align	2
+  83              		.global	CapSense_IdacCH0_SetSpeed
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	CapSense_IdacCH0_SetSpeed, %function
+  87              	CapSense_IdacCH0_SetSpeed:
+  88              	.LFB4:
+ 188:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+ 189:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if (CY_PSOC5A)
+ 190:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+ 191:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         /* Set the global variable  */
+ 192:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_restoreReg = 1u;
+ 193:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 194:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         /* Save the control register and then Clear it. */
+ 195:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_lowPowerBackup.DACCR0Reg = CapSense_IdacCH0_CR0;
+ 196:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR0 = (CapSense_IdacCH0_MODE_I | CapSense_IdacCH0_RANGE_3 | CapSense_IdacC
+ 197:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* CY_PSOC5A */
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 6
+
+
+ 198:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ 199:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 200:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 201:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 202:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_SetSpeed
+ 203:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 204:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 205:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Set DAC speed
+ 206:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 207:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 208:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  power: Sets speed value
+ 209:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 210:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 211:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 212:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 213:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 214:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 215:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 216:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 217:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 218:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_SetSpeed(uint8 speed) 
+ 219:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+  89              		.loc 1 219 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94              	.LVL0:
+ 220:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* Clear power mask then write in new value */
+ 221:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 &= (uint8)(~CapSense_IdacCH0_HS_MASK);
+  95              		.loc 1 221 0
+  96 0000 054B     		ldr	r3, .L8
+  97 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  98 0004 02F0FD02 		and	r2, r2, #253
+  99 0008 1A70     		strb	r2, [r3]
+ 222:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 |=  ( speed & CapSense_IdacCH0_HS_MASK);
+ 100              		.loc 1 222 0
+ 101 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 102 000c 00F00200 		and	r0, r0, #2
+ 103              	.LVL1:
+ 104 0010 0243     		orrs	r2, r2, r0
+ 105 0012 1A70     		strb	r2, [r3]
+ 106 0014 7047     		bx	lr
+ 107              	.L9:
+ 108 0016 00BF     		.align	2
+ 109              	.L8:
+ 110 0018 2C580040 		.word	1073764396
+ 111              		.cfi_endproc
+ 112              	.LFE4:
+ 113              		.size	CapSense_IdacCH0_SetSpeed, .-CapSense_IdacCH0_SetSpeed
+ 114              		.section	.text.CapSense_IdacCH0_SetValue,"ax",%progbits
+ 115              		.align	2
+ 116              		.global	CapSense_IdacCH0_SetValue
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	CapSense_IdacCH0_SetValue, %function
+ 120              	CapSense_IdacCH0_SetValue:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 7
+
+
+ 121              	.LFB7:
+ 223:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ 224:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 225:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 226:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 227:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_SetPolarity
+ 228:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 229:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 230:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Sets IDAC to Sink or Source current.
+ 231:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  
+ 232:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 233:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Polarity: Sets the IDAC to Sink or Source 
+ 234:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  0x00 - Source
+ 235:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  0x04 - Sink
+ 236:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 237:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 238:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 239:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 240:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 241:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 242:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 243:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 244:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 245:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #if(CapSense_IdacCH0_DEFAULT_POLARITY != CapSense_IdacCH0_HARDWARE_CONTROLLED)
+ 246:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     void CapSense_IdacCH0_SetPolarity(uint8 polarity) 
+ 247:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     {
+ 248:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 &= (uint8)(~CapSense_IdacCH0_IDIR_MASK);                /* clear polar
+ 249:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= (polarity & CapSense_IdacCH0_IDIR_MASK);             /* set new val
+ 250:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+ 251:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_DacTrim();
+ 252:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     }
+ 253:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** #endif/*(CapSense_IdacCH0_DEFAULT_POLARITY != CapSense_IdacCH0_HARDWARE_CONTROLLED)*/
+ 254:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 255:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 256:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 257:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_SetRange
+ 258:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 259:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 260:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Set current range
+ 261:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 262:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 263:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Range: Sets on of four valid ranges.
+ 264:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 265:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 266:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 267:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 268:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 269:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 270:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 271:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 272:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 273:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_SetRange(uint8 range) 
+ 274:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 275:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 &= (uint8)(~CapSense_IdacCH0_RANGE_MASK);       /* Clear existing mode */
+ 276:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 |= ( range & CapSense_IdacCH0_RANGE_MASK );     /*  Set Range  */
+ 277:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_DacTrim();
+ 278:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 8
+
+
+ 279:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 280:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 281:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 282:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_SetValue
+ 283:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 284:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 285:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Set DAC value
+ 286:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 287:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 288:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  value: Sets DAC value between 0 and 255.
+ 289:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 290:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 291:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void)
+ 292:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 293:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 294:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 295:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 296:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 297:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 298:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_SetValue(uint8 value) 
+ 299:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 122              		.loc 1 299 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127              	.LVL2:
+ 300:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 301:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if (CY_PSOC5A)
+ 302:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         uint8 CapSense_IdacCH0_intrStatus = CyEnterCriticalSection();
+ 303:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* CY_PSOC5A */
+ 304:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 305:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_Data = value;         /*  Set Value  */
+ 128              		.loc 1 305 0
+ 129 0000 014B     		ldr	r3, .L11
+ 130 0002 1870     		strb	r0, [r3]
+ 131 0004 7047     		bx	lr
+ 132              	.L12:
+ 133 0006 00BF     		.align	2
+ 134              	.L11:
+ 135 0008 835B0040 		.word	1073765251
+ 136              		.cfi_endproc
+ 137              	.LFE7:
+ 138              		.size	CapSense_IdacCH0_SetValue, .-CapSense_IdacCH0_SetValue
+ 139              		.section	.text.CapSense_IdacCH0_DacTrim,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	CapSense_IdacCH0_DacTrim
+ 142              		.thumb
+ 143              		.thumb_func
+ 144              		.type	CapSense_IdacCH0_DacTrim, %function
+ 145              	CapSense_IdacCH0_DacTrim:
+ 146              	.LFB8:
+ 306:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+ 307:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     /* PSOC5A silicons require a double write */
+ 308:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #if (CY_PSOC5A)
+ 309:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_Data = value;
+ 310:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CyExitCriticalSection(CapSense_IdacCH0_intrStatus);
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 9
+
+
+ 311:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     #endif /* CY_PSOC5A */
+ 312:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** }
+ 313:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 314:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 315:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** /*******************************************************************************
+ 316:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Function Name: CapSense_IdacCH0_DacTrim
+ 317:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** ********************************************************************************
+ 318:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Summary:
+ 319:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Set the trim value for the given range.
+ 320:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 321:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Parameters:
+ 322:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  None
+ 323:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 324:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Return:
+ 325:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  (void) 
+ 326:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 327:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Theory:
+ 328:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Trim values for the IDAC blocks are stored in the "Customer Table" area in 
+ 329:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  Row 1 of the Hidden Flash.  There are 8 bytes of trim data for each 
+ 330:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  IDAC block.
+ 331:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *  The values are:
+ 332:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, min range, Sourcing
+ 333:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, min range, Sinking
+ 334:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, med range, Sourcing
+ 335:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, med range, Sinking
+ 336:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, max range, Sourcing
+ 337:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       I Gain offset, max range, Sinking
+ 338:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       V Gain offset, 1V range
+ 339:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *       V Gain offset, 4V range
+ 340:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 341:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** * Side Effects:
+ 342:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *
+ 343:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** *******************************************************************************/
+ 344:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** void CapSense_IdacCH0_DacTrim(void) 
+ 345:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 147              		.loc 1 345 0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 346:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     uint8 mode;
+ 347:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 348:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     mode = ((CapSense_IdacCH0_CR0 & CapSense_IdacCH0_RANGE_MASK) >> 1u);
+ 152              		.loc 1 348 0
+ 153 0000 094B     		ldr	r3, .L15
+ 154 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 155 0004 03F00C03 		and	r3, r3, #12
+ 156 0008 5B08     		lsrs	r3, r3, #1
+ 157              	.LVL3:
+ 349:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     
+ 350:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     if((CapSense_IdacCH0_IDIR_MASK & CapSense_IdacCH0_CR1) == CapSense_IdacCH0_IDIR_SINK)
+ 158              		.loc 1 350 0
+ 159 000a 084A     		ldr	r2, .L15+4
+ 160 000c 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 161 000e 12F0040F 		tst	r2, #4
+ 162 0012 00D0     		beq	.L14
+ 351:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     {
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 10
+
+
+ 352:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         mode++;
+ 163              		.loc 1 352 0
+ 164 0014 0133     		adds	r3, r3, #1
+ 165              	.LVL4:
+ 166              	.L14:
+ 353:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     }
+ 354:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** 
+ 355:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_TR = CY_GET_XTND_REG8((uint8 *)(CapSense_IdacCH0_DAC_TRIM_BASE + mode));
+ 167              		.loc 1 355 0
+ 168 0016 03F19243 		add	r3, r3, #1224736768
+ 169              	.LVL5:
+ 170 001a 93F83821 		ldrb	r2, [r3, #312]	@ zero_extendqisi2
+ 171 001e D2B2     		uxtb	r2, r2
+ 172 0020 034B     		ldr	r3, .L15+8
+ 173              	.LVL6:
+ 174 0022 1A70     		strb	r2, [r3]
+ 175 0024 7047     		bx	lr
+ 176              	.L16:
+ 177 0026 00BF     		.align	2
+ 178              	.L15:
+ 179 0028 2C580040 		.word	1073764396
+ 180 002c 2D580040 		.word	1073764397
+ 181 0030 0B460040 		.word	1073759755
+ 182              		.cfi_endproc
+ 183              	.LFE8:
+ 184              		.size	CapSense_IdacCH0_DacTrim, .-CapSense_IdacCH0_DacTrim
+ 185              		.section	.text.CapSense_IdacCH0_Init,"ax",%progbits
+ 186              		.align	2
+ 187              		.global	CapSense_IdacCH0_Init
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.type	CapSense_IdacCH0_Init, %function
+ 191              	CapSense_IdacCH0_Init:
+ 192              	.LFB0:
+  59:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 193              		.loc 1 59 0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197 0000 08B5     		push	{r3, lr}
+ 198              		.cfi_def_cfa_offset 8
+ 199              		.cfi_offset 3, -8
+ 200              		.cfi_offset 14, -4
+  60:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 = (CapSense_IdacCH0_MODE_I | CapSense_IdacCH0_DEFAULT_RANGE );
+ 201              		.loc 1 60 0
+ 202 0002 1422     		movs	r2, #20
+ 203 0004 084B     		ldr	r3, .L18
+ 204 0006 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 = (CapSense_IdacCH0_DEFAULT_CNTL | CapSense_IdacCH0_DACBUS_DISABLE);
+ 205              		.loc 1 66 0
+ 206 0008 0133     		adds	r3, r3, #1
+ 207 000a 0020     		movs	r0, #0
+ 208 000c 1870     		strb	r0, [r3]
+  73:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= CapSense_IdacCH0_DEFAULT_POLARITY;
+ 209              		.loc 1 73 0
+ 210 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 211 0010 42F00402 		orr	r2, r2, #4
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 11
+
+
+ 212 0014 1A70     		strb	r2, [r3]
+  77:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= CapSense_IdacCH0_IDIR_CTL_UDB;
+ 213              		.loc 1 77 0
+ 214 0016 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 215 0018 42F00202 		orr	r2, r2, #2
+ 216 001c 1A70     		strb	r2, [r3]
+  86:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_SetSpeed(CapSense_IdacCH0_DEFAULT_SPEED);
+ 217              		.loc 1 86 0
+ 218 001e FFF7FEFF 		bl	CapSense_IdacCH0_SetSpeed
+ 219              	.LVL7:
+  89:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_DacTrim();
+ 220              		.loc 1 89 0
+ 221 0022 FFF7FEFF 		bl	CapSense_IdacCH0_DacTrim
+ 222              	.LVL8:
+ 223 0026 08BD     		pop	{r3, pc}
+ 224              	.L19:
+ 225              		.align	2
+ 226              	.L18:
+ 227 0028 2C580040 		.word	1073764396
+ 228              		.cfi_endproc
+ 229              	.LFE0:
+ 230              		.size	CapSense_IdacCH0_Init, .-CapSense_IdacCH0_Init
+ 231              		.section	.text.CapSense_IdacCH0_Start,"ax",%progbits
+ 232              		.align	2
+ 233              		.global	CapSense_IdacCH0_Start
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.type	CapSense_IdacCH0_Start, %function
+ 237              	CapSense_IdacCH0_Start:
+ 238              	.LFB2:
+ 148:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 239              		.loc 1 148 0
+ 240              		.cfi_startproc
+ 241              		@ args = 0, pretend = 0, frame = 0
+ 242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 243 0000 08B5     		push	{r3, lr}
+ 244              		.cfi_def_cfa_offset 8
+ 245              		.cfi_offset 3, -8
+ 246              		.cfi_offset 14, -4
+ 150:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     if ( CapSense_IdacCH0_initVar == 0u)  
+ 247              		.loc 1 150 0
+ 248 0002 074B     		ldr	r3, .L22
+ 249 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 250 0006 23B9     		cbnz	r3, .L21
+ 152:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_Init();
+ 251              		.loc 1 152 0
+ 252 0008 FFF7FEFF 		bl	CapSense_IdacCH0_Init
+ 253              	.LVL9:
+ 154:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_initVar = 1u;
+ 254              		.loc 1 154 0
+ 255 000c 0122     		movs	r2, #1
+ 256 000e 044B     		ldr	r3, .L22
+ 257 0010 1A70     		strb	r2, [r3]
+ 258              	.L21:
+ 158:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_Enable();
+ 259              		.loc 1 158 0
+ 260 0012 FFF7FEFF 		bl	CapSense_IdacCH0_Enable
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 12
+
+
+ 261              	.LVL10:
+ 161:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_SetValue(CapSense_IdacCH0_DEFAULT_DATA);
+ 262              		.loc 1 161 0
+ 263 0016 0020     		movs	r0, #0
+ 264 0018 FFF7FEFF 		bl	CapSense_IdacCH0_SetValue
+ 265              	.LVL11:
+ 266 001c 08BD     		pop	{r3, pc}
+ 267              	.L23:
+ 268 001e 00BF     		.align	2
+ 269              	.L22:
+ 270 0020 00000000 		.word	.LANCHOR0
+ 271              		.cfi_endproc
+ 272              	.LFE2:
+ 273              		.size	CapSense_IdacCH0_Start, .-CapSense_IdacCH0_Start
+ 274              		.section	.text.CapSense_IdacCH0_SetPolarity,"ax",%progbits
+ 275              		.align	2
+ 276              		.global	CapSense_IdacCH0_SetPolarity
+ 277              		.thumb
+ 278              		.thumb_func
+ 279              		.type	CapSense_IdacCH0_SetPolarity, %function
+ 280              	CapSense_IdacCH0_SetPolarity:
+ 281              	.LFB5:
+ 247:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     {
+ 282              		.loc 1 247 0
+ 283              		.cfi_startproc
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              	.LVL12:
+ 287 0000 08B5     		push	{r3, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 3, -8
+ 290              		.cfi_offset 14, -4
+ 248:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 &= (uint8)(~CapSense_IdacCH0_IDIR_MASK);                /* clear polar
+ 291              		.loc 1 248 0
+ 292 0002 064B     		ldr	r3, .L25
+ 293 0004 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 294 0006 02F0FB02 		and	r2, r2, #251
+ 295 000a 1A70     		strb	r2, [r3]
+ 249:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_CR1 |= (polarity & CapSense_IdacCH0_IDIR_MASK);             /* set new val
+ 296              		.loc 1 249 0
+ 297 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 298 000e 00F00400 		and	r0, r0, #4
+ 299              	.LVL13:
+ 300 0012 0243     		orrs	r2, r2, r0
+ 301 0014 1A70     		strb	r2, [r3]
+ 251:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****         CapSense_IdacCH0_DacTrim();
+ 302              		.loc 1 251 0
+ 303 0016 FFF7FEFF 		bl	CapSense_IdacCH0_DacTrim
+ 304              	.LVL14:
+ 305 001a 08BD     		pop	{r3, pc}
+ 306              	.L26:
+ 307              		.align	2
+ 308              	.L25:
+ 309 001c 2D580040 		.word	1073764397
+ 310              		.cfi_endproc
+ 311              	.LFE5:
+ 312              		.size	CapSense_IdacCH0_SetPolarity, .-CapSense_IdacCH0_SetPolarity
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 13
+
+
+ 313              		.section	.text.CapSense_IdacCH0_SetRange,"ax",%progbits
+ 314              		.align	2
+ 315              		.global	CapSense_IdacCH0_SetRange
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.type	CapSense_IdacCH0_SetRange, %function
+ 319              	CapSense_IdacCH0_SetRange:
+ 320              	.LFB6:
+ 274:.\Generated_Source\PSoC5/CapSense_IdacCH0.c **** {
+ 321              		.loc 1 274 0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              	.LVL15:
+ 326 0000 08B5     		push	{r3, lr}
+ 327              		.cfi_def_cfa_offset 8
+ 328              		.cfi_offset 3, -8
+ 329              		.cfi_offset 14, -4
+ 275:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 &= (uint8)(~CapSense_IdacCH0_RANGE_MASK);       /* Clear existing mode */
+ 330              		.loc 1 275 0
+ 331 0002 064B     		ldr	r3, .L28
+ 332 0004 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 333 0006 02F0F302 		and	r2, r2, #243
+ 334 000a 1A70     		strb	r2, [r3]
+ 276:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_CR0 |= ( range & CapSense_IdacCH0_RANGE_MASK );     /*  Set Range  */
+ 335              		.loc 1 276 0
+ 336 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 337 000e 00F00C00 		and	r0, r0, #12
+ 338              	.LVL16:
+ 339 0012 0243     		orrs	r2, r2, r0
+ 340 0014 1A70     		strb	r2, [r3]
+ 277:.\Generated_Source\PSoC5/CapSense_IdacCH0.c ****     CapSense_IdacCH0_DacTrim();
+ 341              		.loc 1 277 0
+ 342 0016 FFF7FEFF 		bl	CapSense_IdacCH0_DacTrim
+ 343              	.LVL17:
+ 344 001a 08BD     		pop	{r3, pc}
+ 345              	.L29:
+ 346              		.align	2
+ 347              	.L28:
+ 348 001c 2C580040 		.word	1073764396
+ 349              		.cfi_endproc
+ 350              	.LFE6:
+ 351              		.size	CapSense_IdacCH0_SetRange, .-CapSense_IdacCH0_SetRange
+ 352              		.global	CapSense_IdacCH0_initVar
+ 353              		.bss
+ 354              		.set	.LANCHOR0,. + 0
+ 355              		.type	CapSense_IdacCH0_initVar, %object
+ 356              		.size	CapSense_IdacCH0_initVar, 1
+ 357              	CapSense_IdacCH0_initVar:
+ 358 0000 00       		.space	1
+ 359              		.text
+ 360              	.Letext0:
+ 361              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 362              		.section	.debug_info,"",%progbits
+ 363              	.Ldebug_info0:
+ 364 0000 04020000 		.4byte	0x204
+ 365 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 14
+
+
+ 366 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 367 000a 04       		.byte	0x4
+ 368 000b 01       		.uleb128 0x1
+ 369 000c F4000000 		.4byte	.LASF27
+ 370 0010 01       		.byte	0x1
+ 371 0011 4D000000 		.4byte	.LASF28
+ 372 0015 CE010000 		.4byte	.LASF29
+ 373 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 374 001d 00000000 		.4byte	0
+ 375 0021 00000000 		.4byte	.Ldebug_line0
+ 376 0025 02       		.uleb128 0x2
+ 377 0026 01       		.byte	0x1
+ 378 0027 06       		.byte	0x6
+ 379 0028 C2010000 		.4byte	.LASF0
+ 380 002c 02       		.uleb128 0x2
+ 381 002d 01       		.byte	0x1
+ 382 002e 08       		.byte	0x8
+ 383 002f AB010000 		.4byte	.LASF1
+ 384 0033 02       		.uleb128 0x2
+ 385 0034 02       		.byte	0x2
+ 386 0035 05       		.byte	0x5
+ 387 0036 79000000 		.4byte	.LASF2
+ 388 003a 02       		.uleb128 0x2
+ 389 003b 02       		.byte	0x2
+ 390 003c 07       		.byte	0x7
+ 391 003d 5F020000 		.4byte	.LASF3
+ 392 0041 02       		.uleb128 0x2
+ 393 0042 04       		.byte	0x4
+ 394 0043 05       		.byte	0x5
+ 395 0044 70010000 		.4byte	.LASF4
+ 396 0048 02       		.uleb128 0x2
+ 397 0049 04       		.byte	0x4
+ 398 004a 07       		.byte	0x7
+ 399 004b 92020000 		.4byte	.LASF5
+ 400 004f 02       		.uleb128 0x2
+ 401 0050 08       		.byte	0x8
+ 402 0051 05       		.byte	0x5
+ 403 0052 E6000000 		.4byte	.LASF6
+ 404 0056 02       		.uleb128 0x2
+ 405 0057 08       		.byte	0x8
+ 406 0058 07       		.byte	0x7
+ 407 0059 1E020000 		.4byte	.LASF7
+ 408 005d 03       		.uleb128 0x3
+ 409 005e 04       		.byte	0x4
+ 410 005f 05       		.byte	0x5
+ 411 0060 696E7400 		.ascii	"int\000"
+ 412 0064 02       		.uleb128 0x2
+ 413 0065 04       		.byte	0x4
+ 414 0066 07       		.byte	0x7
+ 415 0067 35020000 		.4byte	.LASF8
+ 416 006b 04       		.uleb128 0x4
+ 417 006c DA000000 		.4byte	.LASF12
+ 418 0070 02       		.byte	0x2
+ 419 0071 B4       		.byte	0xb4
+ 420 0072 2C000000 		.4byte	0x2c
+ 421 0076 02       		.uleb128 0x2
+ 422 0077 04       		.byte	0x4
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 15
+
+
+ 423 0078 04       		.byte	0x4
+ 424 0079 E0000000 		.4byte	.LASF9
+ 425 007d 02       		.uleb128 0x2
+ 426 007e 08       		.byte	0x8
+ 427 007f 04       		.byte	0x4
+ 428 0080 A4020000 		.4byte	.LASF10
+ 429 0084 02       		.uleb128 0x2
+ 430 0085 01       		.byte	0x1
+ 431 0086 08       		.byte	0x8
+ 432 0087 72020000 		.4byte	.LASF11
+ 433 008b 05       		.uleb128 0x5
+ 434 008c 8D020000 		.4byte	.LASF13
+ 435 0090 02       		.byte	0x2
+ 436 0091 5E01     		.2byte	0x15e
+ 437 0093 97000000 		.4byte	0x97
+ 438 0097 06       		.uleb128 0x6
+ 439 0098 6B000000 		.4byte	0x6b
+ 440 009c 07       		.uleb128 0x7
+ 441 009d 93010000 		.4byte	.LASF14
+ 442 00a1 01       		.byte	0x1
+ 443 00a2 6F       		.byte	0x6f
+ 444 00a3 00000000 		.4byte	.LFB1
+ 445 00a7 1C000000 		.4byte	.LFE1-.LFB1
+ 446 00ab 01       		.uleb128 0x1
+ 447 00ac 9C       		.byte	0x9c
+ 448 00ad 07       		.uleb128 0x7
+ 449 00ae A0000000 		.4byte	.LASF15
+ 450 00b2 01       		.byte	0x1
+ 451 00b3 B7       		.byte	0xb7
+ 452 00b4 00000000 		.4byte	.LFB3
+ 453 00b8 1C000000 		.4byte	.LFE3-.LFB3
+ 454 00bc 01       		.uleb128 0x1
+ 455 00bd 9C       		.byte	0x9c
+ 456 00be 08       		.uleb128 0x8
+ 457 00bf 1A000000 		.4byte	.LASF16
+ 458 00c3 01       		.byte	0x1
+ 459 00c4 DA       		.byte	0xda
+ 460 00c5 00000000 		.4byte	.LFB4
+ 461 00c9 1C000000 		.4byte	.LFE4-.LFB4
+ 462 00cd 01       		.uleb128 0x1
+ 463 00ce 9C       		.byte	0x9c
+ 464 00cf E3000000 		.4byte	0xe3
+ 465 00d3 09       		.uleb128 0x9
+ 466 00d4 42020000 		.4byte	.LASF18
+ 467 00d8 01       		.byte	0x1
+ 468 00d9 DA       		.byte	0xda
+ 469 00da 6B000000 		.4byte	0x6b
+ 470 00de 00000000 		.4byte	.LLST0
+ 471 00e2 00       		.byte	0
+ 472 00e3 0A       		.uleb128 0xa
+ 473 00e4 79010000 		.4byte	.LASF17
+ 474 00e8 01       		.byte	0x1
+ 475 00e9 2A01     		.2byte	0x12a
+ 476 00eb 00000000 		.4byte	.LFB7
+ 477 00ef 0C000000 		.4byte	.LFE7-.LFB7
+ 478 00f3 01       		.uleb128 0x1
+ 479 00f4 9C       		.byte	0x9c
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 16
+
+
+ 480 00f5 08010000 		.4byte	0x108
+ 481 00f9 0B       		.uleb128 0xb
+ 482 00fa BB000000 		.4byte	.LASF19
+ 483 00fe 01       		.byte	0x1
+ 484 00ff 2A01     		.2byte	0x12a
+ 485 0101 6B000000 		.4byte	0x6b
+ 486 0105 01       		.uleb128 0x1
+ 487 0106 50       		.byte	0x50
+ 488 0107 00       		.byte	0
+ 489 0108 0A       		.uleb128 0xa
+ 490 0109 34000000 		.4byte	.LASF20
+ 491 010d 01       		.byte	0x1
+ 492 010e 5801     		.2byte	0x158
+ 493 0110 00000000 		.4byte	.LFB8
+ 494 0114 34000000 		.4byte	.LFE8-.LFB8
+ 495 0118 01       		.uleb128 0x1
+ 496 0119 9C       		.byte	0x9c
+ 497 011a 2F010000 		.4byte	0x12f
+ 498 011e 0C       		.uleb128 0xc
+ 499 011f B6000000 		.4byte	.LASF30
+ 500 0123 01       		.byte	0x1
+ 501 0124 5A01     		.2byte	0x15a
+ 502 0126 6B000000 		.4byte	0x6b
+ 503 012a 21000000 		.4byte	.LLST1
+ 504 012e 00       		.byte	0
+ 505 012f 08       		.uleb128 0x8
+ 506 0130 77020000 		.4byte	.LASF21
+ 507 0134 01       		.byte	0x1
+ 508 0135 3A       		.byte	0x3a
+ 509 0136 00000000 		.4byte	.LFB0
+ 510 013a 2C000000 		.4byte	.LFE0-.LFB0
+ 511 013e 01       		.uleb128 0x1
+ 512 013f 9C       		.byte	0x9c
+ 513 0140 61010000 		.4byte	0x161
+ 514 0144 0D       		.uleb128 0xd
+ 515 0145 22000000 		.4byte	.LVL7
+ 516 0149 BE000000 		.4byte	0xbe
+ 517 014d 57010000 		.4byte	0x157
+ 518 0151 0E       		.uleb128 0xe
+ 519 0152 01       		.uleb128 0x1
+ 520 0153 50       		.byte	0x50
+ 521 0154 01       		.uleb128 0x1
+ 522 0155 30       		.byte	0x30
+ 523 0156 00       		.byte	0
+ 524 0157 0F       		.uleb128 0xf
+ 525 0158 26000000 		.4byte	.LVL8
+ 526 015c 08010000 		.4byte	0x108
+ 527 0160 00       		.byte	0
+ 528 0161 08       		.uleb128 0x8
+ 529 0162 48020000 		.4byte	.LASF22
+ 530 0166 01       		.byte	0x1
+ 531 0167 93       		.byte	0x93
+ 532 0168 00000000 		.4byte	.LFB2
+ 533 016c 24000000 		.4byte	.LFE2-.LFB2
+ 534 0170 01       		.uleb128 0x1
+ 535 0171 9C       		.byte	0x9c
+ 536 0172 98010000 		.4byte	0x198
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 17
+
+
+ 537 0176 0F       		.uleb128 0xf
+ 538 0177 0C000000 		.4byte	.LVL9
+ 539 017b 2F010000 		.4byte	0x12f
+ 540 017f 0F       		.uleb128 0xf
+ 541 0180 16000000 		.4byte	.LVL10
+ 542 0184 9C000000 		.4byte	0x9c
+ 543 0188 10       		.uleb128 0x10
+ 544 0189 1C000000 		.4byte	.LVL11
+ 545 018d E3000000 		.4byte	0xe3
+ 546 0191 0E       		.uleb128 0xe
+ 547 0192 01       		.uleb128 0x1
+ 548 0193 50       		.byte	0x50
+ 549 0194 01       		.uleb128 0x1
+ 550 0195 30       		.byte	0x30
+ 551 0196 00       		.byte	0
+ 552 0197 00       		.byte	0
+ 553 0198 08       		.uleb128 0x8
+ 554 0199 83000000 		.4byte	.LASF23
+ 555 019d 01       		.byte	0x1
+ 556 019e F6       		.byte	0xf6
+ 557 019f 00000000 		.4byte	.LFB5
+ 558 01a3 20000000 		.4byte	.LFE5-.LFB5
+ 559 01a7 01       		.uleb128 0x1
+ 560 01a8 9C       		.byte	0x9c
+ 561 01a9 C6010000 		.4byte	0x1c6
+ 562 01ad 09       		.uleb128 0x9
+ 563 01ae B9010000 		.4byte	.LASF24
+ 564 01b2 01       		.byte	0x1
+ 565 01b3 F6       		.byte	0xf6
+ 566 01b4 6B000000 		.4byte	0x6b
+ 567 01b8 45000000 		.4byte	.LLST2
+ 568 01bc 0F       		.uleb128 0xf
+ 569 01bd 1A000000 		.4byte	.LVL14
+ 570 01c1 08010000 		.4byte	0x108
+ 571 01c5 00       		.byte	0
+ 572 01c6 0A       		.uleb128 0xa
+ 573 01c7 00000000 		.4byte	.LASF25
+ 574 01cb 01       		.byte	0x1
+ 575 01cc 1101     		.2byte	0x111
+ 576 01ce 00000000 		.4byte	.LFB6
+ 577 01d2 20000000 		.4byte	.LFE6-.LFB6
+ 578 01d6 01       		.uleb128 0x1
+ 579 01d7 9C       		.byte	0x9c
+ 580 01d8 F6010000 		.4byte	0x1f6
+ 581 01dc 11       		.uleb128 0x11
+ 582 01dd AB020000 		.4byte	.LASF26
+ 583 01e1 01       		.byte	0x1
+ 584 01e2 1101     		.2byte	0x111
+ 585 01e4 6B000000 		.4byte	0x6b
+ 586 01e8 66000000 		.4byte	.LLST3
+ 587 01ec 0F       		.uleb128 0xf
+ 588 01ed 1A000000 		.4byte	.LVL17
+ 589 01f1 08010000 		.4byte	0x108
+ 590 01f5 00       		.byte	0
+ 591 01f6 12       		.uleb128 0x12
+ 592 01f7 C1000000 		.4byte	.LASF31
+ 593 01fb 01       		.byte	0x1
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 18
+
+
+ 594 01fc 1B       		.byte	0x1b
+ 595 01fd 6B000000 		.4byte	0x6b
+ 596 0201 05       		.uleb128 0x5
+ 597 0202 03       		.byte	0x3
+ 598 0203 00000000 		.4byte	CapSense_IdacCH0_initVar
+ 599 0207 00       		.byte	0
+ 600              		.section	.debug_abbrev,"",%progbits
+ 601              	.Ldebug_abbrev0:
+ 602 0000 01       		.uleb128 0x1
+ 603 0001 11       		.uleb128 0x11
+ 604 0002 01       		.byte	0x1
+ 605 0003 25       		.uleb128 0x25
+ 606 0004 0E       		.uleb128 0xe
+ 607 0005 13       		.uleb128 0x13
+ 608 0006 0B       		.uleb128 0xb
+ 609 0007 03       		.uleb128 0x3
+ 610 0008 0E       		.uleb128 0xe
+ 611 0009 1B       		.uleb128 0x1b
+ 612 000a 0E       		.uleb128 0xe
+ 613 000b 55       		.uleb128 0x55
+ 614 000c 17       		.uleb128 0x17
+ 615 000d 11       		.uleb128 0x11
+ 616 000e 01       		.uleb128 0x1
+ 617 000f 10       		.uleb128 0x10
+ 618 0010 17       		.uleb128 0x17
+ 619 0011 00       		.byte	0
+ 620 0012 00       		.byte	0
+ 621 0013 02       		.uleb128 0x2
+ 622 0014 24       		.uleb128 0x24
+ 623 0015 00       		.byte	0
+ 624 0016 0B       		.uleb128 0xb
+ 625 0017 0B       		.uleb128 0xb
+ 626 0018 3E       		.uleb128 0x3e
+ 627 0019 0B       		.uleb128 0xb
+ 628 001a 03       		.uleb128 0x3
+ 629 001b 0E       		.uleb128 0xe
+ 630 001c 00       		.byte	0
+ 631 001d 00       		.byte	0
+ 632 001e 03       		.uleb128 0x3
+ 633 001f 24       		.uleb128 0x24
+ 634 0020 00       		.byte	0
+ 635 0021 0B       		.uleb128 0xb
+ 636 0022 0B       		.uleb128 0xb
+ 637 0023 3E       		.uleb128 0x3e
+ 638 0024 0B       		.uleb128 0xb
+ 639 0025 03       		.uleb128 0x3
+ 640 0026 08       		.uleb128 0x8
+ 641 0027 00       		.byte	0
+ 642 0028 00       		.byte	0
+ 643 0029 04       		.uleb128 0x4
+ 644 002a 16       		.uleb128 0x16
+ 645 002b 00       		.byte	0
+ 646 002c 03       		.uleb128 0x3
+ 647 002d 0E       		.uleb128 0xe
+ 648 002e 3A       		.uleb128 0x3a
+ 649 002f 0B       		.uleb128 0xb
+ 650 0030 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 19
+
+
+ 651 0031 0B       		.uleb128 0xb
+ 652 0032 49       		.uleb128 0x49
+ 653 0033 13       		.uleb128 0x13
+ 654 0034 00       		.byte	0
+ 655 0035 00       		.byte	0
+ 656 0036 05       		.uleb128 0x5
+ 657 0037 16       		.uleb128 0x16
+ 658 0038 00       		.byte	0
+ 659 0039 03       		.uleb128 0x3
+ 660 003a 0E       		.uleb128 0xe
+ 661 003b 3A       		.uleb128 0x3a
+ 662 003c 0B       		.uleb128 0xb
+ 663 003d 3B       		.uleb128 0x3b
+ 664 003e 05       		.uleb128 0x5
+ 665 003f 49       		.uleb128 0x49
+ 666 0040 13       		.uleb128 0x13
+ 667 0041 00       		.byte	0
+ 668 0042 00       		.byte	0
+ 669 0043 06       		.uleb128 0x6
+ 670 0044 35       		.uleb128 0x35
+ 671 0045 00       		.byte	0
+ 672 0046 49       		.uleb128 0x49
+ 673 0047 13       		.uleb128 0x13
+ 674 0048 00       		.byte	0
+ 675 0049 00       		.byte	0
+ 676 004a 07       		.uleb128 0x7
+ 677 004b 2E       		.uleb128 0x2e
+ 678 004c 00       		.byte	0
+ 679 004d 3F       		.uleb128 0x3f
+ 680 004e 19       		.uleb128 0x19
+ 681 004f 03       		.uleb128 0x3
+ 682 0050 0E       		.uleb128 0xe
+ 683 0051 3A       		.uleb128 0x3a
+ 684 0052 0B       		.uleb128 0xb
+ 685 0053 3B       		.uleb128 0x3b
+ 686 0054 0B       		.uleb128 0xb
+ 687 0055 27       		.uleb128 0x27
+ 688 0056 19       		.uleb128 0x19
+ 689 0057 11       		.uleb128 0x11
+ 690 0058 01       		.uleb128 0x1
+ 691 0059 12       		.uleb128 0x12
+ 692 005a 06       		.uleb128 0x6
+ 693 005b 40       		.uleb128 0x40
+ 694 005c 18       		.uleb128 0x18
+ 695 005d 9742     		.uleb128 0x2117
+ 696 005f 19       		.uleb128 0x19
+ 697 0060 00       		.byte	0
+ 698 0061 00       		.byte	0
+ 699 0062 08       		.uleb128 0x8
+ 700 0063 2E       		.uleb128 0x2e
+ 701 0064 01       		.byte	0x1
+ 702 0065 3F       		.uleb128 0x3f
+ 703 0066 19       		.uleb128 0x19
+ 704 0067 03       		.uleb128 0x3
+ 705 0068 0E       		.uleb128 0xe
+ 706 0069 3A       		.uleb128 0x3a
+ 707 006a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 20
+
+
+ 708 006b 3B       		.uleb128 0x3b
+ 709 006c 0B       		.uleb128 0xb
+ 710 006d 27       		.uleb128 0x27
+ 711 006e 19       		.uleb128 0x19
+ 712 006f 11       		.uleb128 0x11
+ 713 0070 01       		.uleb128 0x1
+ 714 0071 12       		.uleb128 0x12
+ 715 0072 06       		.uleb128 0x6
+ 716 0073 40       		.uleb128 0x40
+ 717 0074 18       		.uleb128 0x18
+ 718 0075 9742     		.uleb128 0x2117
+ 719 0077 19       		.uleb128 0x19
+ 720 0078 01       		.uleb128 0x1
+ 721 0079 13       		.uleb128 0x13
+ 722 007a 00       		.byte	0
+ 723 007b 00       		.byte	0
+ 724 007c 09       		.uleb128 0x9
+ 725 007d 05       		.uleb128 0x5
+ 726 007e 00       		.byte	0
+ 727 007f 03       		.uleb128 0x3
+ 728 0080 0E       		.uleb128 0xe
+ 729 0081 3A       		.uleb128 0x3a
+ 730 0082 0B       		.uleb128 0xb
+ 731 0083 3B       		.uleb128 0x3b
+ 732 0084 0B       		.uleb128 0xb
+ 733 0085 49       		.uleb128 0x49
+ 734 0086 13       		.uleb128 0x13
+ 735 0087 02       		.uleb128 0x2
+ 736 0088 17       		.uleb128 0x17
+ 737 0089 00       		.byte	0
+ 738 008a 00       		.byte	0
+ 739 008b 0A       		.uleb128 0xa
+ 740 008c 2E       		.uleb128 0x2e
+ 741 008d 01       		.byte	0x1
+ 742 008e 3F       		.uleb128 0x3f
+ 743 008f 19       		.uleb128 0x19
+ 744 0090 03       		.uleb128 0x3
+ 745 0091 0E       		.uleb128 0xe
+ 746 0092 3A       		.uleb128 0x3a
+ 747 0093 0B       		.uleb128 0xb
+ 748 0094 3B       		.uleb128 0x3b
+ 749 0095 05       		.uleb128 0x5
+ 750 0096 27       		.uleb128 0x27
+ 751 0097 19       		.uleb128 0x19
+ 752 0098 11       		.uleb128 0x11
+ 753 0099 01       		.uleb128 0x1
+ 754 009a 12       		.uleb128 0x12
+ 755 009b 06       		.uleb128 0x6
+ 756 009c 40       		.uleb128 0x40
+ 757 009d 18       		.uleb128 0x18
+ 758 009e 9742     		.uleb128 0x2117
+ 759 00a0 19       		.uleb128 0x19
+ 760 00a1 01       		.uleb128 0x1
+ 761 00a2 13       		.uleb128 0x13
+ 762 00a3 00       		.byte	0
+ 763 00a4 00       		.byte	0
+ 764 00a5 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 21
+
+
+ 765 00a6 05       		.uleb128 0x5
+ 766 00a7 00       		.byte	0
+ 767 00a8 03       		.uleb128 0x3
+ 768 00a9 0E       		.uleb128 0xe
+ 769 00aa 3A       		.uleb128 0x3a
+ 770 00ab 0B       		.uleb128 0xb
+ 771 00ac 3B       		.uleb128 0x3b
+ 772 00ad 05       		.uleb128 0x5
+ 773 00ae 49       		.uleb128 0x49
+ 774 00af 13       		.uleb128 0x13
+ 775 00b0 02       		.uleb128 0x2
+ 776 00b1 18       		.uleb128 0x18
+ 777 00b2 00       		.byte	0
+ 778 00b3 00       		.byte	0
+ 779 00b4 0C       		.uleb128 0xc
+ 780 00b5 34       		.uleb128 0x34
+ 781 00b6 00       		.byte	0
+ 782 00b7 03       		.uleb128 0x3
+ 783 00b8 0E       		.uleb128 0xe
+ 784 00b9 3A       		.uleb128 0x3a
+ 785 00ba 0B       		.uleb128 0xb
+ 786 00bb 3B       		.uleb128 0x3b
+ 787 00bc 05       		.uleb128 0x5
+ 788 00bd 49       		.uleb128 0x49
+ 789 00be 13       		.uleb128 0x13
+ 790 00bf 02       		.uleb128 0x2
+ 791 00c0 17       		.uleb128 0x17
+ 792 00c1 00       		.byte	0
+ 793 00c2 00       		.byte	0
+ 794 00c3 0D       		.uleb128 0xd
+ 795 00c4 898201   		.uleb128 0x4109
+ 796 00c7 01       		.byte	0x1
+ 797 00c8 11       		.uleb128 0x11
+ 798 00c9 01       		.uleb128 0x1
+ 799 00ca 31       		.uleb128 0x31
+ 800 00cb 13       		.uleb128 0x13
+ 801 00cc 01       		.uleb128 0x1
+ 802 00cd 13       		.uleb128 0x13
+ 803 00ce 00       		.byte	0
+ 804 00cf 00       		.byte	0
+ 805 00d0 0E       		.uleb128 0xe
+ 806 00d1 8A8201   		.uleb128 0x410a
+ 807 00d4 00       		.byte	0
+ 808 00d5 02       		.uleb128 0x2
+ 809 00d6 18       		.uleb128 0x18
+ 810 00d7 9142     		.uleb128 0x2111
+ 811 00d9 18       		.uleb128 0x18
+ 812 00da 00       		.byte	0
+ 813 00db 00       		.byte	0
+ 814 00dc 0F       		.uleb128 0xf
+ 815 00dd 898201   		.uleb128 0x4109
+ 816 00e0 00       		.byte	0
+ 817 00e1 11       		.uleb128 0x11
+ 818 00e2 01       		.uleb128 0x1
+ 819 00e3 31       		.uleb128 0x31
+ 820 00e4 13       		.uleb128 0x13
+ 821 00e5 00       		.byte	0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 22
+
+
+ 822 00e6 00       		.byte	0
+ 823 00e7 10       		.uleb128 0x10
+ 824 00e8 898201   		.uleb128 0x4109
+ 825 00eb 01       		.byte	0x1
+ 826 00ec 11       		.uleb128 0x11
+ 827 00ed 01       		.uleb128 0x1
+ 828 00ee 31       		.uleb128 0x31
+ 829 00ef 13       		.uleb128 0x13
+ 830 00f0 00       		.byte	0
+ 831 00f1 00       		.byte	0
+ 832 00f2 11       		.uleb128 0x11
+ 833 00f3 05       		.uleb128 0x5
+ 834 00f4 00       		.byte	0
+ 835 00f5 03       		.uleb128 0x3
+ 836 00f6 0E       		.uleb128 0xe
+ 837 00f7 3A       		.uleb128 0x3a
+ 838 00f8 0B       		.uleb128 0xb
+ 839 00f9 3B       		.uleb128 0x3b
+ 840 00fa 05       		.uleb128 0x5
+ 841 00fb 49       		.uleb128 0x49
+ 842 00fc 13       		.uleb128 0x13
+ 843 00fd 02       		.uleb128 0x2
+ 844 00fe 17       		.uleb128 0x17
+ 845 00ff 00       		.byte	0
+ 846 0100 00       		.byte	0
+ 847 0101 12       		.uleb128 0x12
+ 848 0102 34       		.uleb128 0x34
+ 849 0103 00       		.byte	0
+ 850 0104 03       		.uleb128 0x3
+ 851 0105 0E       		.uleb128 0xe
+ 852 0106 3A       		.uleb128 0x3a
+ 853 0107 0B       		.uleb128 0xb
+ 854 0108 3B       		.uleb128 0x3b
+ 855 0109 0B       		.uleb128 0xb
+ 856 010a 49       		.uleb128 0x49
+ 857 010b 13       		.uleb128 0x13
+ 858 010c 3F       		.uleb128 0x3f
+ 859 010d 19       		.uleb128 0x19
+ 860 010e 02       		.uleb128 0x2
+ 861 010f 18       		.uleb128 0x18
+ 862 0110 00       		.byte	0
+ 863 0111 00       		.byte	0
+ 864 0112 00       		.byte	0
+ 865              		.section	.debug_loc,"",%progbits
+ 866              	.Ldebug_loc0:
+ 867              	.LLST0:
+ 868 0000 00000000 		.4byte	.LVL0
+ 869 0004 10000000 		.4byte	.LVL1
+ 870 0008 0100     		.2byte	0x1
+ 871 000a 50       		.byte	0x50
+ 872 000b 10000000 		.4byte	.LVL1
+ 873 000f 1C000000 		.4byte	.LFE4
+ 874 0013 0400     		.2byte	0x4
+ 875 0015 F3       		.byte	0xf3
+ 876 0016 01       		.uleb128 0x1
+ 877 0017 50       		.byte	0x50
+ 878 0018 9F       		.byte	0x9f
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 23
+
+
+ 879 0019 00000000 		.4byte	0
+ 880 001d 00000000 		.4byte	0
+ 881              	.LLST1:
+ 882 0021 0A000000 		.4byte	.LVL3
+ 883 0025 1A000000 		.4byte	.LVL5
+ 884 0029 0100     		.2byte	0x1
+ 885 002b 53       		.byte	0x53
+ 886 002c 1A000000 		.4byte	.LVL5
+ 887 0030 22000000 		.4byte	.LVL6
+ 888 0034 0700     		.2byte	0x7
+ 889 0036 73       		.byte	0x73
+ 890 0037 808080B8 		.sleb128 -1224736768
+ 890      7B
+ 891 003c 9F       		.byte	0x9f
+ 892 003d 00000000 		.4byte	0
+ 893 0041 00000000 		.4byte	0
+ 894              	.LLST2:
+ 895 0045 00000000 		.4byte	.LVL12
+ 896 0049 12000000 		.4byte	.LVL13
+ 897 004d 0100     		.2byte	0x1
+ 898 004f 50       		.byte	0x50
+ 899 0050 12000000 		.4byte	.LVL13
+ 900 0054 20000000 		.4byte	.LFE5
+ 901 0058 0400     		.2byte	0x4
+ 902 005a F3       		.byte	0xf3
+ 903 005b 01       		.uleb128 0x1
+ 904 005c 50       		.byte	0x50
+ 905 005d 9F       		.byte	0x9f
+ 906 005e 00000000 		.4byte	0
+ 907 0062 00000000 		.4byte	0
+ 908              	.LLST3:
+ 909 0066 00000000 		.4byte	.LVL15
+ 910 006a 12000000 		.4byte	.LVL16
+ 911 006e 0100     		.2byte	0x1
+ 912 0070 50       		.byte	0x50
+ 913 0071 12000000 		.4byte	.LVL16
+ 914 0075 20000000 		.4byte	.LFE6
+ 915 0079 0400     		.2byte	0x4
+ 916 007b F3       		.byte	0xf3
+ 917 007c 01       		.uleb128 0x1
+ 918 007d 50       		.byte	0x50
+ 919 007e 9F       		.byte	0x9f
+ 920 007f 00000000 		.4byte	0
+ 921 0083 00000000 		.4byte	0
+ 922              		.section	.debug_aranges,"",%progbits
+ 923 0000 5C000000 		.4byte	0x5c
+ 924 0004 0200     		.2byte	0x2
+ 925 0006 00000000 		.4byte	.Ldebug_info0
+ 926 000a 04       		.byte	0x4
+ 927 000b 00       		.byte	0
+ 928 000c 0000     		.2byte	0
+ 929 000e 0000     		.2byte	0
+ 930 0010 00000000 		.4byte	.LFB1
+ 931 0014 1C000000 		.4byte	.LFE1-.LFB1
+ 932 0018 00000000 		.4byte	.LFB3
+ 933 001c 1C000000 		.4byte	.LFE3-.LFB3
+ 934 0020 00000000 		.4byte	.LFB4
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 24
+
+
+ 935 0024 1C000000 		.4byte	.LFE4-.LFB4
+ 936 0028 00000000 		.4byte	.LFB7
+ 937 002c 0C000000 		.4byte	.LFE7-.LFB7
+ 938 0030 00000000 		.4byte	.LFB8
+ 939 0034 34000000 		.4byte	.LFE8-.LFB8
+ 940 0038 00000000 		.4byte	.LFB0
+ 941 003c 2C000000 		.4byte	.LFE0-.LFB0
+ 942 0040 00000000 		.4byte	.LFB2
+ 943 0044 24000000 		.4byte	.LFE2-.LFB2
+ 944 0048 00000000 		.4byte	.LFB5
+ 945 004c 20000000 		.4byte	.LFE5-.LFB5
+ 946 0050 00000000 		.4byte	.LFB6
+ 947 0054 20000000 		.4byte	.LFE6-.LFB6
+ 948 0058 00000000 		.4byte	0
+ 949 005c 00000000 		.4byte	0
+ 950              		.section	.debug_ranges,"",%progbits
+ 951              	.Ldebug_ranges0:
+ 952 0000 00000000 		.4byte	.LFB1
+ 953 0004 1C000000 		.4byte	.LFE1
+ 954 0008 00000000 		.4byte	.LFB3
+ 955 000c 1C000000 		.4byte	.LFE3
+ 956 0010 00000000 		.4byte	.LFB4
+ 957 0014 1C000000 		.4byte	.LFE4
+ 958 0018 00000000 		.4byte	.LFB7
+ 959 001c 0C000000 		.4byte	.LFE7
+ 960 0020 00000000 		.4byte	.LFB8
+ 961 0024 34000000 		.4byte	.LFE8
+ 962 0028 00000000 		.4byte	.LFB0
+ 963 002c 2C000000 		.4byte	.LFE0
+ 964 0030 00000000 		.4byte	.LFB2
+ 965 0034 24000000 		.4byte	.LFE2
+ 966 0038 00000000 		.4byte	.LFB5
+ 967 003c 20000000 		.4byte	.LFE5
+ 968 0040 00000000 		.4byte	.LFB6
+ 969 0044 20000000 		.4byte	.LFE6
+ 970 0048 00000000 		.4byte	0
+ 971 004c 00000000 		.4byte	0
+ 972              		.section	.debug_line,"",%progbits
+ 973              	.Ldebug_line0:
+ 974 0000 02010000 		.section	.debug_str,"MS",%progbits,1
+ 974      02004F00 
+ 974      00000201 
+ 974      FB0E0D00 
+ 974      01010101 
+ 975              	.LASF25:
+ 976 0000 43617053 		.ascii	"CapSense_IdacCH0_SetRange\000"
+ 976      656E7365 
+ 976      5F496461 
+ 976      63434830 
+ 976      5F536574 
+ 977              	.LASF16:
+ 978 001a 43617053 		.ascii	"CapSense_IdacCH0_SetSpeed\000"
+ 978      656E7365 
+ 978      5F496461 
+ 978      63434830 
+ 978      5F536574 
+ 979              	.LASF20:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 25
+
+
+ 980 0034 43617053 		.ascii	"CapSense_IdacCH0_DacTrim\000"
+ 980      656E7365 
+ 980      5F496461 
+ 980      63434830 
+ 980      5F446163 
+ 981              	.LASF28:
+ 982 004d 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CapSense_IdacCH0.c\000"
+ 982      6E657261 
+ 982      7465645F 
+ 982      536F7572 
+ 982      63655C50 
+ 983              	.LASF2:
+ 984 0079 73686F72 		.ascii	"short int\000"
+ 984      7420696E 
+ 984      7400
+ 985              	.LASF23:
+ 986 0083 43617053 		.ascii	"CapSense_IdacCH0_SetPolarity\000"
+ 986      656E7365 
+ 986      5F496461 
+ 986      63434830 
+ 986      5F536574 
+ 987              	.LASF15:
+ 988 00a0 43617053 		.ascii	"CapSense_IdacCH0_Stop\000"
+ 988      656E7365 
+ 988      5F496461 
+ 988      63434830 
+ 988      5F53746F 
+ 989              	.LASF30:
+ 990 00b6 6D6F6465 		.ascii	"mode\000"
+ 990      00
+ 991              	.LASF19:
+ 992 00bb 76616C75 		.ascii	"value\000"
+ 992      6500
+ 993              	.LASF31:
+ 994 00c1 43617053 		.ascii	"CapSense_IdacCH0_initVar\000"
+ 994      656E7365 
+ 994      5F496461 
+ 994      63434830 
+ 994      5F696E69 
+ 995              	.LASF12:
+ 996 00da 75696E74 		.ascii	"uint8\000"
+ 996      3800
+ 997              	.LASF9:
+ 998 00e0 666C6F61 		.ascii	"float\000"
+ 998      7400
+ 999              	.LASF6:
+ 1000 00e6 6C6F6E67 		.ascii	"long long int\000"
+ 1000      206C6F6E 
+ 1000      6720696E 
+ 1000      7400
+ 1001              	.LASF27:
+ 1002 00f4 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1002      4320342E 
+ 1002      382E3420 
+ 1002      32303134 
+ 1002      30353236 
+ 1003 0127 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 26
+
+
+ 1003      20726576 
+ 1003      6973696F 
+ 1003      6E203231 
+ 1003      31333538 
+ 1004 015a 67202D66 		.ascii	"g -ffunction-sections\000"
+ 1004      66756E63 
+ 1004      74696F6E 
+ 1004      2D736563 
+ 1004      74696F6E 
+ 1005              	.LASF4:
+ 1006 0170 6C6F6E67 		.ascii	"long int\000"
+ 1006      20696E74 
+ 1006      00
+ 1007              	.LASF17:
+ 1008 0179 43617053 		.ascii	"CapSense_IdacCH0_SetValue\000"
+ 1008      656E7365 
+ 1008      5F496461 
+ 1008      63434830 
+ 1008      5F536574 
+ 1009              	.LASF14:
+ 1010 0193 43617053 		.ascii	"CapSense_IdacCH0_Enable\000"
+ 1010      656E7365 
+ 1010      5F496461 
+ 1010      63434830 
+ 1010      5F456E61 
+ 1011              	.LASF1:
+ 1012 01ab 756E7369 		.ascii	"unsigned char\000"
+ 1012      676E6564 
+ 1012      20636861 
+ 1012      7200
+ 1013              	.LASF24:
+ 1014 01b9 706F6C61 		.ascii	"polarity\000"
+ 1014      72697479 
+ 1014      00
+ 1015              	.LASF0:
+ 1016 01c2 7369676E 		.ascii	"signed char\000"
+ 1016      65642063 
+ 1016      68617200 
+ 1017              	.LASF29:
+ 1018 01ce 433A5C55 		.ascii	"C:\\Users\\Xwx47\\Documents\\PSoC Creator\\CapSense"
+ 1018      73657273 
+ 1018      5C587778 
+ 1018      34375C44 
+ 1018      6F63756D 
+ 1019 01fc 5F354C50 		.ascii	"_5LP_test\\CapSense_5LP_test.cydsn\000"
+ 1019      5F746573 
+ 1019      745C4361 
+ 1019      7053656E 
+ 1019      73655F35 
+ 1020              	.LASF7:
+ 1021 021e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1021      206C6F6E 
+ 1021      6720756E 
+ 1021      7369676E 
+ 1021      65642069 
+ 1022              	.LASF8:
+ 1023 0235 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccO4Pfxi.s 			page 27
+
+
+ 1023      676E6564 
+ 1023      20696E74 
+ 1023      00
+ 1024              	.LASF18:
+ 1025 0242 73706565 		.ascii	"speed\000"
+ 1025      6400
+ 1026              	.LASF22:
+ 1027 0248 43617053 		.ascii	"CapSense_IdacCH0_Start\000"
+ 1027      656E7365 
+ 1027      5F496461 
+ 1027      63434830 
+ 1027      5F537461 
+ 1028              	.LASF3:
+ 1029 025f 73686F72 		.ascii	"short unsigned int\000"
+ 1029      7420756E 
+ 1029      7369676E 
+ 1029      65642069 
+ 1029      6E7400
+ 1030              	.LASF11:
+ 1031 0272 63686172 		.ascii	"char\000"
+ 1031      00
+ 1032              	.LASF21:
+ 1033 0277 43617053 		.ascii	"CapSense_IdacCH0_Init\000"
+ 1033      656E7365 
+ 1033      5F496461 
+ 1033      63434830 
+ 1033      5F496E69 
+ 1034              	.LASF13:
+ 1035 028d 72656738 		.ascii	"reg8\000"
+ 1035      00
+ 1036              	.LASF5:
+ 1037 0292 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1037      20756E73 
+ 1037      69676E65 
+ 1037      6420696E 
+ 1037      7400
+ 1038              	.LASF10:
+ 1039 02a4 646F7562 		.ascii	"double\000"
+ 1039      6C6500
+ 1040              	.LASF26:
+ 1041 02ab 72616E67 		.ascii	"range\000"
+ 1041      6500
+ 1042              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

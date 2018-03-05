@@ -1,0 +1,467 @@
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"CapSense_TunerHelper.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.CapSense_TunerStart,"ax",%progbits
+  20              		.align	1
+  21              		.global	CapSense_TunerStart
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	CapSense_TunerStart, %function
+  25              	CapSense_TunerStart:
+  26              	.LFB3:
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31 0000 7047     		bx	lr
+  32              		.cfi_endproc
+  33              	.LFE3:
+  34              		.size	CapSense_TunerStart, .-CapSense_TunerStart
+  35              		.section	.text.CapSense_TunerComm,"ax",%progbits
+  36              		.align	1
+  37              		.global	CapSense_TunerComm
+  38              		.thumb
+  39              		.thumb_func
+  40              		.type	CapSense_TunerComm, %function
+  41              	CapSense_TunerComm:
+  42              	.LFB1:
+  43              		.file 1 "Generated_Source\\PSoC5\\CapSense_TunerHelper.c"
+   1:Generated_Source\PSoC5/CapSense_TunerHelper.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * File Name: CapSense_TunerHelper.c
+   3:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Version 3.50
+   4:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+   5:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Description:
+   6:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  This file provides the source code of Tuner helper APIs for the CapSense CSD 
+   7:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  component.
+   8:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+   9:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Note:
+  10:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  11:Generated_Source\PSoC5/CapSense_TunerHelper.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * disclaimers, and limitations in the end user license agreement accompanying
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 2
+
+
+  15:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  18:Generated_Source\PSoC5/CapSense_TunerHelper.c **** #include "CapSense_TunerHelper.h"
+  19:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  20:Generated_Source\PSoC5/CapSense_TunerHelper.c **** #if (CapSense_TUNER_API_GENERATE)
+  21:Generated_Source\PSoC5/CapSense_TunerHelper.c ****     volatile CapSense_MAILBOXES CapSense_mailboxesComm;
+  22:Generated_Source\PSoC5/CapSense_TunerHelper.c **** #endif  /* (CapSense_TUNER_API_GENERATE) */
+  23:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  24:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  25:Generated_Source\PSoC5/CapSense_TunerHelper.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Function Name: CapSense_TunerStart
+  27:Generated_Source\PSoC5/CapSense_TunerHelper.c **** ********************************************************************************
+  28:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  29:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Summary:
+  30:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  Initializes CapSense CSD component and EzI2C communication componenet to use
+  31:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  mailbox data structure for communication with Tuner GUI.
+  32:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  Start the scanning, after initialization complete.
+  33:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  34:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Parameters:
+  35:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  None
+  36:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  37:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Return:
+  38:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  None
+  39:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  40:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Reentrant:
+  41:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  No
+  42:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  43:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Note:
+  44:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  All widgets are enabled by default except proximity widgets. Proximity widgets 
+  45:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  must be manually enabled as their long scan time is incompatible 
+  46:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  with the fast response required of other widget types. 
+  47:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  48:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *******************************************************************************/
+  49:Generated_Source\PSoC5/CapSense_TunerHelper.c **** void CapSense_TunerStart(void) 
+  50:Generated_Source\PSoC5/CapSense_TunerHelper.c **** {
+  51:Generated_Source\PSoC5/CapSense_TunerHelper.c ****     #if (CapSense_TUNER_API_GENERATE)
+  52:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  53:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Init mbx and quick check */
+  54:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_InitMailbox(&CapSense_mailboxesComm.csdMailbox);
+  55:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_mailboxesComm.numMailBoxes = CapSense_DEFAULT_MAILBOXES_NUMBER;
+  56:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  57:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Start CapSense and baselines */
+  58:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_Start();
+  59:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  60:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Initialize baselines */ 
+  61:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_InitializeAllBaselines();
+  62:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_InitializeAllBaselines();
+  63:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  64:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Start EzI2C, clears buf pointers */
+  65:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         EZI2C_Start();
+  66:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  67:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Setup EzI2C buffers */
+  68:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         EZI2C_SetBuffer1(sizeof(CapSense_mailboxesComm), sizeof(CapSense_mailboxesComm),
+  69:Generated_Source\PSoC5/CapSense_TunerHelper.c ****                                         (void *) &CapSense_mailboxesComm);
+  70:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         
+  71:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         /* Starts scan all enabled sensors */
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 3
+
+
+  72:Generated_Source\PSoC5/CapSense_TunerHelper.c ****         CapSense_ScanEnabledWidgets();
+  73:Generated_Source\PSoC5/CapSense_TunerHelper.c ****     
+  74:Generated_Source\PSoC5/CapSense_TunerHelper.c ****     #endif  /* (CapSense_TUNER_API_GENERATE) */
+  75:Generated_Source\PSoC5/CapSense_TunerHelper.c **** }
+  76:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  77:Generated_Source\PSoC5/CapSense_TunerHelper.c **** 
+  78:Generated_Source\PSoC5/CapSense_TunerHelper.c **** /*******************************************************************************
+  79:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Function Name: CapSense_TunerComm
+  80:Generated_Source\PSoC5/CapSense_TunerHelper.c **** ********************************************************************************
+  81:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  82:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Summary:
+  83:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  This function is blocking. It waits till scaning loop is completed and apply
+  84:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  new parameters from Tuner GUI if available (manual tuning mode only). Updates
+  85:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  enabled baselines and state of widgets. Waits while Tuner GUI reports that 
+  86:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  content of mailbox could be modified. Then loads the report data into outbox 
+  87:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  and sets the busy flag. Starts new scanning loop.
+  88:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  
+  89:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Parameters:
+  90:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  None
+  91:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  92:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Return:
+  93:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  None
+  94:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  95:Generated_Source\PSoC5/CapSense_TunerHelper.c **** * Reentrant:
+  96:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *  No
+  97:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *
+  98:Generated_Source\PSoC5/CapSense_TunerHelper.c **** *******************************************************************************/
+  99:Generated_Source\PSoC5/CapSense_TunerHelper.c **** void CapSense_TunerComm(void) 
+ 100:Generated_Source\PSoC5/CapSense_TunerHelper.c **** {
+  44              		.loc 1 100 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE1:
+  52              		.size	CapSense_TunerComm, .-CapSense_TunerComm
+  53              		.text
+  54              	.Letext0:
+  55              		.section	.debug_info,"",%progbits
+  56              	.Ldebug_info0:
+  57 0000 A2000000 		.4byte	0xa2
+  58 0004 0400     		.2byte	0x4
+  59 0006 00000000 		.4byte	.Ldebug_abbrev0
+  60 000a 04       		.byte	0x4
+  61 000b 01       		.uleb128 0x1
+  62 000c 6D000000 		.4byte	.LASF14
+  63 0010 0C       		.byte	0xc
+  64 0011 43010000 		.4byte	.LASF15
+  65 0015 7A010000 		.4byte	.LASF16
+  66 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  67 001d 00000000 		.4byte	0
+  68 0021 00000000 		.4byte	.Ldebug_line0
+  69 0025 02       		.uleb128 0x2
+  70 0026 01       		.byte	0x1
+  71 0027 06       		.byte	0x6
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 4
+
+
+  72 0028 0E010000 		.4byte	.LASF0
+  73 002c 02       		.uleb128 0x2
+  74 002d 01       		.byte	0x1
+  75 002e 08       		.byte	0x8
+  76 002f 4A000000 		.4byte	.LASF1
+  77 0033 02       		.uleb128 0x2
+  78 0034 02       		.byte	0x2
+  79 0035 05       		.byte	0x5
+  80 0036 39010000 		.4byte	.LASF2
+  81 003a 02       		.uleb128 0x2
+  82 003b 02       		.byte	0x2
+  83 003c 07       		.byte	0x7
+  84 003d FB000000 		.4byte	.LASF3
+  85 0041 02       		.uleb128 0x2
+  86 0042 04       		.byte	0x4
+  87 0043 05       		.byte	0x5
+  88 0044 5D000000 		.4byte	.LASF4
+  89 0048 02       		.uleb128 0x2
+  90 0049 04       		.byte	0x4
+  91 004a 07       		.byte	0x7
+  92 004b 1B000000 		.4byte	.LASF5
+  93 004f 02       		.uleb128 0x2
+  94 0050 08       		.byte	0x8
+  95 0051 05       		.byte	0x5
+  96 0052 00000000 		.4byte	.LASF6
+  97 0056 02       		.uleb128 0x2
+  98 0057 08       		.byte	0x8
+  99 0058 07       		.byte	0x7
+ 100 0059 2D000000 		.4byte	.LASF7
+ 101 005d 03       		.uleb128 0x3
+ 102 005e 04       		.byte	0x4
+ 103 005f 05       		.byte	0x5
+ 104 0060 696E7400 		.ascii	"int\000"
+ 105 0064 02       		.uleb128 0x2
+ 106 0065 04       		.byte	0x4
+ 107 0066 07       		.byte	0x7
+ 108 0067 0E000000 		.4byte	.LASF8
+ 109 006b 02       		.uleb128 0x2
+ 110 006c 04       		.byte	0x4
+ 111 006d 04       		.byte	0x4
+ 112 006e 44000000 		.4byte	.LASF9
+ 113 0072 02       		.uleb128 0x2
+ 114 0073 08       		.byte	0x8
+ 115 0074 04       		.byte	0x4
+ 116 0075 66000000 		.4byte	.LASF10
+ 117 0079 02       		.uleb128 0x2
+ 118 007a 01       		.byte	0x1
+ 119 007b 08       		.byte	0x8
+ 120 007c 58000000 		.4byte	.LASF11
+ 121 0080 02       		.uleb128 0x2
+ 122 0081 08       		.byte	0x8
+ 123 0082 04       		.byte	0x4
+ 124 0083 2D010000 		.4byte	.LASF12
+ 125 0087 02       		.uleb128 0x2
+ 126 0088 04       		.byte	0x4
+ 127 0089 07       		.byte	0x7
+ 128 008a 71010000 		.4byte	.LASF13
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 5
+
+
+ 129 008e 04       		.uleb128 0x4
+ 130 008f 1A010000 		.4byte	.LASF17
+ 131 0093 01       		.byte	0x1
+ 132 0094 63       		.byte	0x63
+ 133 0095 01       		.byte	0x1
+ 134 0096 05       		.uleb128 0x5
+ 135 0097 8E000000 		.4byte	0x8e
+ 136 009b 00000000 		.4byte	.LFB1
+ 137 009f 02000000 		.4byte	.LFE1-.LFB1
+ 138 00a3 01       		.uleb128 0x1
+ 139 00a4 9C       		.byte	0x9c
+ 140 00a5 00       		.byte	0
+ 141              		.section	.debug_abbrev,"",%progbits
+ 142              	.Ldebug_abbrev0:
+ 143 0000 01       		.uleb128 0x1
+ 144 0001 11       		.uleb128 0x11
+ 145 0002 01       		.byte	0x1
+ 146 0003 25       		.uleb128 0x25
+ 147 0004 0E       		.uleb128 0xe
+ 148 0005 13       		.uleb128 0x13
+ 149 0006 0B       		.uleb128 0xb
+ 150 0007 03       		.uleb128 0x3
+ 151 0008 0E       		.uleb128 0xe
+ 152 0009 1B       		.uleb128 0x1b
+ 153 000a 0E       		.uleb128 0xe
+ 154 000b 55       		.uleb128 0x55
+ 155 000c 17       		.uleb128 0x17
+ 156 000d 11       		.uleb128 0x11
+ 157 000e 01       		.uleb128 0x1
+ 158 000f 10       		.uleb128 0x10
+ 159 0010 17       		.uleb128 0x17
+ 160 0011 00       		.byte	0
+ 161 0012 00       		.byte	0
+ 162 0013 02       		.uleb128 0x2
+ 163 0014 24       		.uleb128 0x24
+ 164 0015 00       		.byte	0
+ 165 0016 0B       		.uleb128 0xb
+ 166 0017 0B       		.uleb128 0xb
+ 167 0018 3E       		.uleb128 0x3e
+ 168 0019 0B       		.uleb128 0xb
+ 169 001a 03       		.uleb128 0x3
+ 170 001b 0E       		.uleb128 0xe
+ 171 001c 00       		.byte	0
+ 172 001d 00       		.byte	0
+ 173 001e 03       		.uleb128 0x3
+ 174 001f 24       		.uleb128 0x24
+ 175 0020 00       		.byte	0
+ 176 0021 0B       		.uleb128 0xb
+ 177 0022 0B       		.uleb128 0xb
+ 178 0023 3E       		.uleb128 0x3e
+ 179 0024 0B       		.uleb128 0xb
+ 180 0025 03       		.uleb128 0x3
+ 181 0026 08       		.uleb128 0x8
+ 182 0027 00       		.byte	0
+ 183 0028 00       		.byte	0
+ 184 0029 04       		.uleb128 0x4
+ 185 002a 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 6
+
+
+ 186 002b 00       		.byte	0
+ 187 002c 3F       		.uleb128 0x3f
+ 188 002d 19       		.uleb128 0x19
+ 189 002e 03       		.uleb128 0x3
+ 190 002f 0E       		.uleb128 0xe
+ 191 0030 3A       		.uleb128 0x3a
+ 192 0031 0B       		.uleb128 0xb
+ 193 0032 3B       		.uleb128 0x3b
+ 194 0033 0B       		.uleb128 0xb
+ 195 0034 27       		.uleb128 0x27
+ 196 0035 19       		.uleb128 0x19
+ 197 0036 20       		.uleb128 0x20
+ 198 0037 0B       		.uleb128 0xb
+ 199 0038 00       		.byte	0
+ 200 0039 00       		.byte	0
+ 201 003a 05       		.uleb128 0x5
+ 202 003b 2E       		.uleb128 0x2e
+ 203 003c 00       		.byte	0
+ 204 003d 31       		.uleb128 0x31
+ 205 003e 13       		.uleb128 0x13
+ 206 003f 11       		.uleb128 0x11
+ 207 0040 01       		.uleb128 0x1
+ 208 0041 12       		.uleb128 0x12
+ 209 0042 06       		.uleb128 0x6
+ 210 0043 40       		.uleb128 0x40
+ 211 0044 18       		.uleb128 0x18
+ 212 0045 9742     		.uleb128 0x2117
+ 213 0047 19       		.uleb128 0x19
+ 214 0048 00       		.byte	0
+ 215 0049 00       		.byte	0
+ 216 004a 00       		.byte	0
+ 217              		.section	.debug_aranges,"",%progbits
+ 218 0000 1C000000 		.4byte	0x1c
+ 219 0004 0200     		.2byte	0x2
+ 220 0006 00000000 		.4byte	.Ldebug_info0
+ 221 000a 04       		.byte	0x4
+ 222 000b 00       		.byte	0
+ 223 000c 0000     		.2byte	0
+ 224 000e 0000     		.2byte	0
+ 225 0010 00000000 		.4byte	.LFB1
+ 226 0014 02000000 		.4byte	.LFE1-.LFB1
+ 227 0018 00000000 		.4byte	0
+ 228 001c 00000000 		.4byte	0
+ 229              		.section	.debug_ranges,"",%progbits
+ 230              	.Ldebug_ranges0:
+ 231 0000 00000000 		.4byte	.LFB1
+ 232 0004 02000000 		.4byte	.LFE1
+ 233 0008 00000000 		.4byte	0
+ 234 000c 00000000 		.4byte	0
+ 235              		.section	.debug_line,"",%progbits
+ 236              	.Ldebug_line0:
+ 237 0000 5A000000 		.section	.debug_str,"MS",%progbits,1
+ 237      02004400 
+ 237      00000201 
+ 237      FB0E0D00 
+ 237      01010101 
+ 238              	.LASF6:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 7
+
+
+ 239 0000 6C6F6E67 		.ascii	"long long int\000"
+ 239      206C6F6E 
+ 239      6720696E 
+ 239      7400
+ 240              	.LASF8:
+ 241 000e 756E7369 		.ascii	"unsigned int\000"
+ 241      676E6564 
+ 241      20696E74 
+ 241      00
+ 242              	.LASF5:
+ 243 001b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 243      20756E73 
+ 243      69676E65 
+ 243      6420696E 
+ 243      7400
+ 244              	.LASF7:
+ 245 002d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 245      206C6F6E 
+ 245      6720756E 
+ 245      7369676E 
+ 245      65642069 
+ 246              	.LASF9:
+ 247 0044 666C6F61 		.ascii	"float\000"
+ 247      7400
+ 248              	.LASF1:
+ 249 004a 756E7369 		.ascii	"unsigned char\000"
+ 249      676E6564 
+ 249      20636861 
+ 249      7200
+ 250              	.LASF11:
+ 251 0058 63686172 		.ascii	"char\000"
+ 251      00
+ 252              	.LASF4:
+ 253 005d 6C6F6E67 		.ascii	"long int\000"
+ 253      20696E74 
+ 253      00
+ 254              	.LASF10:
+ 255 0066 646F7562 		.ascii	"double\000"
+ 255      6C6500
+ 256              	.LASF14:
+ 257 006d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 257      43313120 
+ 257      352E342E 
+ 257      31203230 
+ 257      31363036 
+ 258 00a0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 258      20726576 
+ 258      6973696F 
+ 258      6E203233 
+ 258      37373135 
+ 259 00d3 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 259      66756E63 
+ 259      74696F6E 
+ 259      2D736563 
+ 259      74696F6E 
+ 260              	.LASF3:
+ 261 00fb 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cceave8a.s 			page 8
+
+
+ 261      7420756E 
+ 261      7369676E 
+ 261      65642069 
+ 261      6E7400
+ 262              	.LASF0:
+ 263 010e 7369676E 		.ascii	"signed char\000"
+ 263      65642063 
+ 263      68617200 
+ 264              	.LASF17:
+ 265 011a 43617053 		.ascii	"CapSense_TunerComm\000"
+ 265      656E7365 
+ 265      5F54756E 
+ 265      6572436F 
+ 265      6D6D00
+ 266              	.LASF12:
+ 267 012d 6C6F6E67 		.ascii	"long double\000"
+ 267      20646F75 
+ 267      626C6500 
+ 268              	.LASF2:
+ 269 0139 73686F72 		.ascii	"short int\000"
+ 269      7420696E 
+ 269      7400
+ 270              	.LASF15:
+ 271 0143 47656E65 		.ascii	"Generated_Source\\PSoC5\\CapSense_TunerHelper.c\000"
+ 271      72617465 
+ 271      645F536F 
+ 271      75726365 
+ 271      5C50536F 
+ 272              	.LASF13:
+ 273 0171 73697A65 		.ascii	"sizetype\000"
+ 273      74797065 
+ 273      00
+ 274              	.LASF16:
+ 275 017a 433A5C55 		.ascii	"C:\\Users\\Xwx47\\Documents\\Creator\\CapSense_5LP_"
+ 275      73657273 
+ 275      5C587778 
+ 275      34375C44 
+ 275      6F63756D 
+ 276 01a8 74657374 		.ascii	"test\\CapSense_5LP_test.cydsn\000"
+ 276      5C436170 
+ 276      53656E73 
+ 276      655F354C 
+ 276      505F7465 
+ 277              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

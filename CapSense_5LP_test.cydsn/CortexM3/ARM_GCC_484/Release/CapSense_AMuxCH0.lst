@@ -1,0 +1,1184 @@
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CapSense_AMuxCH0.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.CapSense_AMuxCH0_FastSelect,"ax",%progbits
+  19              		.align	1
+  20              		.global	CapSense_AMuxCH0_FastSelect
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	CapSense_AMuxCH0_FastSelect, %function
+  24              	CapSense_AMuxCH0_FastSelect:
+  25              	.LFB4:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\CapSense_AMuxCH0.c"
+   1:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * File Name: CapSense_AMuxCH0.c
+   3:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Version 3.50
+   4:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+   5:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  Description:
+   6:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *    This file contains all functions required for the analog multiplexer
+   7:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *    CapSense_CSD_AMux User Module.
+   8:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+   9:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *   Note:
+  10:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  11:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************/
+  17:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  18:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** #include "CapSense_AMuxCH0.h"
+  19:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  20:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** uint8 CapSense_AMuxCH0_initVar = 0u;
+  21:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** uint8 CapSense_AMuxCH0_lastChannel = CapSense_AMuxCH0_NULL_CHANNEL;
+  22:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  23:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  24:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_Start
+  26:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+  28:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  Disconnect all channels.
+  29:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  30:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+  31:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  33:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+  34:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  35:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  36:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+  37:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_Start(void)
+  38:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  39:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+  40:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_initVar = 1u;
+  41:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+  42:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  43:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  44:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+  45:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_Init
+  46:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+  47:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+  48:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  Disconnect all channels.
+  49:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  50:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+  51:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  52:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  53:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+  54:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  55:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  56:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+  57:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_Init(void)
+  58:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  59:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+  60:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+  61:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  62:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  63:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+  64:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_Stop
+  65:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+  66:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+  67:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  Disconnect all channels.
+  68:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  69:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+  70:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  71:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  72:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+  73:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  74:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  75:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+  76:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_Stop(void)
+  77:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  78:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+  79:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+  80:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  81:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+  82:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+  83:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_Select
+  84:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+  85:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+  86:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  This functions first disconnects all channels then connects the given
+  87:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  channel.
+  88:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+  90:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  channel:  The channel to connect to the common terminal.
+  91:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  92:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+  93:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+  94:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+  95:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+  96:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_Select(uint8 channel) CYREENTRANT
+  97:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  98:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();        /* Disconnect all previous connections */
+  99:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_Connect(channel);       /* Make the given selection */
+ 100:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_lastChannel = channel;  /* Update last channel */
+ 101:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+ 102:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 103:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 104:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+ 105:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_FastSelect
+ 106:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+ 107:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+ 108:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  This function first disconnects the last connection made with FastSelect or
+ 109:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  Select, then connects the given channel. The FastSelect function is similar
+ 110:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  to the Select function, except it is faster since it only disconnects the
+ 111:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  last channel selected rather than all channels.
+ 112:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 113:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+ 114:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  channel:  The channel to connect to the common terminal.
+ 115:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 116:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+ 117:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+ 118:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 119:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+ 120:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_FastSelect(uint8 channel) CYREENTRANT
+ 121:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  27              		.loc 1 121 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+ 122:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     /* Disconnect the last valid channel */
+ 123:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     if( CapSense_AMuxCH0_lastChannel != CapSense_AMuxCH0_NULL_CHANNEL)   /* Update last channel */
+  38              		.loc 1 123 0
+  39 0002 064B     		ldr	r3, .L7
+ 121:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  40              		.loc 1 121 0
+  41 0004 0446     		mov	r4, r0
+  42              		.loc 1 123 0
+  43 0006 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  44              	.LVL1:
+  45 0008 1D46     		mov	r5, r3
+  46 000a FF28     		cmp	r0, #255
+  47 000c 01D0     		beq	.L2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 4
+
+
+ 124:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     {
+ 125:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         CapSense_AMuxCH0_Disconnect(CapSense_AMuxCH0_lastChannel);
+  48              		.loc 1 125 0
+  49 000e FFF7FEFF 		bl	CapSense_AMuxCH0_Unset
+  50              	.LVL2:
+  51              	.L2:
+ 126:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     }
+ 127:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 128:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     /* Make the new channel connection */
+ 129:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_Connect(channel);
+  52              		.loc 1 129 0
+  53 0012 2046     		mov	r0, r4
+  54 0014 FFF7FEFF 		bl	CapSense_AMuxCH0_Set
+  55              	.LVL3:
+ 130:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_lastChannel = channel;   /* Update last channel */
+  56              		.loc 1 130 0
+  57 0018 2C70     		strb	r4, [r5]
+  58 001a 38BD     		pop	{r3, r4, r5, pc}
+  59              	.L8:
+  60              		.align	2
+  61              	.L7:
+  62 001c 00000000 		.word	.LANCHOR0
+  63              		.cfi_endproc
+  64              	.LFE4:
+  65              		.size	CapSense_AMuxCH0_FastSelect, .-CapSense_AMuxCH0_FastSelect
+  66              		.section	.text.CapSense_AMuxCH0_DisconnectAll,"ax",%progbits
+  67              		.align	1
+  68              		.global	CapSense_AMuxCH0_DisconnectAll
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	CapSense_AMuxCH0_DisconnectAll, %function
+  72              	CapSense_AMuxCH0_DisconnectAll:
+  73              	.LFB5:
+ 131:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+ 132:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 133:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 134:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** #if(CapSense_AMuxCH0_MUXTYPE == CapSense_AMuxCH0_MUX_DIFF)
+ 135:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     /*******************************************************************************
+ 136:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Function Name: CapSense_AMuxCH0_Connect
+ 137:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     ********************************************************************************
+ 138:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Summary:
+ 139:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  This function connects the given channel without affecting other connections.
+ 140:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 141:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Parameters:
+ 142:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  channel:  The channel to connect to the common terminal.
+ 143:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 144:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Return:
+ 145:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  void
+ 146:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 147:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *******************************************************************************/
+ 148:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     void CapSense_AMuxCH0_Connect(uint8 channel) CYREENTRANT
+ 149:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     {
+ 150:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         CapSense_AMuxCH0_CYAMUXSIDE_A_Set(channel);
+ 151:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         CapSense_AMuxCH0_CYAMUXSIDE_B_Set(channel);
+ 152:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     }
+ 153:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     
+ 154:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 5
+
+
+ 155:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     /*******************************************************************************
+ 156:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Function Name: CapSense_AMuxCH0_Disconnect
+ 157:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     ********************************************************************************
+ 158:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Summary:
+ 159:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  This function disconnects the given channel from the common or output
+ 160:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  terminal without affecting other connections.
+ 161:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 162:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Parameters:
+ 163:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  channel:  The channel to disconnect from the common terminal.
+ 164:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 165:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     * Return:
+ 166:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *  void
+ 167:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *
+ 168:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     *******************************************************************************/
+ 169:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     void CapSense_AMuxCH0_Disconnect(uint8 channel) CYREENTRANT
+ 170:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     {
+ 171:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         CapSense_AMuxCH0_CYAMUXSIDE_A_Unset(channel);
+ 172:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         CapSense_AMuxCH0_CYAMUXSIDE_B_Unset(channel);
+ 173:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     }
+ 174:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     
+ 175:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** #endif  /* End (CapSense_AMuxCH0_MUXTYPE == CapSense_AMuxCH0_MUX_DIFF) */
+ 176:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 177:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 178:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** /*******************************************************************************
+ 179:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Function Name: CapSense_AMuxCH0_DisconnectAll
+ 180:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** ********************************************************************************
+ 181:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Summary:
+ 182:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  This function disconnects all channels.
+ 183:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 184:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Parameters:
+ 185:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+ 186:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 187:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** * Return:
+ 188:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *  void
+ 189:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *
+ 190:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** *******************************************************************************/
+ 191:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** void CapSense_AMuxCH0_DisconnectAll(void) CYREENTRANT
+ 192:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+  74              		.loc 1 192 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              	.LVL4:
+  79 0000 10B5     		push	{r4, lr}
+  80              		.cfi_def_cfa_offset 8
+  81              		.cfi_offset 4, -8
+  82              		.cfi_offset 14, -4
+  83              		.loc 1 192 0
+  84 0002 0024     		movs	r4, #0
+  85              	.LVL5:
+  86              	.L11:
+ 193:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     uint8 chan;
+ 194:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** 
+ 195:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     #if(CapSense_AMuxCH0_MUXTYPE == CapSense_AMuxCH0_MUX_SINGLE)
+ 196:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         for(chan = 0; chan < CapSense_AMuxCH0_CHANNELS ; chan++)
+ 197:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         {
+ 198:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****             CapSense_AMuxCH0_Unset(chan);
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 6
+
+
+  87              		.loc 1 198 0 discriminator 2
+  88 0004 E0B2     		uxtb	r0, r4
+  89 0006 0134     		adds	r4, r4, #1
+  90              	.LVL6:
+  91 0008 FFF7FEFF 		bl	CapSense_AMuxCH0_Unset
+  92              	.LVL7:
+ 196:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         for(chan = 0; chan < CapSense_AMuxCH0_CHANNELS ; chan++)
+  93              		.loc 1 196 0 discriminator 2
+  94 000c 062C     		cmp	r4, #6
+  95 000e F9D1     		bne	.L11
+ 199:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         }
+ 200:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     #else
+ 201:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         for(chan = 0; chan < CapSense_AMuxCH0_CHANNELS ; chan++)
+ 202:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         {
+ 203:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****             CapSense_AMuxCH0_CYAMUXSIDE_A_Unset(chan);
+ 204:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****             CapSense_AMuxCH0_CYAMUXSIDE_B_Unset(chan);
+ 205:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****         }
+ 206:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     #endif  /* End (CapSense_AMuxCH0_MUXTYPE == CapSense_AMuxCH0_MUX_SINGLE) */
+ 207:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** }
+  96              		.loc 1 207 0
+  97 0010 10BD     		pop	{r4, pc}
+  98              		.cfi_endproc
+  99              	.LFE5:
+ 100              		.size	CapSense_AMuxCH0_DisconnectAll, .-CapSense_AMuxCH0_DisconnectAll
+ 101              		.section	.text.CapSense_AMuxCH0_Start,"ax",%progbits
+ 102              		.align	1
+ 103              		.global	CapSense_AMuxCH0_Start
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.type	CapSense_AMuxCH0_Start, %function
+ 107              	CapSense_AMuxCH0_Start:
+ 108              	.LFB0:
+  38:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+ 109              		.loc 1 38 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113 0000 08B5     		push	{r3, lr}
+ 114              		.cfi_def_cfa_offset 8
+ 115              		.cfi_offset 3, -8
+ 116              		.cfi_offset 14, -4
+  39:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+ 117              		.loc 1 39 0
+ 118 0002 FFF7FEFF 		bl	CapSense_AMuxCH0_DisconnectAll
+ 119              	.LVL8:
+  40:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_initVar = 1u;
+ 120              		.loc 1 40 0
+ 121 0006 024B     		ldr	r3, .L13
+ 122 0008 0122     		movs	r2, #1
+ 123 000a 1A70     		strb	r2, [r3]
+ 124 000c 08BD     		pop	{r3, pc}
+ 125              	.L14:
+ 126 000e 00BF     		.align	2
+ 127              	.L13:
+ 128 0010 00000000 		.word	.LANCHOR1
+ 129              		.cfi_endproc
+ 130              	.LFE0:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 7
+
+
+ 131              		.size	CapSense_AMuxCH0_Start, .-CapSense_AMuxCH0_Start
+ 132              		.section	.text.CapSense_AMuxCH0_Init,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	CapSense_AMuxCH0_Init
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	CapSense_AMuxCH0_Init, %function
+ 138              	CapSense_AMuxCH0_Init:
+ 139              	.LFB1:
+  58:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+ 140              		.loc 1 58 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+  59:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+ 145              		.loc 1 59 0
+ 146 0000 FFF7FEBF 		b	CapSense_AMuxCH0_DisconnectAll
+ 147              	.LVL9:
+ 148              		.cfi_endproc
+ 149              	.LFE1:
+ 150              		.size	CapSense_AMuxCH0_Init, .-CapSense_AMuxCH0_Init
+ 151              		.section	.text.CapSense_AMuxCH0_Stop,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	CapSense_AMuxCH0_Stop
+ 154              		.thumb
+ 155              		.thumb_func
+ 156              		.type	CapSense_AMuxCH0_Stop, %function
+ 157              	CapSense_AMuxCH0_Stop:
+ 158              	.LFB2:
+  77:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+ 159              		.loc 1 77 0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+  78:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();
+ 164              		.loc 1 78 0
+ 165 0000 FFF7FEBF 		b	CapSense_AMuxCH0_DisconnectAll
+ 166              	.LVL10:
+ 167              		.cfi_endproc
+ 168              	.LFE2:
+ 169              		.size	CapSense_AMuxCH0_Stop, .-CapSense_AMuxCH0_Stop
+ 170              		.section	.text.CapSense_AMuxCH0_Select,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	CapSense_AMuxCH0_Select
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	CapSense_AMuxCH0_Select, %function
+ 176              	CapSense_AMuxCH0_Select:
+ 177              	.LFB3:
+  97:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+ 178              		.loc 1 97 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              	.LVL11:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 8
+
+
+ 183 0000 10B5     		push	{r4, lr}
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 4, -8
+ 186              		.cfi_offset 14, -4
+  97:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c **** {
+ 187              		.loc 1 97 0
+ 188 0002 0446     		mov	r4, r0
+  98:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_DisconnectAll();        /* Disconnect all previous connections */
+ 189              		.loc 1 98 0
+ 190 0004 FFF7FEFF 		bl	CapSense_AMuxCH0_DisconnectAll
+ 191              	.LVL12:
+  99:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_Connect(channel);       /* Make the given selection */
+ 192              		.loc 1 99 0
+ 193 0008 2046     		mov	r0, r4
+ 194 000a FFF7FEFF 		bl	CapSense_AMuxCH0_Set
+ 195              	.LVL13:
+ 100:.\Generated_Source\PSoC5/CapSense_AMuxCH0.c ****     CapSense_AMuxCH0_lastChannel = channel;  /* Update last channel */
+ 196              		.loc 1 100 0
+ 197 000e 014B     		ldr	r3, .L18
+ 198 0010 1C70     		strb	r4, [r3]
+ 199 0012 10BD     		pop	{r4, pc}
+ 200              	.L19:
+ 201              		.align	2
+ 202              	.L18:
+ 203 0014 00000000 		.word	.LANCHOR0
+ 204              		.cfi_endproc
+ 205              	.LFE3:
+ 206              		.size	CapSense_AMuxCH0_Select, .-CapSense_AMuxCH0_Select
+ 207              		.global	CapSense_AMuxCH0_lastChannel
+ 208              		.global	CapSense_AMuxCH0_initVar
+ 209              		.data
+ 210              		.set	.LANCHOR0,. + 0
+ 211              		.type	CapSense_AMuxCH0_lastChannel, %object
+ 212              		.size	CapSense_AMuxCH0_lastChannel, 1
+ 213              	CapSense_AMuxCH0_lastChannel:
+ 214 0000 FF       		.byte	-1
+ 215              		.bss
+ 216              		.set	.LANCHOR1,. + 0
+ 217              		.type	CapSense_AMuxCH0_initVar, %object
+ 218              		.size	CapSense_AMuxCH0_initVar, 1
+ 219              	CapSense_AMuxCH0_initVar:
+ 220 0000 00       		.space	1
+ 221              		.text
+ 222              	.Letext0:
+ 223              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 224              		.file 3 ".\\Generated_Source\\PSoC5\\cyfitter_cfg.h"
+ 225              		.section	.debug_info,"",%progbits
+ 226              	.Ldebug_info0:
+ 227 0000 CF010000 		.4byte	0x1cf
+ 228 0004 0400     		.2byte	0x4
+ 229 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 230 000a 04       		.byte	0x4
+ 231 000b 01       		.uleb128 0x1
+ 232 000c ED000000 		.4byte	.LASF21
+ 233 0010 01       		.byte	0x1
+ 234 0011 87000000 		.4byte	.LASF22
+ 235 0015 08000000 		.4byte	.LASF23
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 9
+
+
+ 236 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 237 001d 00000000 		.4byte	0
+ 238 0021 00000000 		.4byte	.Ldebug_line0
+ 239 0025 02       		.uleb128 0x2
+ 240 0026 01       		.byte	0x1
+ 241 0027 06       		.byte	0x6
+ 242 0028 5A020000 		.4byte	.LASF0
+ 243 002c 02       		.uleb128 0x2
+ 244 002d 01       		.byte	0x1
+ 245 002e 08       		.byte	0x8
+ 246 002f AD010000 		.4byte	.LASF1
+ 247 0033 02       		.uleb128 0x2
+ 248 0034 02       		.byte	0x2
+ 249 0035 05       		.byte	0x5
+ 250 0036 2C020000 		.4byte	.LASF2
+ 251 003a 02       		.uleb128 0x2
+ 252 003b 02       		.byte	0x2
+ 253 003c 07       		.byte	0x7
+ 254 003d 7B010000 		.4byte	.LASF3
+ 255 0041 02       		.uleb128 0x2
+ 256 0042 04       		.byte	0x4
+ 257 0043 05       		.byte	0x5
+ 258 0044 51020000 		.4byte	.LASF4
+ 259 0048 02       		.uleb128 0x2
+ 260 0049 04       		.byte	0x4
+ 261 004a 07       		.byte	0x7
+ 262 004b 69010000 		.4byte	.LASF5
+ 263 004f 02       		.uleb128 0x2
+ 264 0050 08       		.byte	0x8
+ 265 0051 05       		.byte	0x5
+ 266 0052 03020000 		.4byte	.LASF6
+ 267 0056 02       		.uleb128 0x2
+ 268 0057 08       		.byte	0x8
+ 269 0058 07       		.byte	0x7
+ 270 0059 E7010000 		.4byte	.LASF7
+ 271 005d 03       		.uleb128 0x3
+ 272 005e 04       		.byte	0x4
+ 273 005f 05       		.byte	0x5
+ 274 0060 696E7400 		.ascii	"int\000"
+ 275 0064 02       		.uleb128 0x2
+ 276 0065 04       		.byte	0x4
+ 277 0066 07       		.byte	0x7
+ 278 0067 C2010000 		.4byte	.LASF8
+ 279 006b 04       		.uleb128 0x4
+ 280 006c 36020000 		.4byte	.LASF24
+ 281 0070 02       		.byte	0x2
+ 282 0071 B4       		.byte	0xb4
+ 283 0072 2C000000 		.4byte	0x2c
+ 284 0076 02       		.uleb128 0x2
+ 285 0077 04       		.byte	0x4
+ 286 0078 04       		.byte	0x4
+ 287 0079 D0000000 		.4byte	.LASF9
+ 288 007d 02       		.uleb128 0x2
+ 289 007e 08       		.byte	0x8
+ 290 007f 04       		.byte	0x4
+ 291 0080 BB010000 		.4byte	.LASF10
+ 292 0084 02       		.uleb128 0x2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 10
+
+
+ 293 0085 01       		.byte	0x1
+ 294 0086 08       		.byte	0x8
+ 295 0087 11020000 		.4byte	.LASF11
+ 296 008b 05       		.uleb128 0x5
+ 297 008c 7D020000 		.4byte	.LASF12
+ 298 0090 01       		.byte	0x1
+ 299 0091 78       		.byte	0x78
+ 300 0092 00000000 		.4byte	.LFB4
+ 301 0096 20000000 		.4byte	.LFE4-.LFB4
+ 302 009a 01       		.uleb128 0x1
+ 303 009b 9C       		.byte	0x9c
+ 304 009c C9000000 		.4byte	0xc9
+ 305 00a0 06       		.uleb128 0x6
+ 306 00a1 00000000 		.4byte	.LASF18
+ 307 00a5 01       		.byte	0x1
+ 308 00a6 78       		.byte	0x78
+ 309 00a7 6B000000 		.4byte	0x6b
+ 310 00ab 00000000 		.4byte	.LLST0
+ 311 00af 07       		.uleb128 0x7
+ 312 00b0 12000000 		.4byte	.LVL2
+ 313 00b4 B4010000 		.4byte	0x1b4
+ 314 00b8 08       		.uleb128 0x8
+ 315 00b9 18000000 		.4byte	.LVL3
+ 316 00bd C5010000 		.4byte	0x1c5
+ 317 00c1 09       		.uleb128 0x9
+ 318 00c2 01       		.uleb128 0x1
+ 319 00c3 50       		.byte	0x50
+ 320 00c4 02       		.uleb128 0x2
+ 321 00c5 74       		.byte	0x74
+ 322 00c6 00       		.sleb128 0
+ 323 00c7 00       		.byte	0
+ 324 00c8 00       		.byte	0
+ 325 00c9 05       		.uleb128 0x5
+ 326 00ca 8E010000 		.4byte	.LASF13
+ 327 00ce 01       		.byte	0x1
+ 328 00cf BF       		.byte	0xbf
+ 329 00d0 00000000 		.4byte	.LFB5
+ 330 00d4 12000000 		.4byte	.LFE5-.LFB5
+ 331 00d8 01       		.uleb128 0x1
+ 332 00d9 9C       		.byte	0x9c
+ 333 00da F7000000 		.4byte	0xf7
+ 334 00de 0A       		.uleb128 0xa
+ 335 00df FE010000 		.4byte	.LASF25
+ 336 00e3 01       		.byte	0x1
+ 337 00e4 C1       		.byte	0xc1
+ 338 00e5 6B000000 		.4byte	0x6b
+ 339 00e9 21000000 		.4byte	.LLST1
+ 340 00ed 07       		.uleb128 0x7
+ 341 00ee 0C000000 		.4byte	.LVL7
+ 342 00f2 B4010000 		.4byte	0x1b4
+ 343 00f6 00       		.byte	0
+ 344 00f7 05       		.uleb128 0x5
+ 345 00f8 D6000000 		.4byte	.LASF14
+ 346 00fc 01       		.byte	0x1
+ 347 00fd 25       		.byte	0x25
+ 348 00fe 00000000 		.4byte	.LFB0
+ 349 0102 14000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 11
+
+
+ 350 0106 01       		.uleb128 0x1
+ 351 0107 9C       		.byte	0x9c
+ 352 0108 16010000 		.4byte	0x116
+ 353 010c 07       		.uleb128 0x7
+ 354 010d 06000000 		.4byte	.LVL8
+ 355 0111 C9000000 		.4byte	0xc9
+ 356 0115 00       		.byte	0
+ 357 0116 05       		.uleb128 0x5
+ 358 0117 16020000 		.4byte	.LASF15
+ 359 011b 01       		.byte	0x1
+ 360 011c 39       		.byte	0x39
+ 361 011d 00000000 		.4byte	.LFB1
+ 362 0121 04000000 		.4byte	.LFE1-.LFB1
+ 363 0125 01       		.uleb128 0x1
+ 364 0126 9C       		.byte	0x9c
+ 365 0127 35010000 		.4byte	0x135
+ 366 012b 0B       		.uleb128 0xb
+ 367 012c 04000000 		.4byte	.LVL9
+ 368 0130 C9000000 		.4byte	0xc9
+ 369 0134 00       		.byte	0
+ 370 0135 05       		.uleb128 0x5
+ 371 0136 58000000 		.4byte	.LASF16
+ 372 013a 01       		.byte	0x1
+ 373 013b 4C       		.byte	0x4c
+ 374 013c 00000000 		.4byte	.LFB2
+ 375 0140 04000000 		.4byte	.LFE2-.LFB2
+ 376 0144 01       		.uleb128 0x1
+ 377 0145 9C       		.byte	0x9c
+ 378 0146 54010000 		.4byte	0x154
+ 379 014a 0B       		.uleb128 0xb
+ 380 014b 04000000 		.4byte	.LVL10
+ 381 014f C9000000 		.4byte	0xc9
+ 382 0153 00       		.byte	0
+ 383 0154 05       		.uleb128 0x5
+ 384 0155 CF010000 		.4byte	.LASF17
+ 385 0159 01       		.byte	0x1
+ 386 015a 60       		.byte	0x60
+ 387 015b 00000000 		.4byte	.LFB3
+ 388 015f 18000000 		.4byte	.LFE3-.LFB3
+ 389 0163 01       		.uleb128 0x1
+ 390 0164 9C       		.byte	0x9c
+ 391 0165 92010000 		.4byte	0x192
+ 392 0169 06       		.uleb128 0x6
+ 393 016a 00000000 		.4byte	.LASF18
+ 394 016e 01       		.byte	0x1
+ 395 016f 60       		.byte	0x60
+ 396 0170 6B000000 		.4byte	0x6b
+ 397 0174 4D000000 		.4byte	.LLST2
+ 398 0178 07       		.uleb128 0x7
+ 399 0179 08000000 		.4byte	.LVL12
+ 400 017d C9000000 		.4byte	0xc9
+ 401 0181 08       		.uleb128 0x8
+ 402 0182 0E000000 		.4byte	.LVL13
+ 403 0186 C5010000 		.4byte	0x1c5
+ 404 018a 09       		.uleb128 0x9
+ 405 018b 01       		.uleb128 0x1
+ 406 018c 50       		.byte	0x50
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 12
+
+
+ 407 018d 02       		.uleb128 0x2
+ 408 018e 74       		.byte	0x74
+ 409 018f 00       		.sleb128 0
+ 410 0190 00       		.byte	0
+ 411 0191 00       		.byte	0
+ 412 0192 0C       		.uleb128 0xc
+ 413 0193 6E000000 		.4byte	.LASF19
+ 414 0197 01       		.byte	0x1
+ 415 0198 14       		.byte	0x14
+ 416 0199 6B000000 		.4byte	0x6b
+ 417 019d 05       		.uleb128 0x5
+ 418 019e 03       		.byte	0x3
+ 419 019f 00000000 		.4byte	CapSense_AMuxCH0_initVar
+ 420 01a3 0C       		.uleb128 0xc
+ 421 01a4 B3000000 		.4byte	.LASF20
+ 422 01a8 01       		.byte	0x1
+ 423 01a9 15       		.byte	0x15
+ 424 01aa 6B000000 		.4byte	0x6b
+ 425 01ae 05       		.uleb128 0x5
+ 426 01af 03       		.byte	0x3
+ 427 01b0 00000000 		.4byte	CapSense_AMuxCH0_lastChannel
+ 428 01b4 0D       		.uleb128 0xd
+ 429 01b5 66020000 		.4byte	.LASF26
+ 430 01b9 03       		.byte	0x3
+ 431 01ba 1B       		.byte	0x1b
+ 432 01bb C5010000 		.4byte	0x1c5
+ 433 01bf 0E       		.uleb128 0xe
+ 434 01c0 6B000000 		.4byte	0x6b
+ 435 01c4 00       		.byte	0
+ 436 01c5 0F       		.uleb128 0xf
+ 437 01c6 3C020000 		.4byte	.LASF27
+ 438 01ca 03       		.byte	0x3
+ 439 01cb 1A       		.byte	0x1a
+ 440 01cc 0E       		.uleb128 0xe
+ 441 01cd 6B000000 		.4byte	0x6b
+ 442 01d1 00       		.byte	0
+ 443 01d2 00       		.byte	0
+ 444              		.section	.debug_abbrev,"",%progbits
+ 445              	.Ldebug_abbrev0:
+ 446 0000 01       		.uleb128 0x1
+ 447 0001 11       		.uleb128 0x11
+ 448 0002 01       		.byte	0x1
+ 449 0003 25       		.uleb128 0x25
+ 450 0004 0E       		.uleb128 0xe
+ 451 0005 13       		.uleb128 0x13
+ 452 0006 0B       		.uleb128 0xb
+ 453 0007 03       		.uleb128 0x3
+ 454 0008 0E       		.uleb128 0xe
+ 455 0009 1B       		.uleb128 0x1b
+ 456 000a 0E       		.uleb128 0xe
+ 457 000b 55       		.uleb128 0x55
+ 458 000c 17       		.uleb128 0x17
+ 459 000d 11       		.uleb128 0x11
+ 460 000e 01       		.uleb128 0x1
+ 461 000f 10       		.uleb128 0x10
+ 462 0010 17       		.uleb128 0x17
+ 463 0011 00       		.byte	0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 13
+
+
+ 464 0012 00       		.byte	0
+ 465 0013 02       		.uleb128 0x2
+ 466 0014 24       		.uleb128 0x24
+ 467 0015 00       		.byte	0
+ 468 0016 0B       		.uleb128 0xb
+ 469 0017 0B       		.uleb128 0xb
+ 470 0018 3E       		.uleb128 0x3e
+ 471 0019 0B       		.uleb128 0xb
+ 472 001a 03       		.uleb128 0x3
+ 473 001b 0E       		.uleb128 0xe
+ 474 001c 00       		.byte	0
+ 475 001d 00       		.byte	0
+ 476 001e 03       		.uleb128 0x3
+ 477 001f 24       		.uleb128 0x24
+ 478 0020 00       		.byte	0
+ 479 0021 0B       		.uleb128 0xb
+ 480 0022 0B       		.uleb128 0xb
+ 481 0023 3E       		.uleb128 0x3e
+ 482 0024 0B       		.uleb128 0xb
+ 483 0025 03       		.uleb128 0x3
+ 484 0026 08       		.uleb128 0x8
+ 485 0027 00       		.byte	0
+ 486 0028 00       		.byte	0
+ 487 0029 04       		.uleb128 0x4
+ 488 002a 16       		.uleb128 0x16
+ 489 002b 00       		.byte	0
+ 490 002c 03       		.uleb128 0x3
+ 491 002d 0E       		.uleb128 0xe
+ 492 002e 3A       		.uleb128 0x3a
+ 493 002f 0B       		.uleb128 0xb
+ 494 0030 3B       		.uleb128 0x3b
+ 495 0031 0B       		.uleb128 0xb
+ 496 0032 49       		.uleb128 0x49
+ 497 0033 13       		.uleb128 0x13
+ 498 0034 00       		.byte	0
+ 499 0035 00       		.byte	0
+ 500 0036 05       		.uleb128 0x5
+ 501 0037 2E       		.uleb128 0x2e
+ 502 0038 01       		.byte	0x1
+ 503 0039 3F       		.uleb128 0x3f
+ 504 003a 19       		.uleb128 0x19
+ 505 003b 03       		.uleb128 0x3
+ 506 003c 0E       		.uleb128 0xe
+ 507 003d 3A       		.uleb128 0x3a
+ 508 003e 0B       		.uleb128 0xb
+ 509 003f 3B       		.uleb128 0x3b
+ 510 0040 0B       		.uleb128 0xb
+ 511 0041 27       		.uleb128 0x27
+ 512 0042 19       		.uleb128 0x19
+ 513 0043 11       		.uleb128 0x11
+ 514 0044 01       		.uleb128 0x1
+ 515 0045 12       		.uleb128 0x12
+ 516 0046 06       		.uleb128 0x6
+ 517 0047 40       		.uleb128 0x40
+ 518 0048 18       		.uleb128 0x18
+ 519 0049 9742     		.uleb128 0x2117
+ 520 004b 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 14
+
+
+ 521 004c 01       		.uleb128 0x1
+ 522 004d 13       		.uleb128 0x13
+ 523 004e 00       		.byte	0
+ 524 004f 00       		.byte	0
+ 525 0050 06       		.uleb128 0x6
+ 526 0051 05       		.uleb128 0x5
+ 527 0052 00       		.byte	0
+ 528 0053 03       		.uleb128 0x3
+ 529 0054 0E       		.uleb128 0xe
+ 530 0055 3A       		.uleb128 0x3a
+ 531 0056 0B       		.uleb128 0xb
+ 532 0057 3B       		.uleb128 0x3b
+ 533 0058 0B       		.uleb128 0xb
+ 534 0059 49       		.uleb128 0x49
+ 535 005a 13       		.uleb128 0x13
+ 536 005b 02       		.uleb128 0x2
+ 537 005c 17       		.uleb128 0x17
+ 538 005d 00       		.byte	0
+ 539 005e 00       		.byte	0
+ 540 005f 07       		.uleb128 0x7
+ 541 0060 898201   		.uleb128 0x4109
+ 542 0063 00       		.byte	0
+ 543 0064 11       		.uleb128 0x11
+ 544 0065 01       		.uleb128 0x1
+ 545 0066 31       		.uleb128 0x31
+ 546 0067 13       		.uleb128 0x13
+ 547 0068 00       		.byte	0
+ 548 0069 00       		.byte	0
+ 549 006a 08       		.uleb128 0x8
+ 550 006b 898201   		.uleb128 0x4109
+ 551 006e 01       		.byte	0x1
+ 552 006f 11       		.uleb128 0x11
+ 553 0070 01       		.uleb128 0x1
+ 554 0071 31       		.uleb128 0x31
+ 555 0072 13       		.uleb128 0x13
+ 556 0073 00       		.byte	0
+ 557 0074 00       		.byte	0
+ 558 0075 09       		.uleb128 0x9
+ 559 0076 8A8201   		.uleb128 0x410a
+ 560 0079 00       		.byte	0
+ 561 007a 02       		.uleb128 0x2
+ 562 007b 18       		.uleb128 0x18
+ 563 007c 9142     		.uleb128 0x2111
+ 564 007e 18       		.uleb128 0x18
+ 565 007f 00       		.byte	0
+ 566 0080 00       		.byte	0
+ 567 0081 0A       		.uleb128 0xa
+ 568 0082 34       		.uleb128 0x34
+ 569 0083 00       		.byte	0
+ 570 0084 03       		.uleb128 0x3
+ 571 0085 0E       		.uleb128 0xe
+ 572 0086 3A       		.uleb128 0x3a
+ 573 0087 0B       		.uleb128 0xb
+ 574 0088 3B       		.uleb128 0x3b
+ 575 0089 0B       		.uleb128 0xb
+ 576 008a 49       		.uleb128 0x49
+ 577 008b 13       		.uleb128 0x13
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 15
+
+
+ 578 008c 02       		.uleb128 0x2
+ 579 008d 17       		.uleb128 0x17
+ 580 008e 00       		.byte	0
+ 581 008f 00       		.byte	0
+ 582 0090 0B       		.uleb128 0xb
+ 583 0091 898201   		.uleb128 0x4109
+ 584 0094 00       		.byte	0
+ 585 0095 11       		.uleb128 0x11
+ 586 0096 01       		.uleb128 0x1
+ 587 0097 9542     		.uleb128 0x2115
+ 588 0099 19       		.uleb128 0x19
+ 589 009a 31       		.uleb128 0x31
+ 590 009b 13       		.uleb128 0x13
+ 591 009c 00       		.byte	0
+ 592 009d 00       		.byte	0
+ 593 009e 0C       		.uleb128 0xc
+ 594 009f 34       		.uleb128 0x34
+ 595 00a0 00       		.byte	0
+ 596 00a1 03       		.uleb128 0x3
+ 597 00a2 0E       		.uleb128 0xe
+ 598 00a3 3A       		.uleb128 0x3a
+ 599 00a4 0B       		.uleb128 0xb
+ 600 00a5 3B       		.uleb128 0x3b
+ 601 00a6 0B       		.uleb128 0xb
+ 602 00a7 49       		.uleb128 0x49
+ 603 00a8 13       		.uleb128 0x13
+ 604 00a9 3F       		.uleb128 0x3f
+ 605 00aa 19       		.uleb128 0x19
+ 606 00ab 02       		.uleb128 0x2
+ 607 00ac 18       		.uleb128 0x18
+ 608 00ad 00       		.byte	0
+ 609 00ae 00       		.byte	0
+ 610 00af 0D       		.uleb128 0xd
+ 611 00b0 2E       		.uleb128 0x2e
+ 612 00b1 01       		.byte	0x1
+ 613 00b2 3F       		.uleb128 0x3f
+ 614 00b3 19       		.uleb128 0x19
+ 615 00b4 03       		.uleb128 0x3
+ 616 00b5 0E       		.uleb128 0xe
+ 617 00b6 3A       		.uleb128 0x3a
+ 618 00b7 0B       		.uleb128 0xb
+ 619 00b8 3B       		.uleb128 0x3b
+ 620 00b9 0B       		.uleb128 0xb
+ 621 00ba 27       		.uleb128 0x27
+ 622 00bb 19       		.uleb128 0x19
+ 623 00bc 3C       		.uleb128 0x3c
+ 624 00bd 19       		.uleb128 0x19
+ 625 00be 01       		.uleb128 0x1
+ 626 00bf 13       		.uleb128 0x13
+ 627 00c0 00       		.byte	0
+ 628 00c1 00       		.byte	0
+ 629 00c2 0E       		.uleb128 0xe
+ 630 00c3 05       		.uleb128 0x5
+ 631 00c4 00       		.byte	0
+ 632 00c5 49       		.uleb128 0x49
+ 633 00c6 13       		.uleb128 0x13
+ 634 00c7 00       		.byte	0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 16
+
+
+ 635 00c8 00       		.byte	0
+ 636 00c9 0F       		.uleb128 0xf
+ 637 00ca 2E       		.uleb128 0x2e
+ 638 00cb 01       		.byte	0x1
+ 639 00cc 3F       		.uleb128 0x3f
+ 640 00cd 19       		.uleb128 0x19
+ 641 00ce 03       		.uleb128 0x3
+ 642 00cf 0E       		.uleb128 0xe
+ 643 00d0 3A       		.uleb128 0x3a
+ 644 00d1 0B       		.uleb128 0xb
+ 645 00d2 3B       		.uleb128 0x3b
+ 646 00d3 0B       		.uleb128 0xb
+ 647 00d4 27       		.uleb128 0x27
+ 648 00d5 19       		.uleb128 0x19
+ 649 00d6 3C       		.uleb128 0x3c
+ 650 00d7 19       		.uleb128 0x19
+ 651 00d8 00       		.byte	0
+ 652 00d9 00       		.byte	0
+ 653 00da 00       		.byte	0
+ 654              		.section	.debug_loc,"",%progbits
+ 655              	.Ldebug_loc0:
+ 656              	.LLST0:
+ 657 0000 00000000 		.4byte	.LVL0
+ 658 0004 08000000 		.4byte	.LVL1
+ 659 0008 0100     		.2byte	0x1
+ 660 000a 50       		.byte	0x50
+ 661 000b 08000000 		.4byte	.LVL1
+ 662 000f 20000000 		.4byte	.LFE4
+ 663 0013 0400     		.2byte	0x4
+ 664 0015 F3       		.byte	0xf3
+ 665 0016 01       		.uleb128 0x1
+ 666 0017 50       		.byte	0x50
+ 667 0018 9F       		.byte	0x9f
+ 668 0019 00000000 		.4byte	0
+ 669 001d 00000000 		.4byte	0
+ 670              	.LLST1:
+ 671 0021 00000000 		.4byte	.LVL4
+ 672 0025 04000000 		.4byte	.LVL5
+ 673 0029 0200     		.2byte	0x2
+ 674 002b 30       		.byte	0x30
+ 675 002c 9F       		.byte	0x9f
+ 676 002d 04000000 		.4byte	.LVL5
+ 677 0031 08000000 		.4byte	.LVL6
+ 678 0035 0100     		.2byte	0x1
+ 679 0037 54       		.byte	0x54
+ 680 0038 08000000 		.4byte	.LVL6
+ 681 003c 0C000000 		.4byte	.LVL7
+ 682 0040 0300     		.2byte	0x3
+ 683 0042 74       		.byte	0x74
+ 684 0043 7F       		.sleb128 -1
+ 685 0044 9F       		.byte	0x9f
+ 686 0045 00000000 		.4byte	0
+ 687 0049 00000000 		.4byte	0
+ 688              	.LLST2:
+ 689 004d 00000000 		.4byte	.LVL11
+ 690 0051 07000000 		.4byte	.LVL12-1
+ 691 0055 0100     		.2byte	0x1
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 17
+
+
+ 692 0057 50       		.byte	0x50
+ 693 0058 07000000 		.4byte	.LVL12-1
+ 694 005c 18000000 		.4byte	.LFE3
+ 695 0060 0400     		.2byte	0x4
+ 696 0062 F3       		.byte	0xf3
+ 697 0063 01       		.uleb128 0x1
+ 698 0064 50       		.byte	0x50
+ 699 0065 9F       		.byte	0x9f
+ 700 0066 00000000 		.4byte	0
+ 701 006a 00000000 		.4byte	0
+ 702              		.section	.debug_aranges,"",%progbits
+ 703 0000 44000000 		.4byte	0x44
+ 704 0004 0200     		.2byte	0x2
+ 705 0006 00000000 		.4byte	.Ldebug_info0
+ 706 000a 04       		.byte	0x4
+ 707 000b 00       		.byte	0
+ 708 000c 0000     		.2byte	0
+ 709 000e 0000     		.2byte	0
+ 710 0010 00000000 		.4byte	.LFB4
+ 711 0014 20000000 		.4byte	.LFE4-.LFB4
+ 712 0018 00000000 		.4byte	.LFB5
+ 713 001c 12000000 		.4byte	.LFE5-.LFB5
+ 714 0020 00000000 		.4byte	.LFB0
+ 715 0024 14000000 		.4byte	.LFE0-.LFB0
+ 716 0028 00000000 		.4byte	.LFB1
+ 717 002c 04000000 		.4byte	.LFE1-.LFB1
+ 718 0030 00000000 		.4byte	.LFB2
+ 719 0034 04000000 		.4byte	.LFE2-.LFB2
+ 720 0038 00000000 		.4byte	.LFB3
+ 721 003c 18000000 		.4byte	.LFE3-.LFB3
+ 722 0040 00000000 		.4byte	0
+ 723 0044 00000000 		.4byte	0
+ 724              		.section	.debug_ranges,"",%progbits
+ 725              	.Ldebug_ranges0:
+ 726 0000 00000000 		.4byte	.LFB4
+ 727 0004 20000000 		.4byte	.LFE4
+ 728 0008 00000000 		.4byte	.LFB5
+ 729 000c 12000000 		.4byte	.LFE5
+ 730 0010 00000000 		.4byte	.LFB0
+ 731 0014 14000000 		.4byte	.LFE0
+ 732 0018 00000000 		.4byte	.LFB1
+ 733 001c 04000000 		.4byte	.LFE1
+ 734 0020 00000000 		.4byte	.LFB2
+ 735 0024 04000000 		.4byte	.LFE2
+ 736 0028 00000000 		.4byte	.LFB3
+ 737 002c 18000000 		.4byte	.LFE3
+ 738 0030 00000000 		.4byte	0
+ 739 0034 00000000 		.4byte	0
+ 740              		.section	.debug_line,"",%progbits
+ 741              	.Ldebug_line0:
+ 742 0000 E1000000 		.section	.debug_str,"MS",%progbits,1
+ 742      02006100 
+ 742      00000201 
+ 742      FB0E0D00 
+ 742      01010101 
+ 743              	.LASF18:
+ 744 0000 6368616E 		.ascii	"channel\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 18
+
+
+ 744      6E656C00 
+ 745              	.LASF23:
+ 746 0008 433A5C55 		.ascii	"C:\\Users\\Xwx47\\Documents\\PSoC Creator\\CapSense"
+ 746      73657273 
+ 746      5C587778 
+ 746      34375C44 
+ 746      6F63756D 
+ 747 0036 5F354C50 		.ascii	"_5LP_test\\CapSense_5LP_test.cydsn\000"
+ 747      5F746573 
+ 747      745C4361 
+ 747      7053656E 
+ 747      73655F35 
+ 748              	.LASF16:
+ 749 0058 43617053 		.ascii	"CapSense_AMuxCH0_Stop\000"
+ 749      656E7365 
+ 749      5F414D75 
+ 749      78434830 
+ 749      5F53746F 
+ 750              	.LASF19:
+ 751 006e 43617053 		.ascii	"CapSense_AMuxCH0_initVar\000"
+ 751      656E7365 
+ 751      5F414D75 
+ 751      78434830 
+ 751      5F696E69 
+ 752              	.LASF22:
+ 753 0087 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CapSense_AMuxCH0.c\000"
+ 753      6E657261 
+ 753      7465645F 
+ 753      536F7572 
+ 753      63655C50 
+ 754              	.LASF20:
+ 755 00b3 43617053 		.ascii	"CapSense_AMuxCH0_lastChannel\000"
+ 755      656E7365 
+ 755      5F414D75 
+ 755      78434830 
+ 755      5F6C6173 
+ 756              	.LASF9:
+ 757 00d0 666C6F61 		.ascii	"float\000"
+ 757      7400
+ 758              	.LASF14:
+ 759 00d6 43617053 		.ascii	"CapSense_AMuxCH0_Start\000"
+ 759      656E7365 
+ 759      5F414D75 
+ 759      78434830 
+ 759      5F537461 
+ 760              	.LASF21:
+ 761 00ed 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 761      4320342E 
+ 761      382E3420 
+ 761      32303134 
+ 761      30353236 
+ 762 0120 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 762      20726576 
+ 762      6973696F 
+ 762      6E203231 
+ 762      31333538 
+ 763 0153 73202D66 		.ascii	"s -ffunction-sections\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 19
+
+
+ 763      66756E63 
+ 763      74696F6E 
+ 763      2D736563 
+ 763      74696F6E 
+ 764              	.LASF5:
+ 765 0169 6C6F6E67 		.ascii	"long unsigned int\000"
+ 765      20756E73 
+ 765      69676E65 
+ 765      6420696E 
+ 765      7400
+ 766              	.LASF3:
+ 767 017b 73686F72 		.ascii	"short unsigned int\000"
+ 767      7420756E 
+ 767      7369676E 
+ 767      65642069 
+ 767      6E7400
+ 768              	.LASF13:
+ 769 018e 43617053 		.ascii	"CapSense_AMuxCH0_DisconnectAll\000"
+ 769      656E7365 
+ 769      5F414D75 
+ 769      78434830 
+ 769      5F446973 
+ 770              	.LASF1:
+ 771 01ad 756E7369 		.ascii	"unsigned char\000"
+ 771      676E6564 
+ 771      20636861 
+ 771      7200
+ 772              	.LASF10:
+ 773 01bb 646F7562 		.ascii	"double\000"
+ 773      6C6500
+ 774              	.LASF8:
+ 775 01c2 756E7369 		.ascii	"unsigned int\000"
+ 775      676E6564 
+ 775      20696E74 
+ 775      00
+ 776              	.LASF17:
+ 777 01cf 43617053 		.ascii	"CapSense_AMuxCH0_Select\000"
+ 777      656E7365 
+ 777      5F414D75 
+ 777      78434830 
+ 777      5F53656C 
+ 778              	.LASF7:
+ 779 01e7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 779      206C6F6E 
+ 779      6720756E 
+ 779      7369676E 
+ 779      65642069 
+ 780              	.LASF25:
+ 781 01fe 6368616E 		.ascii	"chan\000"
+ 781      00
+ 782              	.LASF6:
+ 783 0203 6C6F6E67 		.ascii	"long long int\000"
+ 783      206C6F6E 
+ 783      6720696E 
+ 783      7400
+ 784              	.LASF11:
+ 785 0211 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\cc1UuzrZ.s 			page 20
+
+
+ 785      00
+ 786              	.LASF15:
+ 787 0216 43617053 		.ascii	"CapSense_AMuxCH0_Init\000"
+ 787      656E7365 
+ 787      5F414D75 
+ 787      78434830 
+ 787      5F496E69 
+ 788              	.LASF2:
+ 789 022c 73686F72 		.ascii	"short int\000"
+ 789      7420696E 
+ 789      7400
+ 790              	.LASF24:
+ 791 0236 75696E74 		.ascii	"uint8\000"
+ 791      3800
+ 792              	.LASF27:
+ 793 023c 43617053 		.ascii	"CapSense_AMuxCH0_Set\000"
+ 793      656E7365 
+ 793      5F414D75 
+ 793      78434830 
+ 793      5F536574 
+ 794              	.LASF4:
+ 795 0251 6C6F6E67 		.ascii	"long int\000"
+ 795      20696E74 
+ 795      00
+ 796              	.LASF0:
+ 797 025a 7369676E 		.ascii	"signed char\000"
+ 797      65642063 
+ 797      68617200 
+ 798              	.LASF26:
+ 799 0266 43617053 		.ascii	"CapSense_AMuxCH0_Unset\000"
+ 799      656E7365 
+ 799      5F414D75 
+ 799      78434830 
+ 799      5F556E73 
+ 800              	.LASF12:
+ 801 027d 43617053 		.ascii	"CapSense_AMuxCH0_FastSelect\000"
+ 801      656E7365 
+ 801      5F414D75 
+ 801      78434830 
+ 801      5F466173 
+ 802              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

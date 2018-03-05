@@ -1,0 +1,2440 @@
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CapSense_CompCH0.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.CapSense_CompCH0_trimAdjust,"ax",%progbits
+  19              		.align	1
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	CapSense_CompCH0_trimAdjust, %function
+  23              	CapSense_CompCH0_trimAdjust:
+  24              	.LFB6:
+  25              		.file 1 ".\\Generated_Source\\PSoC5\\CapSense_CompCH0.c"
+   1:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * File Name: CapSense_CompCH0.c
+   3:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Version 2.0
+   4:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+   5:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Description:
+   6:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This file provides the source code to the API for the Comparator component
+   7:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+   8:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Note:
+   9:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  None
+  10:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  11:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  18:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #include "CapSense_CompCH0.h"
+  19:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  20:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** uint8 CapSense_CompCH0_initVar = 0u;
+  21:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  22:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /* Internal functions definitoin */
+  23:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** static void CapSense_CompCH0_trimAdjust(uint8 nibble) ;
+  24:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  25:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /* static CapSense_CompCH0_backupStruct  CapSense_CompCH0_backup; */
+  26:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #if (CY_PSOC5A)
+  27:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     static CapSense_CompCH0_LOWPOWER_BACKUP_STRUCT  CapSense_CompCH0_lowPowerBackup;
+  28:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #endif /* CY_PSOC5A */
+  29:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  30:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /* variable to decide whether or not to restore the control register in 
+  31:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****    Enable() API for PSoC5A only */
+  32:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #if (CY_PSOC5A)
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 2
+
+
+  33:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     static uint8 CapSense_CompCH0_restoreReg = 0u;
+  34:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #endif /* CY_PSOC5A */
+  35:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  36:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  37:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+  38:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_Init
+  39:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+  40:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  41:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+  42:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Initialize to the schematic state
+  43:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * 
+  44:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+  45:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+  46:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  47:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+  48:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+  49:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  50:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+  51:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_Init(void) 
+  52:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+  53:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Set default speed/power */
+  54:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SetSpeed(CapSense_CompCH0_DEFAULT_SPEED);
+  55:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  56:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Set default Hysteresis */
+  57:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if ( CapSense_CompCH0_DEFAULT_HYSTERESIS == 0u )
+  58:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR |= CapSense_CompCH0_HYST_OFF;
+  59:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #else
+  60:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR &= (uint8)(~CapSense_CompCH0_HYST_OFF);
+  61:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CapSense_CompCH0_DEFAULT_HYSTERESIS == 0u */
+  62:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Power down override feature is not supported for PSoC5A. */
+  63:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+  64:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Set default Power Down Override */
+  65:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #if ( CapSense_CompCH0_DEFAULT_PWRDWN_OVRD == 0u )
+  66:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_CR &= (uint8)(~CapSense_CompCH0_PWRDWN_OVRD);
+  67:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #else 
+  68:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_CR |= CapSense_CompCH0_PWRDWN_OVRD;
+  69:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #endif /* CapSense_CompCH0_DEFAULT_PWRDWN_OVRD == 0u */
+  70:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+  71:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+  72:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Set mux always on logic */
+  73:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR |= CapSense_CompCH0_MX_AO;
+  74:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  75:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Set default sync */
+  76:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CLK &= (uint8)(~CapSense_CompCH0_SYNCCLK_MASK);
+  77:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if ( CapSense_CompCH0_DEFAULT_BYPASS_SYNC == 0u )
+  78:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CLK |= CapSense_CompCH0_SYNC_CLK_EN;
+  79:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #else
+  80:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CLK |= CapSense_CompCH0_BYPASS_SYNC;
+  81:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CapSense_CompCH0_DEFAULT_BYPASS_SYNC == 0u */
+  82:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+  83:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  84:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+  85:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+  86:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_Enable
+  87:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+  88:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  89:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 3
+
+
+  90:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Enable the Comparator
+  91:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * 
+  92:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+  93:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+  94:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  95:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+  96:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+  97:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+  98:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+  99:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_Enable(void) 
+ 100:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 101:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_PWRMGR |= CapSense_CompCH0_ACT_PWR_EN;
+ 102:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_STBY_PWRMGR |= CapSense_CompCH0_STBY_PWR_EN;
+ 103:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****      
+ 104:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****      /* This is to restore the value of register CR which is saved 
+ 105:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     in prior to the modification in stop() API */
+ 106:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC5A)
+ 107:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         if(CapSense_CompCH0_restoreReg == 1u)
+ 108:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 109:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_CR = CapSense_CompCH0_lowPowerBackup.compCRReg;
+ 110:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 111:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* Clear the flag */
+ 112:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_restoreReg = 0u;
+ 113:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }
+ 114:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC5A */
+ 115:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 116:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 117:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 118:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 119:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_Start
+ 120:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 121:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 122:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 123:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  The start function initializes the Analog Comparator with the default values.
+ 124:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 125:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+ 126:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+ 127:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 128:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 129:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void 
+ 130:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 131:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Global variables:
+ 132:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  CapSense_CompCH0_initVar: Is modified when this function is called for the 
+ 133:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *   first time. Is used to ensure that initialization happens only once.
+ 134:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  
+ 135:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 136:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_Start(void) 
+ 137:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 138:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 139:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if ( CapSense_CompCH0_initVar == 0u )
+ 140:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 141:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_Init();
+ 142:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 143:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_initVar = 1u;
+ 144:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }   
+ 145:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 146:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Enable power to comparator */
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 4
+
+
+ 147:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_Enable();    
+ 148:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 149:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 150:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 151:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 152:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_Stop
+ 153:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 154:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 155:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 156:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Powers down amplifier to lowest power state.
+ 157:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 158:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+ 159:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+ 160:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 161:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 162:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+ 163:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 164:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 165:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_Stop(void) 
+ 166:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 167:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Disable power to comparator */
+ 168:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_PWRMGR &= (uint8)(~CapSense_CompCH0_ACT_PWR_EN);
+ 169:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_STBY_PWRMGR &= (uint8)(~CapSense_CompCH0_STBY_PWR_EN);
+ 170:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 171:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC5A)
+ 172:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Enable the variable */
+ 173:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_restoreReg = 1u;
+ 174:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 175:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Save the control register before clearing it */
+ 176:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_lowPowerBackup.compCRReg = CapSense_CompCH0_CR;
+ 177:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR = CapSense_CompCH0_COMP_REG_CLR;
+ 178:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC5A */
+ 179:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 180:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 181:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 182:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 183:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_SetSpeed
+ 184:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 185:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 186:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 187:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function sets the speed of the Analog Comparator. The faster the speed
+ 188:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  the more power that is used.
+ 189:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 190:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+ 191:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  speed: (uint8) Sets operation mode of Comparator
+ 192:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 193:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 194:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  void
+ 195:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 196:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 197:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_SetSpeed(uint8 speed) 
+ 198:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 199:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Clear and Set power level */    
+ 200:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR = (CapSense_CompCH0_CR & (uint8)(~CapSense_CompCH0_PWR_MODE_MASK)) |
+ 201:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                            (speed & CapSense_CompCH0_PWR_MODE_MASK);
+ 202:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 203:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Set trim value for high speed comparator */
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 5
+
+
+ 204:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if(speed == CapSense_CompCH0_HIGHSPEED)
+ 205:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 206:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* PSoC5A */
+ 207:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #if (CY_PSOC5A)
+ 208:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR = CapSense_CompCH0_HS_TRIM_TR0;
+ 209:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #endif /* CY_PSOC5A */
+ 210:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 211:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* PSoC3, PSoC5LP or later */
+ 212:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #if (CY_PSOC3 || CY_PSOC5LP) 
+ 213:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR0 = CapSense_CompCH0_HS_TRIM_TR0;
+ 214:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR1 = CapSense_CompCH0_HS_TRIM_TR1;
+ 215:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 216:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 217:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     else
+ 218:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 219:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC5A */
+ 220:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #if (CY_PSOC5A)
+ 221:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR = CapSense_CompCH0_LS_TRIM_TR0;
+ 222:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #endif /* CY_PSOC5A */
+ 223:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 224:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* PSoC3, PSoC5LP or later */
+ 225:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #if (CY_PSOC3 || CY_PSOC5LP) 
+ 226:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR0 = CapSense_CompCH0_LS_TRIM_TR0;
+ 227:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR1 = CapSense_CompCH0_LS_TRIM_TR1;
+ 228:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 229:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 230:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 231:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 232:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 233:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 234:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 235:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_GetCompare
+ 236:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 237:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 238:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 239:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function returns the comparator output value.
+ 240:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This value is not affected by the Polarity parameter.
+ 241:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This valuea lways reflects a noninverted state.
+ 242:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 243:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+ 244:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *   None
+ 245:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 246:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 247:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  (uint8)  0     - if Pos_Input less than Neg_input
+ 248:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *           non 0 - if Pos_Input greater than Neg_input.
+ 249:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 250:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 251:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** uint8 CapSense_CompCH0_GetCompare(void) 
+ 252:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 253:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     return( CapSense_CompCH0_WRK & CapSense_CompCH0_CMP_OUT_MASK);
+ 254:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 255:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 256:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 257:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 258:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_trimAdjust
+ 259:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 260:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 6
+
+
+ 261:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 262:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function adjusts the value in the low nibble/high nibble of the Analog 
+ 263:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Comparator trim register
+ 264:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 265:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:  
+ 266:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  nibble:
+ 267:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *      0 -- adjusts the value in the low nibble
+ 268:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *      1 -- adjusts the value in the high nibble
+ 269:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 270:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 271:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  None
+ 272:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 273:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Theory: 
+ 274:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Function assumes comparator block is setup for trim adjust.
+ 275:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Intended to be called from Comp_ZeroCal()
+ 276:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * 
+ 277:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Side Effects:
+ 278:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Routine uses a course 1ms delay following each trim adjustment to allow 
+ 279:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  the comparator output to respond.
+ 280:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 281:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 282:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** static void CapSense_CompCH0_trimAdjust(uint8 nibble) 
+ 283:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+  26              		.loc 1 283 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              	.LVL0:
+  31 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  32              		.cfi_def_cfa_offset 24
+  33              		.cfi_offset 4, -24
+  34              		.cfi_offset 5, -20
+  35              		.cfi_offset 6, -16
+  36              		.cfi_offset 7, -12
+  37              		.cfi_offset 8, -8
+  38              		.cfi_offset 14, -4
+ 284:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 trimCnt, trimCntMax;
+ 285:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 cmpState;   
+ 286:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 287:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* get current state of comparator output */
+ 288:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     cmpState = CapSense_CompCH0_WRK & CapSense_CompCH0_CMP_OUT_MASK;
+  39              		.loc 1 288 0
+  40 0004 184B     		ldr	r3, .L15
+ 289:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 290:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if (nibble == 0u)
+  41              		.loc 1 290 0
+  42 0006 0746     		mov	r7, r0
+ 288:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     cmpState = CapSense_CompCH0_WRK & CapSense_CompCH0_CMP_OUT_MASK;
+  43              		.loc 1 288 0
+  44 0008 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+  45 000a 9846     		mov	r8, r3
+  46 000c 04F00204 		and	r4, r4, #2
+  47 0010 E4B2     		uxtb	r4, r4
+  48              	.LVL1:
+  49              		.loc 1 290 0
+  50 0012 30B9     		cbnz	r0, .L2
+ 291:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {    
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 7
+
+
+ 292:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* if comparator output is high, negative offset adjust is required */
+ 293:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         if ( cmpState != 0u )
+  51              		.loc 1 293 0
+  52 0014 24B3     		cbz	r4, .L3
+ 294:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 295:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC5A */
+ 296:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC5A)
+ 297:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR |= CapSense_CompCH0_CMP_TRIM1_DIR;
+ 298:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC5A */
+ 299:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             
+ 300:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC3, PSoC5LP or later */
+ 301:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 302:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR0 |= CapSense_CompCH0_CMP_TR0_DIR;
+  53              		.loc 1 302 0
+  54 0016 154A     		ldr	r2, .L15+4
+  55 0018 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  56 001a 43F01003 		orr	r3, r3, #16
+  57 001e 1370     		strb	r3, [r2]
+  58 0020 1EE0     		b	.L3
+  59              	.L2:
+ 303:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 304:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }
+ 305:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 306:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     else
+ 307:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 308:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* if comparator output is low, positive offset adjust is required */
+ 309:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         if ( cmpState == 0u )
+  60              		.loc 1 309 0
+  61 0022 24B9     		cbnz	r4, .L4
+ 310:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 311:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC5A */
+ 312:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC5A)
+ 313:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR |= CapSense_CompCH0_CMP_TRIM2_DIR; 
+ 314:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC5A */
+ 315:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             
+ 316:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC3, PSoC5LP or later */
+ 317:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 318:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR1 |= CapSense_CompCH0_CMP_TR1_DIR;
+  62              		.loc 1 318 0
+  63 0024 124A     		ldr	r2, .L15+8
+  64 0026 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  65 0028 43F01003 		orr	r3, r3, #16
+  66 002c 1370     		strb	r3, [r2]
+  67              	.L4:
+ 319:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 320:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }
+ 321:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 322:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 323:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Increment trim value until compare output changes state */
+ 324:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	
+ 325:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC5A */
+ 326:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	#if (CY_PSOC5A)
+ 327:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	    trimCntMax = 7u;
+ 328:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif
+ 329:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	
+ 330:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	/* PSoC3, PSoC5LP or later */
+ 331:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	#if (CY_PSOC3 || CY_PSOC5LP)
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 8
+
+
+ 332:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	if(nibble == 0u)
+ 333:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	{
+ 334:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     		trimCntMax = 15u;
+ 335:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	}
+ 336:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	else
+ 337:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	{
+ 338:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     		trimCntMax = 7u;
+  68              		.loc 1 338 0
+  69 002e 0726     		movs	r6, #7
+  70              	.L9:
+  71              	.LVL2:
+  72 0030 0025     		movs	r5, #0
+  73              	.LVL3:
+  74              	.L8:
+ 339:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     	}
+ 340:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	#endif
+ 341:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	
+ 342:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     for ( trimCnt = 0u; trimCnt < trimCntMax; trimCnt++ )
+ 343:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	{
+ 344:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         if (nibble == 0u)
+  75              		.loc 1 344 0
+  76 0032 0FB9     		cbnz	r7, .L5
+ 345:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 346:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC5A */
+ 347:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC5A)
+ 348:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR += 1u;
+ 349:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC5A */
+ 350:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             
+ 351:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC3, PSoC5LP or later */
+ 352:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 353:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR0 += 1u;
+  77              		.loc 1 353 0
+  78 0034 0D4A     		ldr	r2, .L15+4
+  79 0036 00E0     		b	.L13
+  80              	.L5:
+ 354:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 355:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }
+ 356:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         else
+ 357:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 358:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC5A */
+ 359:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC5A)
+ 360:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR += 0x10u;
+ 361:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC5A */
+ 362:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             
+ 363:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             /* PSoC3, PSoC5LP or later */
+ 364:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 365:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR1 += 1u;
+  81              		.loc 1 365 0
+  82 0038 0D4A     		ldr	r2, .L15+8
+  83              	.L13:
+  84 003a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 366:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 367:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }
+ 368:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 369:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CyDelayUs(10u);
+  85              		.loc 1 369 0
+  86 003c 0A20     		movs	r0, #10
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 9
+
+
+ 365:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****                 CapSense_CompCH0_TR1 += 1u;
+  87              		.loc 1 365 0
+  88 003e 0133     		adds	r3, r3, #1
+  89 0040 DBB2     		uxtb	r3, r3
+  90 0042 1370     		strb	r3, [r2]
+  91              		.loc 1 369 0
+  92 0044 FFF7FEFF 		bl	CyDelayUs
+  93              	.LVL4:
+ 370:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 371:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Check for change in comparator output */
+ 372:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         if ((CapSense_CompCH0_WRK & CapSense_CompCH0_CMP_OUT_MASK) != cmpState)
+  94              		.loc 1 372 0
+  95 0048 98F80030 		ldrb	r3, [r8]	@ zero_extendqisi2
+  96 004c 03F00203 		and	r3, r3, #2
+  97 0050 A342     		cmp	r3, r4
+  98 0052 07D1     		bne	.L1
+  99              	.LVL5:
+ 100 0054 0135     		adds	r5, r5, #1
+ 101              	.LVL6:
+ 342:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     for ( trimCnt = 0u; trimCnt < trimCntMax; trimCnt++ )
+ 102              		.loc 1 342 0
+ 103 0056 EBB2     		uxtb	r3, r5
+ 104 0058 B342     		cmp	r3, r6
+ 105 005a EAD3     		bcc	.L8
+ 106 005c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 107              	.LVL7:
+ 108              	.L3:
+ 334:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     		trimCntMax = 15u;
+ 109              		.loc 1 334 0
+ 110 0060 0F26     		movs	r6, #15
+ 111 0062 E5E7     		b	.L9
+ 112              	.LVL8:
+ 113              	.L1:
+ 114 0064 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 115              	.LVL9:
+ 116              	.L16:
+ 117              		.align	2
+ 118              	.L15:
+ 119 0068 965B0040 		.word	1073765270
+ 120 006c 32460040 		.word	1073759794
+ 121 0070 33460040 		.word	1073759795
+ 122              		.cfi_endproc
+ 123              	.LFE6:
+ 124              		.size	CapSense_CompCH0_trimAdjust, .-CapSense_CompCH0_trimAdjust
+ 125              		.section	.text.CapSense_CompCH0_Enable,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	CapSense_CompCH0_Enable
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.type	CapSense_CompCH0_Enable, %function
+ 131              	CapSense_CompCH0_Enable:
+ 132              	.LFB1:
+ 100:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 133              		.loc 1 100 0
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 0
+ 136              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 10
+
+
+ 137              		@ link register save eliminated.
+ 101:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_PWRMGR |= CapSense_CompCH0_ACT_PWR_EN;
+ 138              		.loc 1 101 0
+ 139 0000 044B     		ldr	r3, .L18
+ 140 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 141 0004 42F00202 		orr	r2, r2, #2
+ 142 0008 1A70     		strb	r2, [r3]
+ 102:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_STBY_PWRMGR |= CapSense_CompCH0_STBY_PWR_EN;
+ 143              		.loc 1 102 0
+ 144 000a 1A7C     		ldrb	r2, [r3, #16]	@ zero_extendqisi2
+ 145 000c 42F00202 		orr	r2, r2, #2
+ 146 0010 1A74     		strb	r2, [r3, #16]
+ 147 0012 7047     		bx	lr
+ 148              	.L19:
+ 149              		.align	2
+ 150              	.L18:
+ 151 0014 A7430040 		.word	1073759143
+ 152              		.cfi_endproc
+ 153              	.LFE1:
+ 154              		.size	CapSense_CompCH0_Enable, .-CapSense_CompCH0_Enable
+ 155              		.section	.text.CapSense_CompCH0_Stop,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	CapSense_CompCH0_Stop
+ 158              		.thumb
+ 159              		.thumb_func
+ 160              		.type	CapSense_CompCH0_Stop, %function
+ 161              	CapSense_CompCH0_Stop:
+ 162              	.LFB3:
+ 166:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 163              		.loc 1 166 0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
+ 168:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_PWRMGR &= (uint8)(~CapSense_CompCH0_ACT_PWR_EN);
+ 168              		.loc 1 168 0
+ 169 0000 044B     		ldr	r3, .L21
+ 170 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 171 0004 02F0FD02 		and	r2, r2, #253
+ 172 0008 1A70     		strb	r2, [r3]
+ 169:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_STBY_PWRMGR &= (uint8)(~CapSense_CompCH0_STBY_PWR_EN);
+ 173              		.loc 1 169 0
+ 174 000a 1A7C     		ldrb	r2, [r3, #16]	@ zero_extendqisi2
+ 175 000c 02F0FD02 		and	r2, r2, #253
+ 176 0010 1A74     		strb	r2, [r3, #16]
+ 177 0012 7047     		bx	lr
+ 178              	.L22:
+ 179              		.align	2
+ 180              	.L21:
+ 181 0014 A7430040 		.word	1073759143
+ 182              		.cfi_endproc
+ 183              	.LFE3:
+ 184              		.size	CapSense_CompCH0_Stop, .-CapSense_CompCH0_Stop
+ 185              		.section	.text.CapSense_CompCH0_SetSpeed,"ax",%progbits
+ 186              		.align	1
+ 187              		.global	CapSense_CompCH0_SetSpeed
+ 188              		.thumb
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 11
+
+
+ 189              		.thumb_func
+ 190              		.type	CapSense_CompCH0_SetSpeed, %function
+ 191              	CapSense_CompCH0_SetSpeed:
+ 192              	.LFB4:
+ 198:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 193              		.loc 1 198 0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 198              	.LVL10:
+ 200:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR = (CapSense_CompCH0_CR & (uint8)(~CapSense_CompCH0_PWR_MODE_MASK)) |
+ 199              		.loc 1 200 0
+ 200 0000 0F4B     		ldr	r3, .L27
+ 201 0002 00F00301 		and	r1, r0, #3
+ 202 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 204:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if(speed == CapSense_CompCH0_HIGHSPEED)
+ 203              		.loc 1 204 0
+ 204 0008 0128     		cmp	r0, #1
+ 200:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR = (CapSense_CompCH0_CR & (uint8)(~CapSense_CompCH0_PWR_MODE_MASK)) |
+ 205              		.loc 1 200 0
+ 206 000a 02F0FC02 		and	r2, r2, #252
+ 207 000e 41EA0202 		orr	r2, r1, r2
+ 208 0012 1A70     		strb	r2, [r3]
+ 209 0014 A3F59053 		sub	r3, r3, #4608
+ 210 0018 0A4A     		ldr	r2, .L27+4
+ 211 001a A3F10E03 		sub	r3, r3, #14
+ 204:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if(speed == CapSense_CompCH0_HIGHSPEED)
+ 212              		.loc 1 204 0
+ 213 001e 05D1     		bne	.L24
+ 213:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR0 = CapSense_CompCH0_HS_TRIM_TR0;
+ 214              		.loc 1 213 0
+ 215 0020 0949     		ldr	r1, .L27+8
+ 216 0022 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 217 0024 C9B2     		uxtb	r1, r1
+ 218 0026 1170     		strb	r1, [r2]
+ 214:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR1 = CapSense_CompCH0_HS_TRIM_TR1;
+ 219              		.loc 1 214 0
+ 220 0028 084A     		ldr	r2, .L27+12
+ 221 002a 04E0     		b	.L26
+ 222              	.L24:
+ 226:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR0 = CapSense_CompCH0_LS_TRIM_TR0;
+ 223              		.loc 1 226 0
+ 224 002c 0849     		ldr	r1, .L27+16
+ 225 002e 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 226 0030 C9B2     		uxtb	r1, r1
+ 227 0032 1170     		strb	r1, [r2]
+ 227:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_TR1 = CapSense_CompCH0_LS_TRIM_TR1;
+ 228              		.loc 1 227 0
+ 229 0034 074A     		ldr	r2, .L27+20
+ 230              	.L26:
+ 231 0036 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 232 0038 D2B2     		uxtb	r2, r2
+ 233 003a 1A70     		strb	r2, [r3]
+ 234 003c 7047     		bx	lr
+ 235              	.L28:
+ 236 003e 00BF     		.align	2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 12
+
+
+ 237              	.L27:
+ 238 0040 41580040 		.word	1073764417
+ 239 0044 32460040 		.word	1073759794
+ 240 0048 11010049 		.word	1224737041
+ 241 004c 15010049 		.word	1224737045
+ 242 0050 AF010049 		.word	1224737199
+ 243 0054 B7010049 		.word	1224737207
+ 244              		.cfi_endproc
+ 245              	.LFE4:
+ 246              		.size	CapSense_CompCH0_SetSpeed, .-CapSense_CompCH0_SetSpeed
+ 247              		.section	.text.CapSense_CompCH0_Init,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	CapSense_CompCH0_Init
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.type	CapSense_CompCH0_Init, %function
+ 253              	CapSense_CompCH0_Init:
+ 254              	.LFB0:
+  52:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 255              		.loc 1 52 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259 0000 08B5     		push	{r3, lr}
+ 260              		.cfi_def_cfa_offset 8
+ 261              		.cfi_offset 3, -8
+ 262              		.cfi_offset 14, -4
+  54:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SetSpeed(CapSense_CompCH0_DEFAULT_SPEED);
+ 263              		.loc 1 54 0
+ 264 0002 0020     		movs	r0, #0
+ 265 0004 FFF7FEFF 		bl	CapSense_CompCH0_SetSpeed
+ 266              	.LVL11:
+  58:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR |= CapSense_CompCH0_HYST_OFF;
+ 267              		.loc 1 58 0
+ 268 0008 0C4B     		ldr	r3, .L30
+ 269 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 270 000c 42F02002 		orr	r2, r2, #32
+ 271 0010 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             CapSense_CompCH0_CR &= (uint8)(~CapSense_CompCH0_PWRDWN_OVRD);
+ 272              		.loc 1 66 0
+ 273 0012 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 274 0014 02F0FB02 		and	r2, r2, #251
+ 275 0018 1A70     		strb	r2, [r3]
+  73:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR |= CapSense_CompCH0_MX_AO;
+ 276              		.loc 1 73 0
+ 277 001a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 278 001c 42F00802 		orr	r2, r2, #8
+ 279 0020 1A70     		strb	r2, [r3]
+  76:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CLK &= (uint8)(~CapSense_CompCH0_SYNCCLK_MASK);
+ 280              		.loc 1 76 0
+ 281 0022 93F88E22 		ldrb	r2, [r3, #654]	@ zero_extendqisi2
+ 282 0026 02F0E702 		and	r2, r2, #231
+ 283 002a 83F88E22 		strb	r2, [r3, #654]
+  80:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CLK |= CapSense_CompCH0_BYPASS_SYNC;
+ 284              		.loc 1 80 0
+ 285 002e 93F88E22 		ldrb	r2, [r3, #654]	@ zero_extendqisi2
+ 286 0032 42F01002 		orr	r2, r2, #16
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 13
+
+
+ 287 0036 83F88E22 		strb	r2, [r3, #654]
+  76:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CLK &= (uint8)(~CapSense_CompCH0_SYNCCLK_MASK);
+ 288              		.loc 1 76 0
+ 289 003a 08BD     		pop	{r3, pc}
+ 290              	.L31:
+ 291              		.align	2
+ 292              	.L30:
+ 293 003c 41580040 		.word	1073764417
+ 294              		.cfi_endproc
+ 295              	.LFE0:
+ 296              		.size	CapSense_CompCH0_Init, .-CapSense_CompCH0_Init
+ 297              		.section	.text.CapSense_CompCH0_Start,"ax",%progbits
+ 298              		.align	1
+ 299              		.global	CapSense_CompCH0_Start
+ 300              		.thumb
+ 301              		.thumb_func
+ 302              		.type	CapSense_CompCH0_Start, %function
+ 303              	CapSense_CompCH0_Start:
+ 304              	.LFB2:
+ 137:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 305              		.loc 1 137 0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309 0000 10B5     		push	{r4, lr}
+ 310              		.cfi_def_cfa_offset 8
+ 311              		.cfi_offset 4, -8
+ 312              		.cfi_offset 14, -4
+ 139:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if ( CapSense_CompCH0_initVar == 0u )
+ 313              		.loc 1 139 0
+ 314 0002 054C     		ldr	r4, .L34
+ 315 0004 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 316 0006 1BB9     		cbnz	r3, .L33
+ 141:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_Init();
+ 317              		.loc 1 141 0
+ 318 0008 FFF7FEFF 		bl	CapSense_CompCH0_Init
+ 319              	.LVL12:
+ 143:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_initVar = 1u;
+ 320              		.loc 1 143 0
+ 321 000c 0123     		movs	r3, #1
+ 322 000e 2370     		strb	r3, [r4]
+ 323              	.L33:
+ 148:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 324              		.loc 1 148 0
+ 325 0010 BDE81040 		pop	{r4, lr}
+ 147:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_Enable();    
+ 326              		.loc 1 147 0
+ 327 0014 FFF7FEBF 		b	CapSense_CompCH0_Enable
+ 328              	.LVL13:
+ 329              	.L35:
+ 330              		.align	2
+ 331              	.L34:
+ 332 0018 00000000 		.word	.LANCHOR0
+ 333              		.cfi_endproc
+ 334              	.LFE2:
+ 335              		.size	CapSense_CompCH0_Start, .-CapSense_CompCH0_Start
+ 336              		.section	.text.CapSense_CompCH0_GetCompare,"ax",%progbits
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 14
+
+
+ 337              		.align	1
+ 338              		.global	CapSense_CompCH0_GetCompare
+ 339              		.thumb
+ 340              		.thumb_func
+ 341              		.type	CapSense_CompCH0_GetCompare, %function
+ 342              	CapSense_CompCH0_GetCompare:
+ 343              	.LFB5:
+ 252:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 344              		.loc 1 252 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 253:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     return( CapSense_CompCH0_WRK & CapSense_CompCH0_CMP_OUT_MASK);
+ 349              		.loc 1 253 0
+ 350 0000 024B     		ldr	r3, .L37
+ 351 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 254:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 352              		.loc 1 254 0
+ 353 0004 00F00200 		and	r0, r0, #2
+ 354 0008 7047     		bx	lr
+ 355              	.L38:
+ 356 000a 00BF     		.align	2
+ 357              	.L37:
+ 358 000c 965B0040 		.word	1073765270
+ 359              		.cfi_endproc
+ 360              	.LFE5:
+ 361              		.size	CapSense_CompCH0_GetCompare, .-CapSense_CompCH0_GetCompare
+ 362              		.section	.text.CapSense_CompCH0_ZeroCal,"ax",%progbits
+ 363              		.align	1
+ 364              		.global	CapSense_CompCH0_ZeroCal
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.type	CapSense_CompCH0_ZeroCal, %function
+ 368              	CapSense_CompCH0_ZeroCal:
+ 369              	.LFB7:
+ 373:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         {
+ 374:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****             break;      /* output changed state, trim phase is complete */
+ 375:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         }        
+ 376:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }    
+ 377:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 378:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 379:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 380:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 381:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_ZeroCal
+ 382:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 383:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 384:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 385:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function calibrates the offset of the Analog Comparator.
+ 386:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 387:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:
+ 388:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  None
+ 389:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 390:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 391:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  (uint16)  value written in trim register when calibration complete.
+ 392:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 393:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Theory: 
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 15
+
+
+ 394:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function is used to optimize the calibration for user specific voltage
+ 395:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  range.  The comparator trim is adjusted to counter transistor offsets
+ 396:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *   - offset is defined as positive if the output transitions to high before inP
+ 397:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     is greater than inN
+ 398:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *   - offset is defined as negative if the output transitions to high after inP
+ 399:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     is greater than inP
+ 400:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 401:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  PSoC5A
+ 402:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  The Analog Comparator provides 1 byte for offset trim.  The byte contains two
+ 403:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  4 bit trim fields - one is a course trim and the other allows smaller
+ 404:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  offset adjustments only for slow modes.
+ 405:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - low nibble - fine trim
+ 406:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - high nibble - course trim
+ 407:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  PSoC3, PSoC5LP or later
+ 408:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  The Analog Comparator provides 2 bytes for offset trim.  The bytes contain two
+ 409:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  5 bit trim fields - one is a course trim and the other allows smaller
+ 410:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  offset adjustments only for slow modes.
+ 411:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - TR0 - fine trim
+ 412:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - TR1 - course trim
+ 413:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 414:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Trim algorithm is a two phase process
+ 415:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  The first phase performs course offset adjustment
+ 416:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  The second phase serves one of two purposes depending on the outcome of the
+ 417:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  first phase
+ 418:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - if the first trim value was maxed out without a comparator output 
+ 419:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *    transition, more offset will be added by adjusting the second trim value.
+ 420:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  - if the first trim phase resulted in a comparator output transition, the
+ 421:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *    second trim value will serve as fine trim (in the opposite direction)to
+ 422:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *    ensure the offset is < 1 mV.
+ 423:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 424:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Trim Process:   
+ 425:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  1) User applies a voltage to the negative input.  Voltage should be in the
+ 426:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     comparator operating range or an average of the operating voltage range.
+ 427:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  2) Clear registers associated with analog routing to the positive input.
+ 428:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  3) Disable Hysteresis
+ 429:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  4) Set the calibration bit to short the negative and positive inputs to
+ 430:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     the users calibration voltage.
+ 431:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  5) Clear the TR register  ( TR = 0x00 )
+ 432:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  ** LOW MODES
+ 433:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  6) Check if compare output is high, if so, set the MSb of course trim field 
+ 434:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     to a 1.
+ 435:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  7) Increment the course trim field until the compare output changes
+ 436:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  8) Check if compare output is low, if so, set the MSb of fine trim field
+ 437:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *     to a 1.
+ 438:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  9) Increment the fine trim field until the compare output changes
+ 439:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  ** FAST MODE - skip the steps 8,9
+ 440:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 441:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Side Effects:
+ 442:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  Routine clears analog routing associated with the comparator positive input.  
+ 443:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This may affect routing of signals from other components that are connected
+ 444:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  to the positive input of the comparator.
+ 445:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 446:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 447:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** uint16 CapSense_CompCH0_ZeroCal(void) 
+ 448:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 370              		.loc 1 448 0
+ 371              		.cfi_startproc
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 16
+
+
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 375              		.cfi_def_cfa_offset 40
+ 376              		.cfi_offset 3, -40
+ 377              		.cfi_offset 4, -36
+ 378              		.cfi_offset 5, -32
+ 379              		.cfi_offset 6, -28
+ 380              		.cfi_offset 7, -24
+ 381              		.cfi_offset 8, -20
+ 382              		.cfi_offset 9, -16
+ 383              		.cfi_offset 10, -12
+ 384              		.cfi_offset 11, -8
+ 385              		.cfi_offset 14, -4
+ 449:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 tmpSW0;
+ 450:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 tmpSW2;
+ 451:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 tmpSW3;
+ 452:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     uint8 tmpCR;
+ 453:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 454:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Save a copy of routing registers associated with inP */
+ 455:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW0 = CapSense_CompCH0_SW0;
+ 456:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW2 = CapSense_CompCH0_SW2;
+ 457:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW3 = CapSense_CompCH0_SW3;
+ 386              		.loc 1 457 0
+ 387 0004 2049     		ldr	r1, .L43
+ 455:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW0 = CapSense_CompCH0_SW0;
+ 388              		.loc 1 455 0
+ 389 0006 214B     		ldr	r3, .L43+4
+ 456:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW2 = CapSense_CompCH0_SW2;
+ 390              		.loc 1 456 0
+ 391 0008 214E     		ldr	r6, .L43+8
+ 455:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW0 = CapSense_CompCH0_SW0;
+ 392              		.loc 1 455 0
+ 393 000a 93F80090 		ldrb	r9, [r3]	@ zero_extendqisi2
+ 456:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW2 = CapSense_CompCH0_SW2;
+ 394              		.loc 1 456 0
+ 395 000e 3778     		ldrb	r7, [r6]	@ zero_extendqisi2
+ 396              		.loc 1 457 0
+ 397 0010 0C78     		ldrb	r4, [r1]	@ zero_extendqisi2
+ 458:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 459:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****      /* Clear routing for inP, retain routing for inN */
+ 460:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW0 = 0x00u;
+ 398              		.loc 1 460 0
+ 399 0012 4FF0000A 		mov	r10, #0
+ 457:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW3 = CapSense_CompCH0_SW3;
+ 400              		.loc 1 457 0
+ 401 0016 E4B2     		uxtb	r4, r4
+ 461:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW2 = 0x00u;
+ 462:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW3 = tmpSW3 & (uint8)(~CapSense_CompCH0_CMP_SW3_INPCTL_MASK);
+ 402              		.loc 1 462 0
+ 403 0018 04F0F602 		and	r2, r4, #246
+ 460:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW0 = 0x00u;
+ 404              		.loc 1 460 0
+ 405 001c 83F800A0 		strb	r10, [r3]
+ 461:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW2 = 0x00u;
+ 406              		.loc 1 461 0
+ 407 0020 86F800A0 		strb	r10, [r6]
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 17
+
+
+ 408              		.loc 1 462 0
+ 409 0024 0A70     		strb	r2, [r1]
+ 463:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 464:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Preserve original configuration
+ 465:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****      * - turn off Hysteresis
+ 466:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****      * - set calibration bit - shorts inN to inP
+ 467:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     */
+ 468:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpCR = CapSense_CompCH0_CR;
+ 410              		.loc 1 468 0
+ 411 0026 1B4A     		ldr	r2, .L43+12
+ 469:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR |= (CapSense_CompCH0_CAL_ON | CapSense_CompCH0_HYST_OFF);
+ 470:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 471:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Write default low values to trim register - no offset adjust */
+ 472:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC5A */
+ 473:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC5A)
+ 474:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR = CapSense_CompCH0_DEFAULT_CMP_TRIM;
+ 475:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC5A */
+ 476:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 477:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC3, PSoC5LP or later */
+ 478:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ 479:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR0 = CapSense_CompCH0_DEFAULT_CMP_TRIM;
+ 480:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR1 = CapSense_CompCH0_DEFAULT_CMP_TRIM;
+ 412              		.loc 1 480 0
+ 413 0028 1B4D     		ldr	r5, .L43+16
+ 468:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpCR = CapSense_CompCH0_CR;
+ 414              		.loc 1 468 0
+ 415 002a 92F800B0 		ldrb	fp, [r2]	@ zero_extendqisi2
+ 469:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR |= (CapSense_CompCH0_CAL_ON | CapSense_CompCH0_HYST_OFF);
+ 416              		.loc 1 469 0
+ 417 002e 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
+ 455:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW0 = CapSense_CompCH0_SW0;
+ 418              		.loc 1 455 0
+ 419 0030 5FFA89F9 		uxtb	r9, r9
+ 420              	.LVL14:
+ 469:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR |= (CapSense_CompCH0_CAL_ON | CapSense_CompCH0_HYST_OFF);
+ 421              		.loc 1 469 0
+ 422 0034 40F03000 		orr	r0, r0, #48
+ 423 0038 1070     		strb	r0, [r2]
+ 479:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR0 = CapSense_CompCH0_DEFAULT_CMP_TRIM;
+ 424              		.loc 1 479 0
+ 425 003a 1848     		ldr	r0, .L43+20
+ 456:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpSW2 = CapSense_CompCH0_SW2;
+ 426              		.loc 1 456 0
+ 427 003c FFB2     		uxtb	r7, r7
+ 428              	.LVL15:
+ 479:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR0 = CapSense_CompCH0_DEFAULT_CMP_TRIM;
+ 429              		.loc 1 479 0
+ 430 003e 80F800A0 		strb	r10, [r0]
+ 431              		.loc 1 480 0
+ 432 0042 85F800A0 		strb	r10, [r5]
+ 481:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 482:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	
+ 483:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 	/* Two phase trim - slow modes, one phase trim - for fast */ 
+ 484:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     if ( (CapSense_CompCH0_CR & CapSense_CompCH0_PWR_MODE_MASK) == CapSense_CompCH0_PWR_MODE_FAST)
+ 433              		.loc 1 484 0
+ 434 0046 92F800E0 		ldrb	lr, [r2]	@ zero_extendqisi2
+ 468:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     tmpCR = CapSense_CompCH0_CR;
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 18
+
+
+ 435              		.loc 1 468 0
+ 436 004a 5FFA8BFB 		uxtb	fp, fp
+ 437              	.LVL16:
+ 438              		.loc 1 484 0
+ 439 004e 0EF0030E 		and	lr, lr, #3
+ 440 0052 BEF1010F 		cmp	lr, #1
+ 441 0056 9846     		mov	r8, r3
+ 442 0058 02D0     		beq	.L42
+ 485:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 486:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_trimAdjust(0u);
+ 487:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 488:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     else /* default to trim for fast modes */
+ 489:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 490:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_trimAdjust(1u);
+ 443              		.loc 1 490 0
+ 444 005a 0120     		movs	r0, #1
+ 445 005c FFF7FEFF 		bl	CapSense_CompCH0_trimAdjust
+ 446              	.LVL17:
+ 447              	.L42:
+ 491:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 		CapSense_CompCH0_trimAdjust(0u);
+ 448              		.loc 1 491 0
+ 449 0060 5046     		mov	r0, r10
+ 450 0062 FFF7FEFF 		bl	CapSense_CompCH0_trimAdjust
+ 451              	.LVL18:
+ 492:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 493:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****    
+ 494:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Restore Config Register */
+ 495:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR = tmpCR;
+ 452              		.loc 1 495 0
+ 453 0066 0B4A     		ldr	r2, .L43+12
+ 496:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 497:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Restore routing registers for inP */
+ 498:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW0 = tmpSW0;
+ 499:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW2 = tmpSW2;
+ 500:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW3 = tmpSW3;
+ 454              		.loc 1 500 0
+ 455 0068 074B     		ldr	r3, .L43
+ 495:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_CR = tmpCR;
+ 456              		.loc 1 495 0
+ 457 006a 82F800B0 		strb	fp, [r2]
+ 501:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 502:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC5A */
+ 503:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC5A)
+ 504:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         return (uint16) CapSense_CompCH0_TR;
+ 505:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC5A */
+ 506:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 507:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC3, PSoC5LP or later */
+ 508:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ 509:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         return ((uint16)((uint16)CapSense_CompCH0_TR1 << 8u) | (CapSense_CompCH0_TR0));        
+ 458              		.loc 1 509 0
+ 459 006e A2F59052 		sub	r2, r2, #4608
+ 498:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW0 = tmpSW0;
+ 460              		.loc 1 498 0
+ 461 0072 88F80090 		strb	r9, [r8]
+ 462              		.loc 1 509 0
+ 463 0076 0F3A     		subs	r2, r2, #15
+ 499:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW2 = tmpSW2;
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 19
+
+
+ 464              		.loc 1 499 0
+ 465 0078 3770     		strb	r7, [r6]
+ 500:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     CapSense_CompCH0_SW3 = tmpSW3;
+ 466              		.loc 1 500 0
+ 467 007a 1C70     		strb	r4, [r3]
+ 468              		.loc 1 509 0
+ 469 007c 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 470 007e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 510:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 511:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 471              		.loc 1 511 0
+ 472 0080 43EA0020 		orr	r0, r3, r0, lsl #8
+ 473 0084 BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 474              	.LVL19:
+ 475              	.L44:
+ 476              		.align	2
+ 477              	.L43:
+ 478 0088 CB5A0040 		.word	1073765067
+ 479 008c C85A0040 		.word	1073765064
+ 480 0090 CA5A0040 		.word	1073765066
+ 481 0094 41580040 		.word	1073764417
+ 482 0098 33460040 		.word	1073759795
+ 483 009c 32460040 		.word	1073759794
+ 484              		.cfi_endproc
+ 485              	.LFE7:
+ 486              		.size	CapSense_CompCH0_ZeroCal, .-CapSense_CompCH0_ZeroCal
+ 487              		.section	.text.CapSense_CompCH0_LoadTrim,"ax",%progbits
+ 488              		.align	1
+ 489              		.global	CapSense_CompCH0_LoadTrim
+ 490              		.thumb
+ 491              		.thumb_func
+ 492              		.type	CapSense_CompCH0_LoadTrim, %function
+ 493              	CapSense_CompCH0_LoadTrim:
+ 494              	.LFB8:
+ 512:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 513:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 514:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** /*******************************************************************************
+ 515:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Function Name: CapSense_CompCH0_LoadTrim
+ 516:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** ********************************************************************************
+ 517:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 518:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Summary:
+ 519:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  This function stores a value in the Analog Comparator trim register.
+ 520:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 521:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Parameters:  
+ 522:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  uint8 trimVal - trim value.  This value is the same format as the value 
+ 523:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  returned by the _ZeroCal routine.
+ 524:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 525:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** * Return:
+ 526:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *  None
+ 527:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *
+ 528:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** *******************************************************************************/
+ 529:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** void CapSense_CompCH0_LoadTrim(uint16 trimVal) 
+ 530:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** {
+ 495              		.loc 1 530 0
+ 496              		.cfi_startproc
+ 497              		@ args = 0, pretend = 0, frame = 0
+ 498              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 20
+
+
+ 499              		@ link register save eliminated.
+ 500              	.LVL20:
+ 531:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* Stores value in the Analog Comparator trim register */
+ 532:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC5A */
+ 533:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC5A)
+ 534:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR = (uint8) trimVal;
+ 535:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC5A */
+ 536:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     
+ 537:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /* PSoC3, PSoC5LP or later */
+ 538:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ 539:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Stores value in the Analog Comparator trim register for P-type load */
+ 540:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR0 = (uint8) trimVal;
+ 501              		.loc 1 540 0
+ 502 0000 024B     		ldr	r3, .L46
+ 503 0002 C2B2     		uxtb	r2, r0
+ 541:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         
+ 542:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Stores value in the Analog Comparator trim register for N-type load */
+ 543:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR1 = (uint8) (trimVal >> 8); 
+ 504              		.loc 1 543 0
+ 505 0004 000A     		lsrs	r0, r0, #8
+ 506              	.LVL21:
+ 540:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_TR0 = (uint8) trimVal;
+ 507              		.loc 1 540 0
+ 508 0006 1A70     		strb	r2, [r3]
+ 509              		.loc 1 543 0
+ 510 0008 5870     		strb	r0, [r3, #1]
+ 511 000a 7047     		bx	lr
+ 512              	.L47:
+ 513              		.align	2
+ 514              	.L46:
+ 515 000c 32460040 		.word	1073759794
+ 516              		.cfi_endproc
+ 517              	.LFE8:
+ 518              		.size	CapSense_CompCH0_LoadTrim, .-CapSense_CompCH0_LoadTrim
+ 519              		.section	.text.CapSense_CompCH0_PwrDwnOverrideEnable,"ax",%progbits
+ 520              		.align	1
+ 521              		.global	CapSense_CompCH0_PwrDwnOverrideEnable
+ 522              		.thumb
+ 523              		.thumb_func
+ 524              		.type	CapSense_CompCH0_PwrDwnOverrideEnable, %function
+ 525              	CapSense_CompCH0_PwrDwnOverrideEnable:
+ 526              	.LFB9:
+ 544:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 545:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** }
+ 546:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 547:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 548:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** #if (CY_PSOC3 || CY_PSOC5LP)
+ 549:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 550:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /*******************************************************************************
+ 551:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Function Name: CapSense_CompCH0_PwrDwnOverrideEnable
+ 552:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     ********************************************************************************
+ 553:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 554:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Summary:
+ 555:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  This is the power down over-ride feature. This function ignores sleep 
+ 556:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  parameter and allows the component to stay active during sleep mode.
+ 557:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 558:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Parameters:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 21
+
+
+ 559:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  None
+ 560:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 561:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Return:
+ 562:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  None
+ 563:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 564:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *******************************************************************************/
+ 565:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     void CapSense_CompCH0_PwrDwnOverrideEnable(void) 
+ 566:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 527              		.loc 1 566 0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		@ link register save eliminated.
+ 567:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Set the pd_override bit in CMP_CR register */
+ 568:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR |= CapSense_CompCH0_PWRDWN_OVRD;
+ 532              		.loc 1 568 0
+ 533 0000 024B     		ldr	r3, .L49
+ 534 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 535 0004 42F00402 		orr	r2, r2, #4
+ 536 0008 1A70     		strb	r2, [r3]
+ 537 000a 7047     		bx	lr
+ 538              	.L50:
+ 539              		.align	2
+ 540              	.L49:
+ 541 000c 41580040 		.word	1073764417
+ 542              		.cfi_endproc
+ 543              	.LFE9:
+ 544              		.size	CapSense_CompCH0_PwrDwnOverrideEnable, .-CapSense_CompCH0_PwrDwnOverrideEnable
+ 545              		.section	.text.CapSense_CompCH0_PwrDwnOverrideDisable,"ax",%progbits
+ 546              		.align	1
+ 547              		.global	CapSense_CompCH0_PwrDwnOverrideDisable
+ 548              		.thumb
+ 549              		.thumb_func
+ 550              		.type	CapSense_CompCH0_PwrDwnOverrideDisable, %function
+ 551              	CapSense_CompCH0_PwrDwnOverrideDisable:
+ 552              	.LFB10:
+ 569:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     }
+ 570:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 571:.\Generated_Source\PSoC5/CapSense_CompCH0.c **** 
+ 572:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     /*******************************************************************************
+ 573:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Function Name: CapSense_CompCH0_PwrDwnOverrideDisable
+ 574:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     ********************************************************************************
+ 575:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 576:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Summary:
+ 577:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  This is the power down over-ride feature. This allows the component to stay
+ 578:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  inactive during sleep.
+ 579:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 580:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Parameters:
+ 581:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  None
+ 582:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 583:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     * Return:
+ 584:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *  None
+ 585:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *
+ 586:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     *******************************************************************************/
+ 587:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     void CapSense_CompCH0_PwrDwnOverrideDisable(void) 
+ 588:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****     {
+ 553              		.loc 1 588 0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 22
+
+
+ 554              		.cfi_startproc
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557              		@ link register save eliminated.
+ 589:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         /* Reset the pd_override bit in CMP_CR register */
+ 590:.\Generated_Source\PSoC5/CapSense_CompCH0.c ****         CapSense_CompCH0_CR &= (uint8)(~CapSense_CompCH0_PWRDWN_OVRD);
+ 558              		.loc 1 590 0
+ 559 0000 024B     		ldr	r3, .L52
+ 560 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 561 0004 02F0FB02 		and	r2, r2, #251
+ 562 0008 1A70     		strb	r2, [r3]
+ 563 000a 7047     		bx	lr
+ 564              	.L53:
+ 565              		.align	2
+ 566              	.L52:
+ 567 000c 41580040 		.word	1073764417
+ 568              		.cfi_endproc
+ 569              	.LFE10:
+ 570              		.size	CapSense_CompCH0_PwrDwnOverrideDisable, .-CapSense_CompCH0_PwrDwnOverrideDisable
+ 571              		.global	CapSense_CompCH0_initVar
+ 572              		.bss
+ 573              		.set	.LANCHOR0,. + 0
+ 574              		.type	CapSense_CompCH0_initVar, %object
+ 575              		.size	CapSense_CompCH0_initVar, 1
+ 576              	CapSense_CompCH0_initVar:
+ 577 0000 00       		.space	1
+ 578              		.text
+ 579              	.Letext0:
+ 580              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 581              		.file 3 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 582              		.section	.debug_info,"",%progbits
+ 583              	.Ldebug_info0:
+ 584 0000 AA020000 		.4byte	0x2aa
+ 585 0004 0400     		.2byte	0x4
+ 586 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 587 000a 04       		.byte	0x4
+ 588 000b 01       		.uleb128 0x1
+ 589 000c 7C000000 		.4byte	.LASF35
+ 590 0010 01       		.byte	0x1
+ 591 0011 55010000 		.4byte	.LASF36
+ 592 0015 2C000000 		.4byte	.LASF37
+ 593 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 594 001d 00000000 		.4byte	0
+ 595 0021 00000000 		.4byte	.Ldebug_line0
+ 596 0025 02       		.uleb128 0x2
+ 597 0026 01       		.byte	0x1
+ 598 0027 06       		.byte	0x6
+ 599 0028 08030000 		.4byte	.LASF0
+ 600 002c 02       		.uleb128 0x2
+ 601 002d 01       		.byte	0x1
+ 602 002e 08       		.byte	0x8
+ 603 002f 95010000 		.4byte	.LASF1
+ 604 0033 02       		.uleb128 0x2
+ 605 0034 02       		.byte	0x2
+ 606 0035 05       		.byte	0x5
+ 607 0036 DC020000 		.4byte	.LASF2
+ 608 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 23
+
+
+ 609 003b 02       		.byte	0x2
+ 610 003c 07       		.byte	0x7
+ 611 003d 12010000 		.4byte	.LASF3
+ 612 0041 02       		.uleb128 0x2
+ 613 0042 04       		.byte	0x4
+ 614 0043 05       		.byte	0x5
+ 615 0044 E6020000 		.4byte	.LASF4
+ 616 0048 02       		.uleb128 0x2
+ 617 0049 04       		.byte	0x4
+ 618 004a 07       		.byte	0x7
+ 619 004b B0010000 		.4byte	.LASF5
+ 620 004f 02       		.uleb128 0x2
+ 621 0050 08       		.byte	0x8
+ 622 0051 05       		.byte	0x5
+ 623 0052 95020000 		.4byte	.LASF6
+ 624 0056 02       		.uleb128 0x2
+ 625 0057 08       		.byte	0x8
+ 626 0058 07       		.byte	0x7
+ 627 0059 22020000 		.4byte	.LASF7
+ 628 005d 03       		.uleb128 0x3
+ 629 005e 04       		.byte	0x4
+ 630 005f 05       		.byte	0x5
+ 631 0060 696E7400 		.ascii	"int\000"
+ 632 0064 02       		.uleb128 0x2
+ 633 0065 04       		.byte	0x4
+ 634 0066 07       		.byte	0x7
+ 635 0067 0C020000 		.4byte	.LASF8
+ 636 006b 04       		.uleb128 0x4
+ 637 006c C2010000 		.4byte	.LASF9
+ 638 0070 02       		.byte	0x2
+ 639 0071 B4       		.byte	0xb4
+ 640 0072 2C000000 		.4byte	0x2c
+ 641 0076 04       		.uleb128 0x4
+ 642 0077 E8010000 		.4byte	.LASF10
+ 643 007b 02       		.byte	0x2
+ 644 007c B5       		.byte	0xb5
+ 645 007d 3A000000 		.4byte	0x3a
+ 646 0081 04       		.uleb128 0x4
+ 647 0082 EF010000 		.4byte	.LASF11
+ 648 0086 02       		.byte	0x2
+ 649 0087 B6       		.byte	0xb6
+ 650 0088 48000000 		.4byte	0x48
+ 651 008c 02       		.uleb128 0x2
+ 652 008d 04       		.byte	0x4
+ 653 008e 04       		.byte	0x4
+ 654 008f 88010000 		.4byte	.LASF12
+ 655 0093 02       		.uleb128 0x2
+ 656 0094 08       		.byte	0x8
+ 657 0095 04       		.byte	0x4
+ 658 0096 E1010000 		.4byte	.LASF13
+ 659 009a 02       		.uleb128 0x2
+ 660 009b 01       		.byte	0x1
+ 661 009c 08       		.byte	0x8
+ 662 009d BF020000 		.4byte	.LASF14
+ 663 00a1 05       		.uleb128 0x5
+ 664 00a2 A3010000 		.4byte	.LASF15
+ 665 00a6 02       		.byte	0x2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 24
+
+
+ 666 00a7 5E01     		.2byte	0x15e
+ 667 00a9 AD000000 		.4byte	0xad
+ 668 00ad 06       		.uleb128 0x6
+ 669 00ae 6B000000 		.4byte	0x6b
+ 670 00b2 02       		.uleb128 0x2
+ 671 00b3 04       		.byte	0x4
+ 672 00b4 07       		.byte	0x7
+ 673 00b5 81020000 		.4byte	.LASF16
+ 674 00b9 07       		.uleb128 0x7
+ 675 00ba A3020000 		.4byte	.LASF38
+ 676 00be 01       		.byte	0x1
+ 677 00bf 1A01     		.2byte	0x11a
+ 678 00c1 00000000 		.4byte	.LFB6
+ 679 00c5 74000000 		.4byte	.LFE6-.LFB6
+ 680 00c9 01       		.uleb128 0x1
+ 681 00ca 9C       		.byte	0x9c
+ 682 00cb 1F010000 		.4byte	0x11f
+ 683 00cf 08       		.uleb128 0x8
+ 684 00d0 45030000 		.4byte	.LASF22
+ 685 00d4 01       		.byte	0x1
+ 686 00d5 1A01     		.2byte	0x11a
+ 687 00d7 6B000000 		.4byte	0x6b
+ 688 00db 00000000 		.4byte	.LLST0
+ 689 00df 09       		.uleb128 0x9
+ 690 00e0 A8010000 		.4byte	.LASF17
+ 691 00e4 01       		.byte	0x1
+ 692 00e5 1C01     		.2byte	0x11c
+ 693 00e7 6B000000 		.4byte	0x6b
+ 694 00eb 3A000000 		.4byte	.LLST1
+ 695 00ef 09       		.uleb128 0x9
+ 696 00f0 8A020000 		.4byte	.LASF18
+ 697 00f4 01       		.byte	0x1
+ 698 00f5 1C01     		.2byte	0x11c
+ 699 00f7 6B000000 		.4byte	0x6b
+ 700 00fb 7E000000 		.4byte	.LLST2
+ 701 00ff 09       		.uleb128 0x9
+ 702 0100 19020000 		.4byte	.LASF19
+ 703 0104 01       		.byte	0x1
+ 704 0105 1D01     		.2byte	0x11d
+ 705 0107 6B000000 		.4byte	0x6b
+ 706 010b 9C000000 		.4byte	.LLST3
+ 707 010f 0A       		.uleb128 0xa
+ 708 0110 48000000 		.4byte	.LVL4
+ 709 0114 A0020000 		.4byte	0x2a0
+ 710 0118 0B       		.uleb128 0xb
+ 711 0119 01       		.uleb128 0x1
+ 712 011a 50       		.byte	0x50
+ 713 011b 01       		.uleb128 0x1
+ 714 011c 3A       		.byte	0x3a
+ 715 011d 00       		.byte	0
+ 716 011e 00       		.byte	0
+ 717 011f 0C       		.uleb128 0xc
+ 718 0120 C4020000 		.4byte	.LASF20
+ 719 0124 01       		.byte	0x1
+ 720 0125 63       		.byte	0x63
+ 721 0126 00000000 		.4byte	.LFB1
+ 722 012a 18000000 		.4byte	.LFE1-.LFB1
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 25
+
+
+ 723 012e 01       		.uleb128 0x1
+ 724 012f 9C       		.byte	0x9c
+ 725 0130 0C       		.uleb128 0xc
+ 726 0131 F6010000 		.4byte	.LASF21
+ 727 0135 01       		.byte	0x1
+ 728 0136 A5       		.byte	0xa5
+ 729 0137 00000000 		.4byte	.LFB3
+ 730 013b 18000000 		.4byte	.LFE3-.LFB3
+ 731 013f 01       		.uleb128 0x1
+ 732 0140 9C       		.byte	0x9c
+ 733 0141 0D       		.uleb128 0xd
+ 734 0142 F8000000 		.4byte	.LASF24
+ 735 0146 01       		.byte	0x1
+ 736 0147 C5       		.byte	0xc5
+ 737 0148 00000000 		.4byte	.LFB4
+ 738 014c 58000000 		.4byte	.LFE4-.LFB4
+ 739 0150 01       		.uleb128 0x1
+ 740 0151 9C       		.byte	0x9c
+ 741 0152 64010000 		.4byte	0x164
+ 742 0156 0E       		.uleb128 0xe
+ 743 0157 7B020000 		.4byte	.LASF23
+ 744 015b 01       		.byte	0x1
+ 745 015c C5       		.byte	0xc5
+ 746 015d 6B000000 		.4byte	0x6b
+ 747 0161 01       		.uleb128 0x1
+ 748 0162 50       		.byte	0x50
+ 749 0163 00       		.byte	0
+ 750 0164 0D       		.uleb128 0xd
+ 751 0165 3F010000 		.4byte	.LASF25
+ 752 0169 01       		.byte	0x1
+ 753 016a 33       		.byte	0x33
+ 754 016b 00000000 		.4byte	.LFB0
+ 755 016f 40000000 		.4byte	.LFE0-.LFB0
+ 756 0173 01       		.uleb128 0x1
+ 757 0174 9C       		.byte	0x9c
+ 758 0175 89010000 		.4byte	0x189
+ 759 0179 0A       		.uleb128 0xa
+ 760 017a 08000000 		.4byte	.LVL11
+ 761 017e 41010000 		.4byte	0x141
+ 762 0182 0B       		.uleb128 0xb
+ 763 0183 01       		.uleb128 0x1
+ 764 0184 50       		.byte	0x50
+ 765 0185 01       		.uleb128 0x1
+ 766 0186 30       		.byte	0x30
+ 767 0187 00       		.byte	0
+ 768 0188 00       		.byte	0
+ 769 0189 0D       		.uleb128 0xd
+ 770 018a 0E000000 		.4byte	.LASF26
+ 771 018e 01       		.byte	0x1
+ 772 018f 88       		.byte	0x88
+ 773 0190 00000000 		.4byte	.LFB2
+ 774 0194 1C000000 		.4byte	.LFE2-.LFB2
+ 775 0198 01       		.uleb128 0x1
+ 776 0199 9C       		.byte	0x9c
+ 777 019a B1010000 		.4byte	0x1b1
+ 778 019e 0F       		.uleb128 0xf
+ 779 019f 0C000000 		.4byte	.LVL12
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 26
+
+
+ 780 01a3 64010000 		.4byte	0x164
+ 781 01a7 10       		.uleb128 0x10
+ 782 01a8 18000000 		.4byte	.LVL13
+ 783 01ac 1F010000 		.4byte	0x11f
+ 784 01b0 00       		.byte	0
+ 785 01b1 11       		.uleb128 0x11
+ 786 01b2 5F020000 		.4byte	.LASF39
+ 787 01b6 01       		.byte	0x1
+ 788 01b7 FB       		.byte	0xfb
+ 789 01b8 6B000000 		.4byte	0x6b
+ 790 01bc 00000000 		.4byte	.LFB5
+ 791 01c0 10000000 		.4byte	.LFE5-.LFB5
+ 792 01c4 01       		.uleb128 0x1
+ 793 01c5 9C       		.byte	0x9c
+ 794 01c6 12       		.uleb128 0x12
+ 795 01c7 EF020000 		.4byte	.LASF40
+ 796 01cb 01       		.byte	0x1
+ 797 01cc BF01     		.2byte	0x1bf
+ 798 01ce 76000000 		.4byte	0x76
+ 799 01d2 00000000 		.4byte	.LFB7
+ 800 01d6 A0000000 		.4byte	.LFE7-.LFB7
+ 801 01da 01       		.uleb128 0x1
+ 802 01db 9C       		.byte	0x9c
+ 803 01dc 44020000 		.4byte	0x244
+ 804 01e0 09       		.uleb128 0x9
+ 805 01e1 81010000 		.4byte	.LASF27
+ 806 01e5 01       		.byte	0x1
+ 807 01e6 C101     		.2byte	0x1c1
+ 808 01e8 6B000000 		.4byte	0x6b
+ 809 01ec AF000000 		.4byte	.LLST4
+ 810 01f0 09       		.uleb128 0x9
+ 811 01f1 25000000 		.4byte	.LASF28
+ 812 01f5 01       		.byte	0x1
+ 813 01f6 C201     		.2byte	0x1c2
+ 814 01f8 6B000000 		.4byte	0x6b
+ 815 01fc C2000000 		.4byte	.LLST5
+ 816 0200 09       		.uleb128 0x9
+ 817 0201 8E010000 		.4byte	.LASF29
+ 818 0205 01       		.byte	0x1
+ 819 0206 C301     		.2byte	0x1c3
+ 820 0208 6B000000 		.4byte	0x6b
+ 821 020c D5000000 		.4byte	.LLST6
+ 822 0210 09       		.uleb128 0x9
+ 823 0211 08000000 		.4byte	.LASF30
+ 824 0215 01       		.byte	0x1
+ 825 0216 C401     		.2byte	0x1c4
+ 826 0218 6B000000 		.4byte	0x6b
+ 827 021c E8000000 		.4byte	.LLST7
+ 828 0220 13       		.uleb128 0x13
+ 829 0221 60000000 		.4byte	.LVL17
+ 830 0225 B9000000 		.4byte	0xb9
+ 831 0229 33020000 		.4byte	0x233
+ 832 022d 0B       		.uleb128 0xb
+ 833 022e 01       		.uleb128 0x1
+ 834 022f 50       		.byte	0x50
+ 835 0230 01       		.uleb128 0x1
+ 836 0231 31       		.byte	0x31
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 27
+
+
+ 837 0232 00       		.byte	0
+ 838 0233 0A       		.uleb128 0xa
+ 839 0234 66000000 		.4byte	.LVL18
+ 840 0238 B9000000 		.4byte	0xb9
+ 841 023c 0B       		.uleb128 0xb
+ 842 023d 01       		.uleb128 0x1
+ 843 023e 50       		.byte	0x50
+ 844 023f 02       		.uleb128 0x2
+ 845 0240 7A       		.byte	0x7a
+ 846 0241 00       		.sleb128 0
+ 847 0242 00       		.byte	0
+ 848 0243 00       		.byte	0
+ 849 0244 14       		.uleb128 0x14
+ 850 0245 25010000 		.4byte	.LASF31
+ 851 0249 01       		.byte	0x1
+ 852 024a 1102     		.2byte	0x211
+ 853 024c 00000000 		.4byte	.LFB8
+ 854 0250 10000000 		.4byte	.LFE8-.LFB8
+ 855 0254 01       		.uleb128 0x1
+ 856 0255 9C       		.byte	0x9c
+ 857 0256 6B020000 		.4byte	0x26b
+ 858 025a 08       		.uleb128 0x8
+ 859 025b 00000000 		.4byte	.LASF32
+ 860 025f 01       		.byte	0x1
+ 861 0260 1102     		.2byte	0x211
+ 862 0262 76000000 		.4byte	0x76
+ 863 0266 FB000000 		.4byte	.LLST8
+ 864 026a 00       		.byte	0
+ 865 026b 15       		.uleb128 0x15
+ 866 026c 39020000 		.4byte	.LASF33
+ 867 0270 01       		.byte	0x1
+ 868 0271 3502     		.2byte	0x235
+ 869 0273 00000000 		.4byte	.LFB9
+ 870 0277 10000000 		.4byte	.LFE9-.LFB9
+ 871 027b 01       		.uleb128 0x1
+ 872 027c 9C       		.byte	0x9c
+ 873 027d 15       		.uleb128 0x15
+ 874 027e 14030000 		.4byte	.LASF34
+ 875 0282 01       		.byte	0x1
+ 876 0283 4B02     		.2byte	0x24b
+ 877 0285 00000000 		.4byte	.LFB10
+ 878 0289 10000000 		.4byte	.LFE10-.LFB10
+ 879 028d 01       		.uleb128 0x1
+ 880 028e 9C       		.byte	0x9c
+ 881 028f 16       		.uleb128 0x16
+ 882 0290 C8010000 		.4byte	.LASF41
+ 883 0294 01       		.byte	0x1
+ 884 0295 14       		.byte	0x14
+ 885 0296 6B000000 		.4byte	0x6b
+ 886 029a 05       		.uleb128 0x5
+ 887 029b 03       		.byte	0x3
+ 888 029c 00000000 		.4byte	CapSense_CompCH0_initVar
+ 889 02a0 17       		.uleb128 0x17
+ 890 02a1 3B030000 		.4byte	.LASF42
+ 891 02a5 03       		.byte	0x3
+ 892 02a6 78       		.byte	0x78
+ 893 02a7 18       		.uleb128 0x18
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 28
+
+
+ 894 02a8 76000000 		.4byte	0x76
+ 895 02ac 00       		.byte	0
+ 896 02ad 00       		.byte	0
+ 897              		.section	.debug_abbrev,"",%progbits
+ 898              	.Ldebug_abbrev0:
+ 899 0000 01       		.uleb128 0x1
+ 900 0001 11       		.uleb128 0x11
+ 901 0002 01       		.byte	0x1
+ 902 0003 25       		.uleb128 0x25
+ 903 0004 0E       		.uleb128 0xe
+ 904 0005 13       		.uleb128 0x13
+ 905 0006 0B       		.uleb128 0xb
+ 906 0007 03       		.uleb128 0x3
+ 907 0008 0E       		.uleb128 0xe
+ 908 0009 1B       		.uleb128 0x1b
+ 909 000a 0E       		.uleb128 0xe
+ 910 000b 55       		.uleb128 0x55
+ 911 000c 17       		.uleb128 0x17
+ 912 000d 11       		.uleb128 0x11
+ 913 000e 01       		.uleb128 0x1
+ 914 000f 10       		.uleb128 0x10
+ 915 0010 17       		.uleb128 0x17
+ 916 0011 00       		.byte	0
+ 917 0012 00       		.byte	0
+ 918 0013 02       		.uleb128 0x2
+ 919 0014 24       		.uleb128 0x24
+ 920 0015 00       		.byte	0
+ 921 0016 0B       		.uleb128 0xb
+ 922 0017 0B       		.uleb128 0xb
+ 923 0018 3E       		.uleb128 0x3e
+ 924 0019 0B       		.uleb128 0xb
+ 925 001a 03       		.uleb128 0x3
+ 926 001b 0E       		.uleb128 0xe
+ 927 001c 00       		.byte	0
+ 928 001d 00       		.byte	0
+ 929 001e 03       		.uleb128 0x3
+ 930 001f 24       		.uleb128 0x24
+ 931 0020 00       		.byte	0
+ 932 0021 0B       		.uleb128 0xb
+ 933 0022 0B       		.uleb128 0xb
+ 934 0023 3E       		.uleb128 0x3e
+ 935 0024 0B       		.uleb128 0xb
+ 936 0025 03       		.uleb128 0x3
+ 937 0026 08       		.uleb128 0x8
+ 938 0027 00       		.byte	0
+ 939 0028 00       		.byte	0
+ 940 0029 04       		.uleb128 0x4
+ 941 002a 16       		.uleb128 0x16
+ 942 002b 00       		.byte	0
+ 943 002c 03       		.uleb128 0x3
+ 944 002d 0E       		.uleb128 0xe
+ 945 002e 3A       		.uleb128 0x3a
+ 946 002f 0B       		.uleb128 0xb
+ 947 0030 3B       		.uleb128 0x3b
+ 948 0031 0B       		.uleb128 0xb
+ 949 0032 49       		.uleb128 0x49
+ 950 0033 13       		.uleb128 0x13
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 29
+
+
+ 951 0034 00       		.byte	0
+ 952 0035 00       		.byte	0
+ 953 0036 05       		.uleb128 0x5
+ 954 0037 16       		.uleb128 0x16
+ 955 0038 00       		.byte	0
+ 956 0039 03       		.uleb128 0x3
+ 957 003a 0E       		.uleb128 0xe
+ 958 003b 3A       		.uleb128 0x3a
+ 959 003c 0B       		.uleb128 0xb
+ 960 003d 3B       		.uleb128 0x3b
+ 961 003e 05       		.uleb128 0x5
+ 962 003f 49       		.uleb128 0x49
+ 963 0040 13       		.uleb128 0x13
+ 964 0041 00       		.byte	0
+ 965 0042 00       		.byte	0
+ 966 0043 06       		.uleb128 0x6
+ 967 0044 35       		.uleb128 0x35
+ 968 0045 00       		.byte	0
+ 969 0046 49       		.uleb128 0x49
+ 970 0047 13       		.uleb128 0x13
+ 971 0048 00       		.byte	0
+ 972 0049 00       		.byte	0
+ 973 004a 07       		.uleb128 0x7
+ 974 004b 2E       		.uleb128 0x2e
+ 975 004c 01       		.byte	0x1
+ 976 004d 03       		.uleb128 0x3
+ 977 004e 0E       		.uleb128 0xe
+ 978 004f 3A       		.uleb128 0x3a
+ 979 0050 0B       		.uleb128 0xb
+ 980 0051 3B       		.uleb128 0x3b
+ 981 0052 05       		.uleb128 0x5
+ 982 0053 27       		.uleb128 0x27
+ 983 0054 19       		.uleb128 0x19
+ 984 0055 11       		.uleb128 0x11
+ 985 0056 01       		.uleb128 0x1
+ 986 0057 12       		.uleb128 0x12
+ 987 0058 06       		.uleb128 0x6
+ 988 0059 40       		.uleb128 0x40
+ 989 005a 18       		.uleb128 0x18
+ 990 005b 9742     		.uleb128 0x2117
+ 991 005d 19       		.uleb128 0x19
+ 992 005e 01       		.uleb128 0x1
+ 993 005f 13       		.uleb128 0x13
+ 994 0060 00       		.byte	0
+ 995 0061 00       		.byte	0
+ 996 0062 08       		.uleb128 0x8
+ 997 0063 05       		.uleb128 0x5
+ 998 0064 00       		.byte	0
+ 999 0065 03       		.uleb128 0x3
+ 1000 0066 0E       		.uleb128 0xe
+ 1001 0067 3A       		.uleb128 0x3a
+ 1002 0068 0B       		.uleb128 0xb
+ 1003 0069 3B       		.uleb128 0x3b
+ 1004 006a 05       		.uleb128 0x5
+ 1005 006b 49       		.uleb128 0x49
+ 1006 006c 13       		.uleb128 0x13
+ 1007 006d 02       		.uleb128 0x2
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 30
+
+
+ 1008 006e 17       		.uleb128 0x17
+ 1009 006f 00       		.byte	0
+ 1010 0070 00       		.byte	0
+ 1011 0071 09       		.uleb128 0x9
+ 1012 0072 34       		.uleb128 0x34
+ 1013 0073 00       		.byte	0
+ 1014 0074 03       		.uleb128 0x3
+ 1015 0075 0E       		.uleb128 0xe
+ 1016 0076 3A       		.uleb128 0x3a
+ 1017 0077 0B       		.uleb128 0xb
+ 1018 0078 3B       		.uleb128 0x3b
+ 1019 0079 05       		.uleb128 0x5
+ 1020 007a 49       		.uleb128 0x49
+ 1021 007b 13       		.uleb128 0x13
+ 1022 007c 02       		.uleb128 0x2
+ 1023 007d 17       		.uleb128 0x17
+ 1024 007e 00       		.byte	0
+ 1025 007f 00       		.byte	0
+ 1026 0080 0A       		.uleb128 0xa
+ 1027 0081 898201   		.uleb128 0x4109
+ 1028 0084 01       		.byte	0x1
+ 1029 0085 11       		.uleb128 0x11
+ 1030 0086 01       		.uleb128 0x1
+ 1031 0087 31       		.uleb128 0x31
+ 1032 0088 13       		.uleb128 0x13
+ 1033 0089 00       		.byte	0
+ 1034 008a 00       		.byte	0
+ 1035 008b 0B       		.uleb128 0xb
+ 1036 008c 8A8201   		.uleb128 0x410a
+ 1037 008f 00       		.byte	0
+ 1038 0090 02       		.uleb128 0x2
+ 1039 0091 18       		.uleb128 0x18
+ 1040 0092 9142     		.uleb128 0x2111
+ 1041 0094 18       		.uleb128 0x18
+ 1042 0095 00       		.byte	0
+ 1043 0096 00       		.byte	0
+ 1044 0097 0C       		.uleb128 0xc
+ 1045 0098 2E       		.uleb128 0x2e
+ 1046 0099 00       		.byte	0
+ 1047 009a 3F       		.uleb128 0x3f
+ 1048 009b 19       		.uleb128 0x19
+ 1049 009c 03       		.uleb128 0x3
+ 1050 009d 0E       		.uleb128 0xe
+ 1051 009e 3A       		.uleb128 0x3a
+ 1052 009f 0B       		.uleb128 0xb
+ 1053 00a0 3B       		.uleb128 0x3b
+ 1054 00a1 0B       		.uleb128 0xb
+ 1055 00a2 27       		.uleb128 0x27
+ 1056 00a3 19       		.uleb128 0x19
+ 1057 00a4 11       		.uleb128 0x11
+ 1058 00a5 01       		.uleb128 0x1
+ 1059 00a6 12       		.uleb128 0x12
+ 1060 00a7 06       		.uleb128 0x6
+ 1061 00a8 40       		.uleb128 0x40
+ 1062 00a9 18       		.uleb128 0x18
+ 1063 00aa 9742     		.uleb128 0x2117
+ 1064 00ac 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 31
+
+
+ 1065 00ad 00       		.byte	0
+ 1066 00ae 00       		.byte	0
+ 1067 00af 0D       		.uleb128 0xd
+ 1068 00b0 2E       		.uleb128 0x2e
+ 1069 00b1 01       		.byte	0x1
+ 1070 00b2 3F       		.uleb128 0x3f
+ 1071 00b3 19       		.uleb128 0x19
+ 1072 00b4 03       		.uleb128 0x3
+ 1073 00b5 0E       		.uleb128 0xe
+ 1074 00b6 3A       		.uleb128 0x3a
+ 1075 00b7 0B       		.uleb128 0xb
+ 1076 00b8 3B       		.uleb128 0x3b
+ 1077 00b9 0B       		.uleb128 0xb
+ 1078 00ba 27       		.uleb128 0x27
+ 1079 00bb 19       		.uleb128 0x19
+ 1080 00bc 11       		.uleb128 0x11
+ 1081 00bd 01       		.uleb128 0x1
+ 1082 00be 12       		.uleb128 0x12
+ 1083 00bf 06       		.uleb128 0x6
+ 1084 00c0 40       		.uleb128 0x40
+ 1085 00c1 18       		.uleb128 0x18
+ 1086 00c2 9742     		.uleb128 0x2117
+ 1087 00c4 19       		.uleb128 0x19
+ 1088 00c5 01       		.uleb128 0x1
+ 1089 00c6 13       		.uleb128 0x13
+ 1090 00c7 00       		.byte	0
+ 1091 00c8 00       		.byte	0
+ 1092 00c9 0E       		.uleb128 0xe
+ 1093 00ca 05       		.uleb128 0x5
+ 1094 00cb 00       		.byte	0
+ 1095 00cc 03       		.uleb128 0x3
+ 1096 00cd 0E       		.uleb128 0xe
+ 1097 00ce 3A       		.uleb128 0x3a
+ 1098 00cf 0B       		.uleb128 0xb
+ 1099 00d0 3B       		.uleb128 0x3b
+ 1100 00d1 0B       		.uleb128 0xb
+ 1101 00d2 49       		.uleb128 0x49
+ 1102 00d3 13       		.uleb128 0x13
+ 1103 00d4 02       		.uleb128 0x2
+ 1104 00d5 18       		.uleb128 0x18
+ 1105 00d6 00       		.byte	0
+ 1106 00d7 00       		.byte	0
+ 1107 00d8 0F       		.uleb128 0xf
+ 1108 00d9 898201   		.uleb128 0x4109
+ 1109 00dc 00       		.byte	0
+ 1110 00dd 11       		.uleb128 0x11
+ 1111 00de 01       		.uleb128 0x1
+ 1112 00df 31       		.uleb128 0x31
+ 1113 00e0 13       		.uleb128 0x13
+ 1114 00e1 00       		.byte	0
+ 1115 00e2 00       		.byte	0
+ 1116 00e3 10       		.uleb128 0x10
+ 1117 00e4 898201   		.uleb128 0x4109
+ 1118 00e7 00       		.byte	0
+ 1119 00e8 11       		.uleb128 0x11
+ 1120 00e9 01       		.uleb128 0x1
+ 1121 00ea 9542     		.uleb128 0x2115
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 32
+
+
+ 1122 00ec 19       		.uleb128 0x19
+ 1123 00ed 31       		.uleb128 0x31
+ 1124 00ee 13       		.uleb128 0x13
+ 1125 00ef 00       		.byte	0
+ 1126 00f0 00       		.byte	0
+ 1127 00f1 11       		.uleb128 0x11
+ 1128 00f2 2E       		.uleb128 0x2e
+ 1129 00f3 00       		.byte	0
+ 1130 00f4 3F       		.uleb128 0x3f
+ 1131 00f5 19       		.uleb128 0x19
+ 1132 00f6 03       		.uleb128 0x3
+ 1133 00f7 0E       		.uleb128 0xe
+ 1134 00f8 3A       		.uleb128 0x3a
+ 1135 00f9 0B       		.uleb128 0xb
+ 1136 00fa 3B       		.uleb128 0x3b
+ 1137 00fb 0B       		.uleb128 0xb
+ 1138 00fc 27       		.uleb128 0x27
+ 1139 00fd 19       		.uleb128 0x19
+ 1140 00fe 49       		.uleb128 0x49
+ 1141 00ff 13       		.uleb128 0x13
+ 1142 0100 11       		.uleb128 0x11
+ 1143 0101 01       		.uleb128 0x1
+ 1144 0102 12       		.uleb128 0x12
+ 1145 0103 06       		.uleb128 0x6
+ 1146 0104 40       		.uleb128 0x40
+ 1147 0105 18       		.uleb128 0x18
+ 1148 0106 9742     		.uleb128 0x2117
+ 1149 0108 19       		.uleb128 0x19
+ 1150 0109 00       		.byte	0
+ 1151 010a 00       		.byte	0
+ 1152 010b 12       		.uleb128 0x12
+ 1153 010c 2E       		.uleb128 0x2e
+ 1154 010d 01       		.byte	0x1
+ 1155 010e 3F       		.uleb128 0x3f
+ 1156 010f 19       		.uleb128 0x19
+ 1157 0110 03       		.uleb128 0x3
+ 1158 0111 0E       		.uleb128 0xe
+ 1159 0112 3A       		.uleb128 0x3a
+ 1160 0113 0B       		.uleb128 0xb
+ 1161 0114 3B       		.uleb128 0x3b
+ 1162 0115 05       		.uleb128 0x5
+ 1163 0116 27       		.uleb128 0x27
+ 1164 0117 19       		.uleb128 0x19
+ 1165 0118 49       		.uleb128 0x49
+ 1166 0119 13       		.uleb128 0x13
+ 1167 011a 11       		.uleb128 0x11
+ 1168 011b 01       		.uleb128 0x1
+ 1169 011c 12       		.uleb128 0x12
+ 1170 011d 06       		.uleb128 0x6
+ 1171 011e 40       		.uleb128 0x40
+ 1172 011f 18       		.uleb128 0x18
+ 1173 0120 9742     		.uleb128 0x2117
+ 1174 0122 19       		.uleb128 0x19
+ 1175 0123 01       		.uleb128 0x1
+ 1176 0124 13       		.uleb128 0x13
+ 1177 0125 00       		.byte	0
+ 1178 0126 00       		.byte	0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 33
+
+
+ 1179 0127 13       		.uleb128 0x13
+ 1180 0128 898201   		.uleb128 0x4109
+ 1181 012b 01       		.byte	0x1
+ 1182 012c 11       		.uleb128 0x11
+ 1183 012d 01       		.uleb128 0x1
+ 1184 012e 31       		.uleb128 0x31
+ 1185 012f 13       		.uleb128 0x13
+ 1186 0130 01       		.uleb128 0x1
+ 1187 0131 13       		.uleb128 0x13
+ 1188 0132 00       		.byte	0
+ 1189 0133 00       		.byte	0
+ 1190 0134 14       		.uleb128 0x14
+ 1191 0135 2E       		.uleb128 0x2e
+ 1192 0136 01       		.byte	0x1
+ 1193 0137 3F       		.uleb128 0x3f
+ 1194 0138 19       		.uleb128 0x19
+ 1195 0139 03       		.uleb128 0x3
+ 1196 013a 0E       		.uleb128 0xe
+ 1197 013b 3A       		.uleb128 0x3a
+ 1198 013c 0B       		.uleb128 0xb
+ 1199 013d 3B       		.uleb128 0x3b
+ 1200 013e 05       		.uleb128 0x5
+ 1201 013f 27       		.uleb128 0x27
+ 1202 0140 19       		.uleb128 0x19
+ 1203 0141 11       		.uleb128 0x11
+ 1204 0142 01       		.uleb128 0x1
+ 1205 0143 12       		.uleb128 0x12
+ 1206 0144 06       		.uleb128 0x6
+ 1207 0145 40       		.uleb128 0x40
+ 1208 0146 18       		.uleb128 0x18
+ 1209 0147 9742     		.uleb128 0x2117
+ 1210 0149 19       		.uleb128 0x19
+ 1211 014a 01       		.uleb128 0x1
+ 1212 014b 13       		.uleb128 0x13
+ 1213 014c 00       		.byte	0
+ 1214 014d 00       		.byte	0
+ 1215 014e 15       		.uleb128 0x15
+ 1216 014f 2E       		.uleb128 0x2e
+ 1217 0150 00       		.byte	0
+ 1218 0151 3F       		.uleb128 0x3f
+ 1219 0152 19       		.uleb128 0x19
+ 1220 0153 03       		.uleb128 0x3
+ 1221 0154 0E       		.uleb128 0xe
+ 1222 0155 3A       		.uleb128 0x3a
+ 1223 0156 0B       		.uleb128 0xb
+ 1224 0157 3B       		.uleb128 0x3b
+ 1225 0158 05       		.uleb128 0x5
+ 1226 0159 27       		.uleb128 0x27
+ 1227 015a 19       		.uleb128 0x19
+ 1228 015b 11       		.uleb128 0x11
+ 1229 015c 01       		.uleb128 0x1
+ 1230 015d 12       		.uleb128 0x12
+ 1231 015e 06       		.uleb128 0x6
+ 1232 015f 40       		.uleb128 0x40
+ 1233 0160 18       		.uleb128 0x18
+ 1234 0161 9742     		.uleb128 0x2117
+ 1235 0163 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 34
+
+
+ 1236 0164 00       		.byte	0
+ 1237 0165 00       		.byte	0
+ 1238 0166 16       		.uleb128 0x16
+ 1239 0167 34       		.uleb128 0x34
+ 1240 0168 00       		.byte	0
+ 1241 0169 03       		.uleb128 0x3
+ 1242 016a 0E       		.uleb128 0xe
+ 1243 016b 3A       		.uleb128 0x3a
+ 1244 016c 0B       		.uleb128 0xb
+ 1245 016d 3B       		.uleb128 0x3b
+ 1246 016e 0B       		.uleb128 0xb
+ 1247 016f 49       		.uleb128 0x49
+ 1248 0170 13       		.uleb128 0x13
+ 1249 0171 3F       		.uleb128 0x3f
+ 1250 0172 19       		.uleb128 0x19
+ 1251 0173 02       		.uleb128 0x2
+ 1252 0174 18       		.uleb128 0x18
+ 1253 0175 00       		.byte	0
+ 1254 0176 00       		.byte	0
+ 1255 0177 17       		.uleb128 0x17
+ 1256 0178 2E       		.uleb128 0x2e
+ 1257 0179 01       		.byte	0x1
+ 1258 017a 3F       		.uleb128 0x3f
+ 1259 017b 19       		.uleb128 0x19
+ 1260 017c 03       		.uleb128 0x3
+ 1261 017d 0E       		.uleb128 0xe
+ 1262 017e 3A       		.uleb128 0x3a
+ 1263 017f 0B       		.uleb128 0xb
+ 1264 0180 3B       		.uleb128 0x3b
+ 1265 0181 0B       		.uleb128 0xb
+ 1266 0182 27       		.uleb128 0x27
+ 1267 0183 19       		.uleb128 0x19
+ 1268 0184 3C       		.uleb128 0x3c
+ 1269 0185 19       		.uleb128 0x19
+ 1270 0186 00       		.byte	0
+ 1271 0187 00       		.byte	0
+ 1272 0188 18       		.uleb128 0x18
+ 1273 0189 05       		.uleb128 0x5
+ 1274 018a 00       		.byte	0
+ 1275 018b 49       		.uleb128 0x49
+ 1276 018c 13       		.uleb128 0x13
+ 1277 018d 00       		.byte	0
+ 1278 018e 00       		.byte	0
+ 1279 018f 00       		.byte	0
+ 1280              		.section	.debug_loc,"",%progbits
+ 1281              	.Ldebug_loc0:
+ 1282              	.LLST0:
+ 1283 0000 00000000 		.4byte	.LVL0
+ 1284 0004 32000000 		.4byte	.LVL3
+ 1285 0008 0100     		.2byte	0x1
+ 1286 000a 50       		.byte	0x50
+ 1287 000b 32000000 		.4byte	.LVL3
+ 1288 000f 60000000 		.4byte	.LVL7
+ 1289 0013 0400     		.2byte	0x4
+ 1290 0015 F3       		.byte	0xf3
+ 1291 0016 01       		.uleb128 0x1
+ 1292 0017 50       		.byte	0x50
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 35
+
+
+ 1293 0018 9F       		.byte	0x9f
+ 1294 0019 60000000 		.4byte	.LVL7
+ 1295 001d 64000000 		.4byte	.LVL8
+ 1296 0021 0100     		.2byte	0x1
+ 1297 0023 50       		.byte	0x50
+ 1298 0024 64000000 		.4byte	.LVL8
+ 1299 0028 74000000 		.4byte	.LFE6
+ 1300 002c 0400     		.2byte	0x4
+ 1301 002e F3       		.byte	0xf3
+ 1302 002f 01       		.uleb128 0x1
+ 1303 0030 50       		.byte	0x50
+ 1304 0031 9F       		.byte	0x9f
+ 1305 0032 00000000 		.4byte	0
+ 1306 0036 00000000 		.4byte	0
+ 1307              	.LLST1:
+ 1308 003a 30000000 		.4byte	.LVL2
+ 1309 003e 32000000 		.4byte	.LVL3
+ 1310 0042 0200     		.2byte	0x2
+ 1311 0044 30       		.byte	0x30
+ 1312 0045 9F       		.byte	0x9f
+ 1313 0046 32000000 		.4byte	.LVL3
+ 1314 004a 54000000 		.4byte	.LVL5
+ 1315 004e 0100     		.2byte	0x1
+ 1316 0050 55       		.byte	0x55
+ 1317 0051 54000000 		.4byte	.LVL5
+ 1318 0055 56000000 		.4byte	.LVL6
+ 1319 0059 0300     		.2byte	0x3
+ 1320 005b 75       		.byte	0x75
+ 1321 005c 01       		.sleb128 1
+ 1322 005d 9F       		.byte	0x9f
+ 1323 005e 56000000 		.4byte	.LVL6
+ 1324 0062 60000000 		.4byte	.LVL7
+ 1325 0066 0300     		.2byte	0x3
+ 1326 0068 75       		.byte	0x75
+ 1327 0069 00       		.sleb128 0
+ 1328 006a 9F       		.byte	0x9f
+ 1329 006b 64000000 		.4byte	.LVL8
+ 1330 006f 68000000 		.4byte	.LVL9
+ 1331 0073 0100     		.2byte	0x1
+ 1332 0075 55       		.byte	0x55
+ 1333 0076 00000000 		.4byte	0
+ 1334 007a 00000000 		.4byte	0
+ 1335              	.LLST2:
+ 1336 007e 30000000 		.4byte	.LVL2
+ 1337 0082 60000000 		.4byte	.LVL7
+ 1338 0086 0100     		.2byte	0x1
+ 1339 0088 56       		.byte	0x56
+ 1340 0089 64000000 		.4byte	.LVL8
+ 1341 008d 68000000 		.4byte	.LVL9
+ 1342 0091 0100     		.2byte	0x1
+ 1343 0093 56       		.byte	0x56
+ 1344 0094 00000000 		.4byte	0
+ 1345 0098 00000000 		.4byte	0
+ 1346              	.LLST3:
+ 1347 009c 12000000 		.4byte	.LVL1
+ 1348 00a0 68000000 		.4byte	.LVL9
+ 1349 00a4 0100     		.2byte	0x1
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 36
+
+
+ 1350 00a6 54       		.byte	0x54
+ 1351 00a7 00000000 		.4byte	0
+ 1352 00ab 00000000 		.4byte	0
+ 1353              	.LLST4:
+ 1354 00af 34000000 		.4byte	.LVL14
+ 1355 00b3 88000000 		.4byte	.LVL19
+ 1356 00b7 0100     		.2byte	0x1
+ 1357 00b9 59       		.byte	0x59
+ 1358 00ba 00000000 		.4byte	0
+ 1359 00be 00000000 		.4byte	0
+ 1360              	.LLST5:
+ 1361 00c2 3E000000 		.4byte	.LVL15
+ 1362 00c6 88000000 		.4byte	.LVL19
+ 1363 00ca 0100     		.2byte	0x1
+ 1364 00cc 57       		.byte	0x57
+ 1365 00cd 00000000 		.4byte	0
+ 1366 00d1 00000000 		.4byte	0
+ 1367              	.LLST6:
+ 1368 00d5 3E000000 		.4byte	.LVL15
+ 1369 00d9 88000000 		.4byte	.LVL19
+ 1370 00dd 0100     		.2byte	0x1
+ 1371 00df 54       		.byte	0x54
+ 1372 00e0 00000000 		.4byte	0
+ 1373 00e4 00000000 		.4byte	0
+ 1374              	.LLST7:
+ 1375 00e8 4E000000 		.4byte	.LVL16
+ 1376 00ec 88000000 		.4byte	.LVL19
+ 1377 00f0 0100     		.2byte	0x1
+ 1378 00f2 5B       		.byte	0x5b
+ 1379 00f3 00000000 		.4byte	0
+ 1380 00f7 00000000 		.4byte	0
+ 1381              	.LLST8:
+ 1382 00fb 00000000 		.4byte	.LVL20
+ 1383 00ff 06000000 		.4byte	.LVL21
+ 1384 0103 0100     		.2byte	0x1
+ 1385 0105 50       		.byte	0x50
+ 1386 0106 06000000 		.4byte	.LVL21
+ 1387 010a 10000000 		.4byte	.LFE8
+ 1388 010e 0400     		.2byte	0x4
+ 1389 0110 F3       		.byte	0xf3
+ 1390 0111 01       		.uleb128 0x1
+ 1391 0112 50       		.byte	0x50
+ 1392 0113 9F       		.byte	0x9f
+ 1393 0114 00000000 		.4byte	0
+ 1394 0118 00000000 		.4byte	0
+ 1395              		.section	.debug_aranges,"",%progbits
+ 1396 0000 6C000000 		.4byte	0x6c
+ 1397 0004 0200     		.2byte	0x2
+ 1398 0006 00000000 		.4byte	.Ldebug_info0
+ 1399 000a 04       		.byte	0x4
+ 1400 000b 00       		.byte	0
+ 1401 000c 0000     		.2byte	0
+ 1402 000e 0000     		.2byte	0
+ 1403 0010 00000000 		.4byte	.LFB6
+ 1404 0014 74000000 		.4byte	.LFE6-.LFB6
+ 1405 0018 00000000 		.4byte	.LFB1
+ 1406 001c 18000000 		.4byte	.LFE1-.LFB1
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 37
+
+
+ 1407 0020 00000000 		.4byte	.LFB3
+ 1408 0024 18000000 		.4byte	.LFE3-.LFB3
+ 1409 0028 00000000 		.4byte	.LFB4
+ 1410 002c 58000000 		.4byte	.LFE4-.LFB4
+ 1411 0030 00000000 		.4byte	.LFB0
+ 1412 0034 40000000 		.4byte	.LFE0-.LFB0
+ 1413 0038 00000000 		.4byte	.LFB2
+ 1414 003c 1C000000 		.4byte	.LFE2-.LFB2
+ 1415 0040 00000000 		.4byte	.LFB5
+ 1416 0044 10000000 		.4byte	.LFE5-.LFB5
+ 1417 0048 00000000 		.4byte	.LFB7
+ 1418 004c A0000000 		.4byte	.LFE7-.LFB7
+ 1419 0050 00000000 		.4byte	.LFB8
+ 1420 0054 10000000 		.4byte	.LFE8-.LFB8
+ 1421 0058 00000000 		.4byte	.LFB9
+ 1422 005c 10000000 		.4byte	.LFE9-.LFB9
+ 1423 0060 00000000 		.4byte	.LFB10
+ 1424 0064 10000000 		.4byte	.LFE10-.LFB10
+ 1425 0068 00000000 		.4byte	0
+ 1426 006c 00000000 		.4byte	0
+ 1427              		.section	.debug_ranges,"",%progbits
+ 1428              	.Ldebug_ranges0:
+ 1429 0000 00000000 		.4byte	.LFB6
+ 1430 0004 74000000 		.4byte	.LFE6
+ 1431 0008 00000000 		.4byte	.LFB1
+ 1432 000c 18000000 		.4byte	.LFE1
+ 1433 0010 00000000 		.4byte	.LFB3
+ 1434 0014 18000000 		.4byte	.LFE3
+ 1435 0018 00000000 		.4byte	.LFB4
+ 1436 001c 58000000 		.4byte	.LFE4
+ 1437 0020 00000000 		.4byte	.LFB0
+ 1438 0024 40000000 		.4byte	.LFE0
+ 1439 0028 00000000 		.4byte	.LFB2
+ 1440 002c 1C000000 		.4byte	.LFE2
+ 1441 0030 00000000 		.4byte	.LFB5
+ 1442 0034 10000000 		.4byte	.LFE5
+ 1443 0038 00000000 		.4byte	.LFB7
+ 1444 003c A0000000 		.4byte	.LFE7
+ 1445 0040 00000000 		.4byte	.LFB8
+ 1446 0044 10000000 		.4byte	.LFE8
+ 1447 0048 00000000 		.4byte	.LFB9
+ 1448 004c 10000000 		.4byte	.LFE9
+ 1449 0050 00000000 		.4byte	.LFB10
+ 1450 0054 10000000 		.4byte	.LFE10
+ 1451 0058 00000000 		.4byte	0
+ 1452 005c 00000000 		.4byte	0
+ 1453              		.section	.debug_line,"",%progbits
+ 1454              	.Ldebug_line0:
+ 1455 0000 98010000 		.section	.debug_str,"MS",%progbits,1
+ 1455      02005A00 
+ 1455      00000201 
+ 1455      FB0E0D00 
+ 1455      01010101 
+ 1456              	.LASF32:
+ 1457 0000 7472696D 		.ascii	"trimVal\000"
+ 1457      56616C00 
+ 1458              	.LASF30:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 38
+
+
+ 1459 0008 746D7043 		.ascii	"tmpCR\000"
+ 1459      5200
+ 1460              	.LASF26:
+ 1461 000e 43617053 		.ascii	"CapSense_CompCH0_Start\000"
+ 1461      656E7365 
+ 1461      5F436F6D 
+ 1461      70434830 
+ 1461      5F537461 
+ 1462              	.LASF28:
+ 1463 0025 746D7053 		.ascii	"tmpSW2\000"
+ 1463      573200
+ 1464              	.LASF37:
+ 1465 002c 433A5C55 		.ascii	"C:\\Users\\Xwx47\\Documents\\PSoC Creator\\CapSense"
+ 1465      73657273 
+ 1465      5C587778 
+ 1465      34375C44 
+ 1465      6F63756D 
+ 1466 005a 5F354C50 		.ascii	"_5LP_test\\CapSense_5LP_test.cydsn\000"
+ 1466      5F746573 
+ 1466      745C4361 
+ 1466      7053656E 
+ 1466      73655F35 
+ 1467              	.LASF35:
+ 1468 007c 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1468      4320342E 
+ 1468      382E3420 
+ 1468      32303134 
+ 1468      30353236 
+ 1469 00af 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 1469      20726576 
+ 1469      6973696F 
+ 1469      6E203231 
+ 1469      31333538 
+ 1470 00e2 73202D66 		.ascii	"s -ffunction-sections\000"
+ 1470      66756E63 
+ 1470      74696F6E 
+ 1470      2D736563 
+ 1470      74696F6E 
+ 1471              	.LASF24:
+ 1472 00f8 43617053 		.ascii	"CapSense_CompCH0_SetSpeed\000"
+ 1472      656E7365 
+ 1472      5F436F6D 
+ 1472      70434830 
+ 1472      5F536574 
+ 1473              	.LASF3:
+ 1474 0112 73686F72 		.ascii	"short unsigned int\000"
+ 1474      7420756E 
+ 1474      7369676E 
+ 1474      65642069 
+ 1474      6E7400
+ 1475              	.LASF31:
+ 1476 0125 43617053 		.ascii	"CapSense_CompCH0_LoadTrim\000"
+ 1476      656E7365 
+ 1476      5F436F6D 
+ 1476      70434830 
+ 1476      5F4C6F61 
+ 1477              	.LASF25:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 39
+
+
+ 1478 013f 43617053 		.ascii	"CapSense_CompCH0_Init\000"
+ 1478      656E7365 
+ 1478      5F436F6D 
+ 1478      70434830 
+ 1478      5F496E69 
+ 1479              	.LASF36:
+ 1480 0155 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\CapSense_CompCH0.c\000"
+ 1480      6E657261 
+ 1480      7465645F 
+ 1480      536F7572 
+ 1480      63655C50 
+ 1481              	.LASF27:
+ 1482 0181 746D7053 		.ascii	"tmpSW0\000"
+ 1482      573000
+ 1483              	.LASF12:
+ 1484 0188 666C6F61 		.ascii	"float\000"
+ 1484      7400
+ 1485              	.LASF29:
+ 1486 018e 746D7053 		.ascii	"tmpSW3\000"
+ 1486      573300
+ 1487              	.LASF1:
+ 1488 0195 756E7369 		.ascii	"unsigned char\000"
+ 1488      676E6564 
+ 1488      20636861 
+ 1488      7200
+ 1489              	.LASF15:
+ 1490 01a3 72656738 		.ascii	"reg8\000"
+ 1490      00
+ 1491              	.LASF17:
+ 1492 01a8 7472696D 		.ascii	"trimCnt\000"
+ 1492      436E7400 
+ 1493              	.LASF5:
+ 1494 01b0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1494      20756E73 
+ 1494      69676E65 
+ 1494      6420696E 
+ 1494      7400
+ 1495              	.LASF9:
+ 1496 01c2 75696E74 		.ascii	"uint8\000"
+ 1496      3800
+ 1497              	.LASF41:
+ 1498 01c8 43617053 		.ascii	"CapSense_CompCH0_initVar\000"
+ 1498      656E7365 
+ 1498      5F436F6D 
+ 1498      70434830 
+ 1498      5F696E69 
+ 1499              	.LASF13:
+ 1500 01e1 646F7562 		.ascii	"double\000"
+ 1500      6C6500
+ 1501              	.LASF10:
+ 1502 01e8 75696E74 		.ascii	"uint16\000"
+ 1502      313600
+ 1503              	.LASF11:
+ 1504 01ef 75696E74 		.ascii	"uint32\000"
+ 1504      333200
+ 1505              	.LASF21:
+ 1506 01f6 43617053 		.ascii	"CapSense_CompCH0_Stop\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 40
+
+
+ 1506      656E7365 
+ 1506      5F436F6D 
+ 1506      70434830 
+ 1506      5F53746F 
+ 1507              	.LASF8:
+ 1508 020c 756E7369 		.ascii	"unsigned int\000"
+ 1508      676E6564 
+ 1508      20696E74 
+ 1508      00
+ 1509              	.LASF19:
+ 1510 0219 636D7053 		.ascii	"cmpState\000"
+ 1510      74617465 
+ 1510      00
+ 1511              	.LASF7:
+ 1512 0222 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1512      206C6F6E 
+ 1512      6720756E 
+ 1512      7369676E 
+ 1512      65642069 
+ 1513              	.LASF33:
+ 1514 0239 43617053 		.ascii	"CapSense_CompCH0_PwrDwnOverrideEnable\000"
+ 1514      656E7365 
+ 1514      5F436F6D 
+ 1514      70434830 
+ 1514      5F507772 
+ 1515              	.LASF39:
+ 1516 025f 43617053 		.ascii	"CapSense_CompCH0_GetCompare\000"
+ 1516      656E7365 
+ 1516      5F436F6D 
+ 1516      70434830 
+ 1516      5F476574 
+ 1517              	.LASF23:
+ 1518 027b 73706565 		.ascii	"speed\000"
+ 1518      6400
+ 1519              	.LASF16:
+ 1520 0281 73697A65 		.ascii	"sizetype\000"
+ 1520      74797065 
+ 1520      00
+ 1521              	.LASF18:
+ 1522 028a 7472696D 		.ascii	"trimCntMax\000"
+ 1522      436E744D 
+ 1522      617800
+ 1523              	.LASF6:
+ 1524 0295 6C6F6E67 		.ascii	"long long int\000"
+ 1524      206C6F6E 
+ 1524      6720696E 
+ 1524      7400
+ 1525              	.LASF38:
+ 1526 02a3 43617053 		.ascii	"CapSense_CompCH0_trimAdjust\000"
+ 1526      656E7365 
+ 1526      5F436F6D 
+ 1526      70434830 
+ 1526      5F747269 
+ 1527              	.LASF14:
+ 1528 02bf 63686172 		.ascii	"char\000"
+ 1528      00
+ 1529              	.LASF20:
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccDPbGAs.s 			page 41
+
+
+ 1530 02c4 43617053 		.ascii	"CapSense_CompCH0_Enable\000"
+ 1530      656E7365 
+ 1530      5F436F6D 
+ 1530      70434830 
+ 1530      5F456E61 
+ 1531              	.LASF2:
+ 1532 02dc 73686F72 		.ascii	"short int\000"
+ 1532      7420696E 
+ 1532      7400
+ 1533              	.LASF4:
+ 1534 02e6 6C6F6E67 		.ascii	"long int\000"
+ 1534      20696E74 
+ 1534      00
+ 1535              	.LASF40:
+ 1536 02ef 43617053 		.ascii	"CapSense_CompCH0_ZeroCal\000"
+ 1536      656E7365 
+ 1536      5F436F6D 
+ 1536      70434830 
+ 1536      5F5A6572 
+ 1537              	.LASF0:
+ 1538 0308 7369676E 		.ascii	"signed char\000"
+ 1538      65642063 
+ 1538      68617200 
+ 1539              	.LASF34:
+ 1540 0314 43617053 		.ascii	"CapSense_CompCH0_PwrDwnOverrideDisable\000"
+ 1540      656E7365 
+ 1540      5F436F6D 
+ 1540      70434830 
+ 1540      5F507772 
+ 1541              	.LASF42:
+ 1542 033b 43794465 		.ascii	"CyDelayUs\000"
+ 1542      6C617955 
+ 1542      7300
+ 1543              	.LASF22:
+ 1544 0345 6E696262 		.ascii	"nibble\000"
+ 1544      6C6500
+ 1545              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

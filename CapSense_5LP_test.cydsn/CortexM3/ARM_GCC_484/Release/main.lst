@@ -1,0 +1,845 @@
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.startup.main,"ax",%progbits
+  19              		.align	1
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** #include <project.h>
+   2:.\main.c      **** 
+   3:.\main.c      **** int main()
+   4:.\main.c      **** {
+  27              		.loc 1 4 0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+   5:.\main.c      ****     CyGlobalIntEnable;
+  36              		.loc 1 5 0
+  37              	@ 5 ".\main.c" 1
+  38 0002 62B6     		CPSIE   i
+  39              	@ 0 "" 2
+   6:.\main.c      **** 
+   7:.\main.c      ****     CapSense_Start();
+  40              		.loc 1 7 0
+  41              		.thumb
+  42 0004 FFF7FEFF 		bl	CapSense_Start
+  43              	.LVL0:
+   8:.\main.c      ****     
+   9:.\main.c      ****     CapSense_InitializeAllBaselines();
+  44              		.loc 1 9 0
+  45 0008 FFF7FEFF 		bl	CapSense_InitializeAllBaselines
+  46              	.LVL1:
+  47              	.L2:
+  10:.\main.c      **** 
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 2
+
+
+  11:.\main.c      ****     for(;;)
+  12:.\main.c      ****     {
+  13:.\main.c      ****         CapSense_UpdateEnabledBaselines();
+  48              		.loc 1 13 0
+  49 000c FFF7FEFF 		bl	CapSense_UpdateEnabledBaselines
+  50              	.LVL2:
+  14:.\main.c      ****         CapSense_ScanEnabledWidgets();
+  51              		.loc 1 14 0
+  52 0010 FFF7FEFF 		bl	CapSense_ScanEnabledWidgets
+  53              	.LVL3:
+  54              	.L4:
+  15:.\main.c      ****         
+  16:.\main.c      ****         while(CapSense_IsBusy());
+  55              		.loc 1 16 0 discriminator 1
+  56 0014 FFF7FEFF 		bl	CapSense_IsBusy
+  57              	.LVL4:
+  58 0018 0028     		cmp	r0, #0
+  59 001a FBD1     		bne	.L4
+  17:.\main.c      ****         
+  18:.\main.c      ****         if(CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN)){
+  60              		.loc 1 18 0
+  61 001c FFF7FEFF 		bl	CapSense_CheckIsWidgetActive
+  62              	.LVL5:
+  63 0020 0546     		mov	r5, r0
+  19:.\main.c      ****             LED_Write(1);
+  64              		.loc 1 19 0
+  65 0022 0120     		movs	r0, #1
+  18:.\main.c      ****         if(CapSense_CheckIsWidgetActive(CapSense_BUTTON0__BTN)){
+  66              		.loc 1 18 0
+  67 0024 25B9     		cbnz	r5, .L11
+  20:.\main.c      ****         }else if(CapSense_CheckIsWidgetActive(CapSense_BUTTON1__BTN)){
+  68              		.loc 1 20 0
+  69 0026 FFF7FEFF 		bl	CapSense_CheckIsWidgetActive
+  70              	.LVL6:
+  71 002a 0446     		mov	r4, r0
+  72 002c 18B1     		cbz	r0, .L7
+  21:.\main.c      ****             LED_Write(0);
+  73              		.loc 1 21 0
+  74 002e 2846     		mov	r0, r5
+  75              	.L11:
+  76 0030 FFF7FEFF 		bl	LED_Write
+  77              	.LVL7:
+  78 0034 EAE7     		b	.L2
+  79              	.L7:
+  22:.\main.c      ****         }else if(CapSense_CheckIsWidgetActive(CapSense_BUTTON2__BTN)){
+  80              		.loc 1 22 0
+  81 0036 0220     		movs	r0, #2
+  82 0038 FFF7FEFF 		bl	CapSense_CheckIsWidgetActive
+  83              	.LVL8:
+  84 003c 0028     		cmp	r0, #0
+  85 003e E5D0     		beq	.L2
+  23:.\main.c      ****             LED_Write(1);
+  86              		.loc 1 23 0
+  87 0040 0120     		movs	r0, #1
+  88 0042 FFF7FEFF 		bl	LED_Write
+  89              	.LVL9:
+  24:.\main.c      ****             CyDelay(250);
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 3
+
+
+  90              		.loc 1 24 0
+  91 0046 FA20     		movs	r0, #250
+  92 0048 FFF7FEFF 		bl	CyDelay
+  93              	.LVL10:
+  25:.\main.c      ****             LED_Write(0);
+  94              		.loc 1 25 0
+  95 004c 2046     		mov	r0, r4
+  96 004e FFF7FEFF 		bl	LED_Write
+  97              	.LVL11:
+  26:.\main.c      ****             CyDelay(250);
+  98              		.loc 1 26 0
+  99 0052 FA20     		movs	r0, #250
+ 100 0054 FFF7FEFF 		bl	CyDelay
+ 101              	.LVL12:
+ 102 0058 D8E7     		b	.L2
+ 103              		.cfi_endproc
+ 104              	.LFE63:
+ 105              		.size	main, .-main
+ 106              		.text
+ 107              	.Letext0:
+ 108              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 109              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 110              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 111              		.file 5 "Generated_Source\\PSoC5/CapSense.h"
+ 112              		.file 6 "Generated_Source\\PSoC5/CapSense_CSHL.h"
+ 113              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 114              		.file 8 "Generated_Source\\PSoC5/LED.h"
+ 115              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
+ 116              		.section	.debug_info,"",%progbits
+ 117              	.Ldebug_info0:
+ 118 0000 E5010000 		.4byte	0x1e5
+ 119 0004 0400     		.2byte	0x4
+ 120 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 121 000a 04       		.byte	0x4
+ 122 000b 01       		.uleb128 0x1
+ 123 000c 79000000 		.4byte	.LASF21
+ 124 0010 01       		.byte	0x1
+ 125 0011 05010000 		.4byte	.LASF22
+ 126 0015 23000000 		.4byte	.LASF23
+ 127 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 128 001d 00000000 		.4byte	0
+ 129 0021 00000000 		.4byte	.Ldebug_line0
+ 130 0025 02       		.uleb128 0x2
+ 131 0026 01       		.byte	0x1
+ 132 0027 06       		.byte	0x6
+ 133 0028 1B020000 		.4byte	.LASF0
+ 134 002c 02       		.uleb128 0x2
+ 135 002d 01       		.byte	0x1
+ 136 002e 08       		.byte	0x8
+ 137 002f 40010000 		.4byte	.LASF1
+ 138 0033 02       		.uleb128 0x2
+ 139 0034 02       		.byte	0x2
+ 140 0035 05       		.byte	0x5
+ 141 0036 E5010000 		.4byte	.LASF2
+ 142 003a 02       		.uleb128 0x2
+ 143 003b 02       		.byte	0x2
+ 144 003c 07       		.byte	0x7
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 4
+
+
+ 145 003d 20010000 		.4byte	.LASF3
+ 146 0041 03       		.uleb128 0x3
+ 147 0042 0A000000 		.4byte	.LASF9
+ 148 0046 02       		.byte	0x2
+ 149 0047 37       		.byte	0x37
+ 150 0048 4C000000 		.4byte	0x4c
+ 151 004c 02       		.uleb128 0x2
+ 152 004d 04       		.byte	0x4
+ 153 004e 05       		.byte	0x5
+ 154 004f F5010000 		.4byte	.LASF4
+ 155 0053 02       		.uleb128 0x2
+ 156 0054 04       		.byte	0x4
+ 157 0055 07       		.byte	0x7
+ 158 0056 0E010000 		.4byte	.LASF5
+ 159 005a 02       		.uleb128 0x2
+ 160 005b 08       		.byte	0x8
+ 161 005c 05       		.byte	0x5
+ 162 005d D2010000 		.4byte	.LASF6
+ 163 0061 02       		.uleb128 0x2
+ 164 0062 08       		.byte	0x8
+ 165 0063 07       		.byte	0x7
+ 166 0064 8A010000 		.4byte	.LASF7
+ 167 0068 04       		.uleb128 0x4
+ 168 0069 04       		.byte	0x4
+ 169 006a 05       		.byte	0x5
+ 170 006b 696E7400 		.ascii	"int\000"
+ 171 006f 02       		.uleb128 0x2
+ 172 0070 04       		.byte	0x4
+ 173 0071 07       		.byte	0x7
+ 174 0072 7D010000 		.4byte	.LASF8
+ 175 0076 03       		.uleb128 0x3
+ 176 0077 A1010000 		.4byte	.LASF10
+ 177 007b 03       		.byte	0x3
+ 178 007c 41       		.byte	0x41
+ 179 007d 41000000 		.4byte	0x41
+ 180 0081 03       		.uleb128 0x3
+ 181 0082 EF010000 		.4byte	.LASF11
+ 182 0086 04       		.byte	0x4
+ 183 0087 B4       		.byte	0xb4
+ 184 0088 2C000000 		.4byte	0x2c
+ 185 008c 03       		.uleb128 0x3
+ 186 008d 76010000 		.4byte	.LASF12
+ 187 0091 04       		.byte	0x4
+ 188 0092 B6       		.byte	0xb6
+ 189 0093 53000000 		.4byte	0x53
+ 190 0097 02       		.uleb128 0x2
+ 191 0098 04       		.byte	0x4
+ 192 0099 04       		.byte	0x4
+ 193 009a 73000000 		.4byte	.LASF13
+ 194 009e 02       		.uleb128 0x2
+ 195 009f 08       		.byte	0x8
+ 196 00a0 04       		.byte	0x4
+ 197 00a1 4E010000 		.4byte	.LASF14
+ 198 00a5 02       		.uleb128 0x2
+ 199 00a6 01       		.byte	0x1
+ 200 00a7 08       		.byte	0x8
+ 201 00a8 E0010000 		.4byte	.LASF15
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 5
+
+
+ 202 00ac 02       		.uleb128 0x2
+ 203 00ad 04       		.byte	0x4
+ 204 00ae 07       		.byte	0x7
+ 205 00af A9010000 		.4byte	.LASF16
+ 206 00b3 05       		.uleb128 0x5
+ 207 00b4 71010000 		.4byte	.LASF24
+ 208 00b8 01       		.byte	0x1
+ 209 00b9 03       		.byte	0x3
+ 210 00ba 68000000 		.4byte	0x68
+ 211 00be 00000000 		.4byte	.LFB63
+ 212 00c2 5A000000 		.4byte	.LFE63-.LFB63
+ 213 00c6 01       		.uleb128 0x1
+ 214 00c7 9C       		.byte	0x9c
+ 215 00c8 7D010000 		.4byte	0x17d
+ 216 00cc 06       		.uleb128 0x6
+ 217 00cd 08000000 		.4byte	.LVL0
+ 218 00d1 8E010000 		.4byte	0x18e
+ 219 00d5 06       		.uleb128 0x6
+ 220 00d6 0C000000 		.4byte	.LVL1
+ 221 00da 95010000 		.4byte	0x195
+ 222 00de 06       		.uleb128 0x6
+ 223 00df 10000000 		.4byte	.LVL2
+ 224 00e3 9C010000 		.4byte	0x19c
+ 225 00e7 06       		.uleb128 0x6
+ 226 00e8 14000000 		.4byte	.LVL3
+ 227 00ec A3010000 		.4byte	0x1a3
+ 228 00f0 06       		.uleb128 0x6
+ 229 00f1 18000000 		.4byte	.LVL4
+ 230 00f5 AA010000 		.4byte	0x1aa
+ 231 00f9 06       		.uleb128 0x6
+ 232 00fa 20000000 		.4byte	.LVL5
+ 233 00fe B5010000 		.4byte	0x1b5
+ 234 0102 07       		.uleb128 0x7
+ 235 0103 2A000000 		.4byte	.LVL6
+ 236 0107 B5010000 		.4byte	0x1b5
+ 237 010b 15010000 		.4byte	0x115
+ 238 010f 08       		.uleb128 0x8
+ 239 0110 01       		.uleb128 0x1
+ 240 0111 50       		.byte	0x50
+ 241 0112 01       		.uleb128 0x1
+ 242 0113 31       		.byte	0x31
+ 243 0114 00       		.byte	0
+ 244 0115 06       		.uleb128 0x6
+ 245 0116 34000000 		.4byte	.LVL7
+ 246 011a CA010000 		.4byte	0x1ca
+ 247 011e 07       		.uleb128 0x7
+ 248 011f 3C000000 		.4byte	.LVL8
+ 249 0123 B5010000 		.4byte	0x1b5
+ 250 0127 31010000 		.4byte	0x131
+ 251 012b 08       		.uleb128 0x8
+ 252 012c 01       		.uleb128 0x1
+ 253 012d 50       		.byte	0x50
+ 254 012e 01       		.uleb128 0x1
+ 255 012f 32       		.byte	0x32
+ 256 0130 00       		.byte	0
+ 257 0131 07       		.uleb128 0x7
+ 258 0132 46000000 		.4byte	.LVL9
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 6
+
+
+ 259 0136 CA010000 		.4byte	0x1ca
+ 260 013a 44010000 		.4byte	0x144
+ 261 013e 08       		.uleb128 0x8
+ 262 013f 01       		.uleb128 0x1
+ 263 0140 50       		.byte	0x50
+ 264 0141 01       		.uleb128 0x1
+ 265 0142 31       		.byte	0x31
+ 266 0143 00       		.byte	0
+ 267 0144 07       		.uleb128 0x7
+ 268 0145 4C000000 		.4byte	.LVL10
+ 269 0149 DB010000 		.4byte	0x1db
+ 270 014d 58010000 		.4byte	0x158
+ 271 0151 08       		.uleb128 0x8
+ 272 0152 01       		.uleb128 0x1
+ 273 0153 50       		.byte	0x50
+ 274 0154 02       		.uleb128 0x2
+ 275 0155 08       		.byte	0x8
+ 276 0156 FA       		.byte	0xfa
+ 277 0157 00       		.byte	0
+ 278 0158 07       		.uleb128 0x7
+ 279 0159 52000000 		.4byte	.LVL11
+ 280 015d CA010000 		.4byte	0x1ca
+ 281 0161 6C010000 		.4byte	0x16c
+ 282 0165 08       		.uleb128 0x8
+ 283 0166 01       		.uleb128 0x1
+ 284 0167 50       		.byte	0x50
+ 285 0168 02       		.uleb128 0x2
+ 286 0169 74       		.byte	0x74
+ 287 016a 00       		.sleb128 0
+ 288 016b 00       		.byte	0
+ 289 016c 09       		.uleb128 0x9
+ 290 016d 58000000 		.4byte	.LVL12
+ 291 0171 DB010000 		.4byte	0x1db
+ 292 0175 08       		.uleb128 0x8
+ 293 0176 01       		.uleb128 0x1
+ 294 0177 50       		.byte	0x50
+ 295 0178 02       		.uleb128 0x2
+ 296 0179 08       		.byte	0x8
+ 297 017a FA       		.byte	0xfa
+ 298 017b 00       		.byte	0
+ 299 017c 00       		.byte	0
+ 300 017d 0A       		.uleb128 0xa
+ 301 017e 33010000 		.4byte	.LASF25
+ 302 0182 07       		.byte	0x7
+ 303 0183 2A06     		.2byte	0x62a
+ 304 0185 89010000 		.4byte	0x189
+ 305 0189 0B       		.uleb128 0xb
+ 306 018a 76000000 		.4byte	0x76
+ 307 018e 0C       		.uleb128 0xc
+ 308 018f 14000000 		.4byte	.LASF17
+ 309 0193 05       		.byte	0x5
+ 310 0194 93       		.byte	0x93
+ 311 0195 0C       		.uleb128 0xc
+ 312 0196 27020000 		.4byte	.LASF18
+ 313 019a 06       		.byte	0x6
+ 314 019b 97       		.byte	0x97
+ 315 019c 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 7
+
+
+ 316 019d B2010000 		.4byte	.LASF19
+ 317 01a1 06       		.byte	0x6
+ 318 01a2 9B       		.byte	0x9b
+ 319 01a3 0C       		.uleb128 0xc
+ 320 01a4 55010000 		.4byte	.LASF20
+ 321 01a8 05       		.byte	0x5
+ 322 01a9 9B       		.byte	0x9b
+ 323 01aa 0D       		.uleb128 0xd
+ 324 01ab F5000000 		.4byte	.LASF26
+ 325 01af 05       		.byte	0x5
+ 326 01b0 99       		.byte	0x99
+ 327 01b1 81000000 		.4byte	0x81
+ 328 01b5 0E       		.uleb128 0xe
+ 329 01b6 FE010000 		.4byte	.LASF27
+ 330 01ba 06       		.byte	0x6
+ 331 01bb 9D       		.byte	0x9d
+ 332 01bc 81000000 		.4byte	0x81
+ 333 01c0 CA010000 		.4byte	0x1ca
+ 334 01c4 0F       		.uleb128 0xf
+ 335 01c5 81000000 		.4byte	0x81
+ 336 01c9 00       		.byte	0
+ 337 01ca 10       		.uleb128 0x10
+ 338 01cb 00000000 		.4byte	.LASF28
+ 339 01cf 08       		.byte	0x8
+ 340 01d0 28       		.byte	0x28
+ 341 01d1 DB010000 		.4byte	0x1db
+ 342 01d5 0F       		.uleb128 0xf
+ 343 01d6 81000000 		.4byte	0x81
+ 344 01da 00       		.byte	0
+ 345 01db 11       		.uleb128 0x11
+ 346 01dc 47020000 		.4byte	.LASF29
+ 347 01e0 09       		.byte	0x9
+ 348 01e1 77       		.byte	0x77
+ 349 01e2 0F       		.uleb128 0xf
+ 350 01e3 8C000000 		.4byte	0x8c
+ 351 01e7 00       		.byte	0
+ 352 01e8 00       		.byte	0
+ 353              		.section	.debug_abbrev,"",%progbits
+ 354              	.Ldebug_abbrev0:
+ 355 0000 01       		.uleb128 0x1
+ 356 0001 11       		.uleb128 0x11
+ 357 0002 01       		.byte	0x1
+ 358 0003 25       		.uleb128 0x25
+ 359 0004 0E       		.uleb128 0xe
+ 360 0005 13       		.uleb128 0x13
+ 361 0006 0B       		.uleb128 0xb
+ 362 0007 03       		.uleb128 0x3
+ 363 0008 0E       		.uleb128 0xe
+ 364 0009 1B       		.uleb128 0x1b
+ 365 000a 0E       		.uleb128 0xe
+ 366 000b 55       		.uleb128 0x55
+ 367 000c 17       		.uleb128 0x17
+ 368 000d 11       		.uleb128 0x11
+ 369 000e 01       		.uleb128 0x1
+ 370 000f 10       		.uleb128 0x10
+ 371 0010 17       		.uleb128 0x17
+ 372 0011 00       		.byte	0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 8
+
+
+ 373 0012 00       		.byte	0
+ 374 0013 02       		.uleb128 0x2
+ 375 0014 24       		.uleb128 0x24
+ 376 0015 00       		.byte	0
+ 377 0016 0B       		.uleb128 0xb
+ 378 0017 0B       		.uleb128 0xb
+ 379 0018 3E       		.uleb128 0x3e
+ 380 0019 0B       		.uleb128 0xb
+ 381 001a 03       		.uleb128 0x3
+ 382 001b 0E       		.uleb128 0xe
+ 383 001c 00       		.byte	0
+ 384 001d 00       		.byte	0
+ 385 001e 03       		.uleb128 0x3
+ 386 001f 16       		.uleb128 0x16
+ 387 0020 00       		.byte	0
+ 388 0021 03       		.uleb128 0x3
+ 389 0022 0E       		.uleb128 0xe
+ 390 0023 3A       		.uleb128 0x3a
+ 391 0024 0B       		.uleb128 0xb
+ 392 0025 3B       		.uleb128 0x3b
+ 393 0026 0B       		.uleb128 0xb
+ 394 0027 49       		.uleb128 0x49
+ 395 0028 13       		.uleb128 0x13
+ 396 0029 00       		.byte	0
+ 397 002a 00       		.byte	0
+ 398 002b 04       		.uleb128 0x4
+ 399 002c 24       		.uleb128 0x24
+ 400 002d 00       		.byte	0
+ 401 002e 0B       		.uleb128 0xb
+ 402 002f 0B       		.uleb128 0xb
+ 403 0030 3E       		.uleb128 0x3e
+ 404 0031 0B       		.uleb128 0xb
+ 405 0032 03       		.uleb128 0x3
+ 406 0033 08       		.uleb128 0x8
+ 407 0034 00       		.byte	0
+ 408 0035 00       		.byte	0
+ 409 0036 05       		.uleb128 0x5
+ 410 0037 2E       		.uleb128 0x2e
+ 411 0038 01       		.byte	0x1
+ 412 0039 3F       		.uleb128 0x3f
+ 413 003a 19       		.uleb128 0x19
+ 414 003b 03       		.uleb128 0x3
+ 415 003c 0E       		.uleb128 0xe
+ 416 003d 3A       		.uleb128 0x3a
+ 417 003e 0B       		.uleb128 0xb
+ 418 003f 3B       		.uleb128 0x3b
+ 419 0040 0B       		.uleb128 0xb
+ 420 0041 49       		.uleb128 0x49
+ 421 0042 13       		.uleb128 0x13
+ 422 0043 11       		.uleb128 0x11
+ 423 0044 01       		.uleb128 0x1
+ 424 0045 12       		.uleb128 0x12
+ 425 0046 06       		.uleb128 0x6
+ 426 0047 40       		.uleb128 0x40
+ 427 0048 18       		.uleb128 0x18
+ 428 0049 9742     		.uleb128 0x2117
+ 429 004b 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 9
+
+
+ 430 004c 01       		.uleb128 0x1
+ 431 004d 13       		.uleb128 0x13
+ 432 004e 00       		.byte	0
+ 433 004f 00       		.byte	0
+ 434 0050 06       		.uleb128 0x6
+ 435 0051 898201   		.uleb128 0x4109
+ 436 0054 00       		.byte	0
+ 437 0055 11       		.uleb128 0x11
+ 438 0056 01       		.uleb128 0x1
+ 439 0057 31       		.uleb128 0x31
+ 440 0058 13       		.uleb128 0x13
+ 441 0059 00       		.byte	0
+ 442 005a 00       		.byte	0
+ 443 005b 07       		.uleb128 0x7
+ 444 005c 898201   		.uleb128 0x4109
+ 445 005f 01       		.byte	0x1
+ 446 0060 11       		.uleb128 0x11
+ 447 0061 01       		.uleb128 0x1
+ 448 0062 31       		.uleb128 0x31
+ 449 0063 13       		.uleb128 0x13
+ 450 0064 01       		.uleb128 0x1
+ 451 0065 13       		.uleb128 0x13
+ 452 0066 00       		.byte	0
+ 453 0067 00       		.byte	0
+ 454 0068 08       		.uleb128 0x8
+ 455 0069 8A8201   		.uleb128 0x410a
+ 456 006c 00       		.byte	0
+ 457 006d 02       		.uleb128 0x2
+ 458 006e 18       		.uleb128 0x18
+ 459 006f 9142     		.uleb128 0x2111
+ 460 0071 18       		.uleb128 0x18
+ 461 0072 00       		.byte	0
+ 462 0073 00       		.byte	0
+ 463 0074 09       		.uleb128 0x9
+ 464 0075 898201   		.uleb128 0x4109
+ 465 0078 01       		.byte	0x1
+ 466 0079 11       		.uleb128 0x11
+ 467 007a 01       		.uleb128 0x1
+ 468 007b 31       		.uleb128 0x31
+ 469 007c 13       		.uleb128 0x13
+ 470 007d 00       		.byte	0
+ 471 007e 00       		.byte	0
+ 472 007f 0A       		.uleb128 0xa
+ 473 0080 34       		.uleb128 0x34
+ 474 0081 00       		.byte	0
+ 475 0082 03       		.uleb128 0x3
+ 476 0083 0E       		.uleb128 0xe
+ 477 0084 3A       		.uleb128 0x3a
+ 478 0085 0B       		.uleb128 0xb
+ 479 0086 3B       		.uleb128 0x3b
+ 480 0087 05       		.uleb128 0x5
+ 481 0088 49       		.uleb128 0x49
+ 482 0089 13       		.uleb128 0x13
+ 483 008a 3F       		.uleb128 0x3f
+ 484 008b 19       		.uleb128 0x19
+ 485 008c 3C       		.uleb128 0x3c
+ 486 008d 19       		.uleb128 0x19
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 10
+
+
+ 487 008e 00       		.byte	0
+ 488 008f 00       		.byte	0
+ 489 0090 0B       		.uleb128 0xb
+ 490 0091 35       		.uleb128 0x35
+ 491 0092 00       		.byte	0
+ 492 0093 49       		.uleb128 0x49
+ 493 0094 13       		.uleb128 0x13
+ 494 0095 00       		.byte	0
+ 495 0096 00       		.byte	0
+ 496 0097 0C       		.uleb128 0xc
+ 497 0098 2E       		.uleb128 0x2e
+ 498 0099 00       		.byte	0
+ 499 009a 3F       		.uleb128 0x3f
+ 500 009b 19       		.uleb128 0x19
+ 501 009c 03       		.uleb128 0x3
+ 502 009d 0E       		.uleb128 0xe
+ 503 009e 3A       		.uleb128 0x3a
+ 504 009f 0B       		.uleb128 0xb
+ 505 00a0 3B       		.uleb128 0x3b
+ 506 00a1 0B       		.uleb128 0xb
+ 507 00a2 27       		.uleb128 0x27
+ 508 00a3 19       		.uleb128 0x19
+ 509 00a4 3C       		.uleb128 0x3c
+ 510 00a5 19       		.uleb128 0x19
+ 511 00a6 00       		.byte	0
+ 512 00a7 00       		.byte	0
+ 513 00a8 0D       		.uleb128 0xd
+ 514 00a9 2E       		.uleb128 0x2e
+ 515 00aa 00       		.byte	0
+ 516 00ab 3F       		.uleb128 0x3f
+ 517 00ac 19       		.uleb128 0x19
+ 518 00ad 03       		.uleb128 0x3
+ 519 00ae 0E       		.uleb128 0xe
+ 520 00af 3A       		.uleb128 0x3a
+ 521 00b0 0B       		.uleb128 0xb
+ 522 00b1 3B       		.uleb128 0x3b
+ 523 00b2 0B       		.uleb128 0xb
+ 524 00b3 27       		.uleb128 0x27
+ 525 00b4 19       		.uleb128 0x19
+ 526 00b5 49       		.uleb128 0x49
+ 527 00b6 13       		.uleb128 0x13
+ 528 00b7 3C       		.uleb128 0x3c
+ 529 00b8 19       		.uleb128 0x19
+ 530 00b9 00       		.byte	0
+ 531 00ba 00       		.byte	0
+ 532 00bb 0E       		.uleb128 0xe
+ 533 00bc 2E       		.uleb128 0x2e
+ 534 00bd 01       		.byte	0x1
+ 535 00be 3F       		.uleb128 0x3f
+ 536 00bf 19       		.uleb128 0x19
+ 537 00c0 03       		.uleb128 0x3
+ 538 00c1 0E       		.uleb128 0xe
+ 539 00c2 3A       		.uleb128 0x3a
+ 540 00c3 0B       		.uleb128 0xb
+ 541 00c4 3B       		.uleb128 0x3b
+ 542 00c5 0B       		.uleb128 0xb
+ 543 00c6 27       		.uleb128 0x27
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 11
+
+
+ 544 00c7 19       		.uleb128 0x19
+ 545 00c8 49       		.uleb128 0x49
+ 546 00c9 13       		.uleb128 0x13
+ 547 00ca 3C       		.uleb128 0x3c
+ 548 00cb 19       		.uleb128 0x19
+ 549 00cc 01       		.uleb128 0x1
+ 550 00cd 13       		.uleb128 0x13
+ 551 00ce 00       		.byte	0
+ 552 00cf 00       		.byte	0
+ 553 00d0 0F       		.uleb128 0xf
+ 554 00d1 05       		.uleb128 0x5
+ 555 00d2 00       		.byte	0
+ 556 00d3 49       		.uleb128 0x49
+ 557 00d4 13       		.uleb128 0x13
+ 558 00d5 00       		.byte	0
+ 559 00d6 00       		.byte	0
+ 560 00d7 10       		.uleb128 0x10
+ 561 00d8 2E       		.uleb128 0x2e
+ 562 00d9 01       		.byte	0x1
+ 563 00da 3F       		.uleb128 0x3f
+ 564 00db 19       		.uleb128 0x19
+ 565 00dc 03       		.uleb128 0x3
+ 566 00dd 0E       		.uleb128 0xe
+ 567 00de 3A       		.uleb128 0x3a
+ 568 00df 0B       		.uleb128 0xb
+ 569 00e0 3B       		.uleb128 0x3b
+ 570 00e1 0B       		.uleb128 0xb
+ 571 00e2 27       		.uleb128 0x27
+ 572 00e3 19       		.uleb128 0x19
+ 573 00e4 3C       		.uleb128 0x3c
+ 574 00e5 19       		.uleb128 0x19
+ 575 00e6 01       		.uleb128 0x1
+ 576 00e7 13       		.uleb128 0x13
+ 577 00e8 00       		.byte	0
+ 578 00e9 00       		.byte	0
+ 579 00ea 11       		.uleb128 0x11
+ 580 00eb 2E       		.uleb128 0x2e
+ 581 00ec 01       		.byte	0x1
+ 582 00ed 3F       		.uleb128 0x3f
+ 583 00ee 19       		.uleb128 0x19
+ 584 00ef 03       		.uleb128 0x3
+ 585 00f0 0E       		.uleb128 0xe
+ 586 00f1 3A       		.uleb128 0x3a
+ 587 00f2 0B       		.uleb128 0xb
+ 588 00f3 3B       		.uleb128 0x3b
+ 589 00f4 0B       		.uleb128 0xb
+ 590 00f5 27       		.uleb128 0x27
+ 591 00f6 19       		.uleb128 0x19
+ 592 00f7 3C       		.uleb128 0x3c
+ 593 00f8 19       		.uleb128 0x19
+ 594 00f9 00       		.byte	0
+ 595 00fa 00       		.byte	0
+ 596 00fb 00       		.byte	0
+ 597              		.section	.debug_aranges,"",%progbits
+ 598 0000 1C000000 		.4byte	0x1c
+ 599 0004 0200     		.2byte	0x2
+ 600 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 12
+
+
+ 601 000a 04       		.byte	0x4
+ 602 000b 00       		.byte	0
+ 603 000c 0000     		.2byte	0
+ 604 000e 0000     		.2byte	0
+ 605 0010 00000000 		.4byte	.LFB63
+ 606 0014 5A000000 		.4byte	.LFE63-.LFB63
+ 607 0018 00000000 		.4byte	0
+ 608 001c 00000000 		.4byte	0
+ 609              		.section	.debug_ranges,"",%progbits
+ 610              	.Ldebug_ranges0:
+ 611 0000 00000000 		.4byte	.LFB63
+ 612 0004 5A000000 		.4byte	.LFE63
+ 613 0008 00000000 		.4byte	0
+ 614 000c 00000000 		.4byte	0
+ 615              		.section	.debug_line,"",%progbits
+ 616              	.Ldebug_line0:
+ 617 0000 A5010000 		.section	.debug_str,"MS",%progbits,1
+ 617      02007E01 
+ 617      00000201 
+ 617      FB0E0D00 
+ 617      01010101 
+ 618              	.LASF28:
+ 619 0000 4C45445F 		.ascii	"LED_Write\000"
+ 619      57726974 
+ 619      6500
+ 620              	.LASF9:
+ 621 000a 5F5F696E 		.ascii	"__int32_t\000"
+ 621      7433325F 
+ 621      7400
+ 622              	.LASF17:
+ 623 0014 43617053 		.ascii	"CapSense_Start\000"
+ 623      656E7365 
+ 623      5F537461 
+ 623      727400
+ 624              	.LASF23:
+ 625 0023 433A5C55 		.ascii	"C:\\Users\\Xwx47\\Documents\\PSoC Creator\\CapSense"
+ 625      73657273 
+ 625      5C587778 
+ 625      34375C44 
+ 625      6F63756D 
+ 626 0051 5F354C50 		.ascii	"_5LP_test\\CapSense_5LP_test.cydsn\000"
+ 626      5F746573 
+ 626      745C4361 
+ 626      7053656E 
+ 626      73655F35 
+ 627              	.LASF13:
+ 628 0073 666C6F61 		.ascii	"float\000"
+ 628      7400
+ 629              	.LASF21:
+ 630 0079 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 630      4320342E 
+ 630      382E3420 
+ 630      32303134 
+ 630      30353236 
+ 631 00ac 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 631      20726576 
+ 631      6973696F 
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 13
+
+
+ 631      6E203231 
+ 631      31333538 
+ 632 00df 73202D66 		.ascii	"s -ffunction-sections\000"
+ 632      66756E63 
+ 632      74696F6E 
+ 632      2D736563 
+ 632      74696F6E 
+ 633              	.LASF26:
+ 634 00f5 43617053 		.ascii	"CapSense_IsBusy\000"
+ 634      656E7365 
+ 634      5F497342 
+ 634      75737900 
+ 635              	.LASF22:
+ 636 0105 2E5C6D61 		.ascii	".\\main.c\000"
+ 636      696E2E63 
+ 636      00
+ 637              	.LASF5:
+ 638 010e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 638      20756E73 
+ 638      69676E65 
+ 638      6420696E 
+ 638      7400
+ 639              	.LASF3:
+ 640 0120 73686F72 		.ascii	"short unsigned int\000"
+ 640      7420756E 
+ 640      7369676E 
+ 640      65642069 
+ 640      6E7400
+ 641              	.LASF25:
+ 642 0133 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 642      52784275 
+ 642      66666572 
+ 642      00
+ 643              	.LASF1:
+ 644 0140 756E7369 		.ascii	"unsigned char\000"
+ 644      676E6564 
+ 644      20636861 
+ 644      7200
+ 645              	.LASF14:
+ 646 014e 646F7562 		.ascii	"double\000"
+ 646      6C6500
+ 647              	.LASF20:
+ 648 0155 43617053 		.ascii	"CapSense_ScanEnabledWidgets\000"
+ 648      656E7365 
+ 648      5F536361 
+ 648      6E456E61 
+ 648      626C6564 
+ 649              	.LASF24:
+ 650 0171 6D61696E 		.ascii	"main\000"
+ 650      00
+ 651              	.LASF12:
+ 652 0176 75696E74 		.ascii	"uint32\000"
+ 652      333200
+ 653              	.LASF8:
+ 654 017d 756E7369 		.ascii	"unsigned int\000"
+ 654      676E6564 
+ 654      20696E74 
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 14
+
+
+ 654      00
+ 655              	.LASF7:
+ 656 018a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 656      206C6F6E 
+ 656      6720756E 
+ 656      7369676E 
+ 656      65642069 
+ 657              	.LASF10:
+ 658 01a1 696E7433 		.ascii	"int32_t\000"
+ 658      325F7400 
+ 659              	.LASF16:
+ 660 01a9 73697A65 		.ascii	"sizetype\000"
+ 660      74797065 
+ 660      00
+ 661              	.LASF19:
+ 662 01b2 43617053 		.ascii	"CapSense_UpdateEnabledBaselines\000"
+ 662      656E7365 
+ 662      5F557064 
+ 662      61746545 
+ 662      6E61626C 
+ 663              	.LASF6:
+ 664 01d2 6C6F6E67 		.ascii	"long long int\000"
+ 664      206C6F6E 
+ 664      6720696E 
+ 664      7400
+ 665              	.LASF15:
+ 666 01e0 63686172 		.ascii	"char\000"
+ 666      00
+ 667              	.LASF2:
+ 668 01e5 73686F72 		.ascii	"short int\000"
+ 668      7420696E 
+ 668      7400
+ 669              	.LASF11:
+ 670 01ef 75696E74 		.ascii	"uint8\000"
+ 670      3800
+ 671              	.LASF4:
+ 672 01f5 6C6F6E67 		.ascii	"long int\000"
+ 672      20696E74 
+ 672      00
+ 673              	.LASF27:
+ 674 01fe 43617053 		.ascii	"CapSense_CheckIsWidgetActive\000"
+ 674      656E7365 
+ 674      5F436865 
+ 674      636B4973 
+ 674      57696467 
+ 675              	.LASF0:
+ 676 021b 7369676E 		.ascii	"signed char\000"
+ 676      65642063 
+ 676      68617200 
+ 677              	.LASF18:
+ 678 0227 43617053 		.ascii	"CapSense_InitializeAllBaselines\000"
+ 678      656E7365 
+ 678      5F496E69 
+ 678      7469616C 
+ 678      697A6541 
+ 679              	.LASF29:
+ 680 0247 43794465 		.ascii	"CyDelay\000"
+ARM GAS  C:\Users\Xwx47\AppData\Local\Temp\ccsO4yBm.s 			page 15
+
+
+ 680      6C617900 
+ 681              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

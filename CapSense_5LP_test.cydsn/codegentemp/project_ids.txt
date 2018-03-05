@@ -1,0 +1,6 @@
+C:\Users\Xwx47\Documents\Creator\CapSense_5LP_test\CapSense_5LP_test.cydsn\CapSense_5LP_test.cyprj|059a2ff3-3c7d-4a69-b66d-4c7634836f50
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1a7752b1-a5db-4963-bbc3-354bb6c58de9
+C:\Users\Xwx47\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|7a14fbb0-b0f5-4d0b-8c8d-e3c0faac7635
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|295284b3-4ac0-4993-a201-15a91f7b8ab0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|475ecee9-8c46-4dfe-9ddf-84f91f07e886
+C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|3279e1f5-fc4d-4f2a-a3c9-21d4c77b4f5e
